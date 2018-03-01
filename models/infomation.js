@@ -1,0 +1,40 @@
+let mongoose = require('mongoose');
+
+let infomationChema = mongoose.Schema({
+    keyFolder: String,
+    typeApp: String,
+    typeFolder: String,
+    pathRootFolder: String,
+    appName: String,
+    bundleID: String,
+    versionApp: String,
+    isParams: Boolean,
+    linkParams: String,
+    platforms: String,
+    linkDebug: String,
+    linkSigned: String,
+    linkKeyStore: String,
+    linkKeyStoretxt: String,
+    linkInstalliOS: String,
+    iosStatus: Boolean,
+    linkFileZip: String,
+    linkZipIPA: String,
+    teamID: String,
+    uUID: String,
+    caseFileBuildiOS: Number,
+    provisionFileAdHoc: String,
+    provisionFileAppStore: String,
+    certificateFileAdHoc: String,
+    certificateFileAppStore: String,
+    email: String,
+    dateCreateLocal: String,
+    sizeFileZipUpload: String,
+    stepBuild: String,
+    dateCreate: Date,
+    status: Number,
+    buildNewApp: Boolean,
+    appBuilding: Boolean,
+    logError: String
+});
+
+let Infomation = module.exports = mongoose.model('infomation', infomationChema);

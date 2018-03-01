@@ -1,0 +1,264 @@
+<% include ./../headerdetail %>
+    <div class="xcontent clsmenu">
+        <div id="title-detail" class="row row1">
+            <div id="title-appversion" class="content-title-detail has-feedback">
+                <span class="textmyapp">Detail Orders
+                </span>
+            </div>
+        </div>
+        <div class="content-detailorder row row1">
+            <div class="left-head-content">
+                <div class="paddingbotom-detailorder">
+                    <span class="title-black">Order ID:</span>
+                    <span class="title-blue">
+                        <%="#"+ detailOrder.codeOrder%>
+                    </span>
+                </div>
+                <span>
+                    <% switch(detailOrder.statusOrder){
+                            case 1:%>
+                        <span class="textstatus orderblue paddingstatus">
+                            <%=status%>
+                        </span>
+                        <% break; 
+                            case 2: %>
+                            <span class="textstatus orderorange paddingstatus">
+                                <%=status%>
+                            </span>
+                            <% break; 
+                               case 3:%>
+                                <span class="textstatus ordergray paddingstatus">
+                                    <%=status%>
+                                </span>
+                                <% break; 
+                                  case 4: %>
+                                    <span class="textstatus ordergreen paddingstatus">
+                                        <%=status%>
+                                    </span>
+                                    <% break; 
+                                     case 5: %>
+                                        <span class="textstatus orderpink paddingstatus">
+                                            <%=status%>
+                                        </span>
+                                        <%break; 
+                                        case 6:%>
+                                            <span class="textstatus ordergrayred paddingstatus">
+                                                <%=status%>
+                                            </span>
+                                            <%break; 
+                                           case 7:%>
+                                                <span class="textstatus orderpinkstrong paddingstatus">
+                                                    <%=status%>
+                                                </span>
+                                                <%break;} %>
+
+
+                </span>
+            </div>
+            <div class="right-head-content" align="right">
+                <div class="paddingbotom-detailorder">
+                    <span class="title-gray">
+                        <img id="about-bill" style=" cursor: pointer;" src="/themes/img/appversion/iconabout.png" alt="deployapp"> Amount payable:</span>
+                    <span class="title-black">
+                        <%=detailOrder.curency+detailOrder.totalMonney%>
+                    </span>
+                </div>
+                <% 
+                     var totalx=0;
+                     for(let i=0;i<detailOrder.product.length;i++){
+                        var total  = detailOrder.product[i].price.toFixed(2)*detailOrder.product[i].quantity.toFixed(2);
+                        totalx = totalx + total;
+                    }
+                    %>
+                    <span class="">Cash on Delivery</span>
+                    <div id="select-custom" style="display: none">
+                        <div class=" arrow-upper setarrowabot-upper"></div>
+                        <div class="arrow-under setarrowabot-under"></div>
+                        <div class="contenselect-custom padding-select">
+                            <div id="bill-product2" align="left">
+                                <span class="title-gray-Light-small">
+                                    Total:
+                                    <%=detailOrder.product.length%> item(s)</span>
+                                <br>
+                                <span class="title-gray-Light-small">
+                                    Discount:</span>
+                                <br>
+                                <span class="title-gray-Light-small">Shipping:</span>
+                                <br>
+                                <span class="title-gray-Light-small">VAT:</span>
+                                <br>
+                                <span class="title-gray-Regular-small ">Amount payable:</span>
+                            </div>
+                            <div id="bill-product3" align="right">
+                                <span>
+                                    <%=detailOrder.curency + totalx%>
+                                </span>
+                                <br>
+                                <span>
+                                    <%=detailOrder.curency+detailOrder.discount.toFixed(2)%>
+                                </span>
+                                <br>
+                                <span>
+                                    <%=detailOrder.curency+detailOrder.feeShip.toFixed(2)%>
+                                </span>
+                                <br>
+                                <span>
+                                    <%=detailOrder.curency+detailOrder.feeVat.toFixed(2)%>
+                                </span>
+                                <br>
+                                <span class="title-gray-Regular-small ">
+
+                                    <%=detailOrder.curency + detailOrder.totalMonney%>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="left-body-content">
+                <span class="title-black-small">Date placed:</span>
+                <br>
+                <span>
+                    <%=detailOrder.dateCreate%>
+                </span>
+                <br>
+                <br>
+                <span class="title-black-small">Bidling Detail</span>
+                <br>
+                <span class="title-gray-small paddingtext">Address:</span>
+                <br>
+                <span>
+                    <%=detailOrder.nameCostomer%>
+                </span>
+                <br>
+                <span>
+                    <%=detailOrder.address%>
+                </span>
+                <br>
+                <span class="title-black-small paddingtext">Email address:</span>
+                <br>
+                <span>
+                    <%=detailOrder.email%>
+                </span>
+                <br>
+                <span class="title-black-small paddingtext">Phone:</span>
+                <br>
+                <span>
+                    <%=detailOrder.phoneNumber%>
+                </span>
+                <br>
+            </div>
+            <div class="right-body-content">
+                <br>
+                <br>
+                <br>
+                <span class="title-black-small">Shipping Detail</span>
+                <br>
+                <span class="title-gray-small paddingtext">Address:</span>
+                <br>
+                <span>
+                    <%=detailOrder.nameCostomer%>
+                </span>
+                <br>
+                <span>
+                    <%=detailOrder.address%>
+                </span>
+                <br>
+                <span class="title-black-small paddingtext">Note:</span>
+                <br>
+                <span>
+                    <%=detailOrder.note%>
+                </span>
+                <br>
+            </div>
+        </div>
+        <table id="head-order-product">
+            <tr id="title-table-header">
+                <th width="13%">image
+
+                </th>
+                <th width="45%">Product Description
+
+                </th>
+                <th width="14%">price
+
+                </th>
+                <th width="14%">Qty
+
+                </th>
+                <th width="13%">Total
+
+                </th>
+            </tr>
+        </table>
+        <div class="content-detailorder1 row row1" align="center">
+            <table id="content-order-product">
+                <% for(let i=0;i<detailOrder.product.length;i++){%>
+                    <tr>
+                        <td width="12.5%">
+                            <img class="setimgorder" src="<%=detailOrder.product[i].image%>">
+                        </td>
+                        <td width="48.5%">
+                            <span class="title-blue-small">Thiên Long</span>
+                            <br>
+                            <span>Size:
+                                <%=detailOrder.product[i].size%>, Color:
+                                    <%=detailOrder.product[i].color%>
+                            </span>
+                            <br>
+                            <span>product Code:
+                                <%=detailOrder.product[i].productCode%>
+                            </span>
+                        </td>
+                        <td width="15.5%">
+                            <%=detailOrder.product[i].price%>
+                        </td>
+                        <td width="15.5%">
+                            <%=detailOrder.product[i].quantity%>
+                        </td>
+                        <td width="13%">
+
+                            <%=detailOrder.curency + total%>
+                        </td>
+                    </tr>
+                    <% }%>
+            </table>
+            <div id="bill-product" align="right">
+                <div id="bill-product1" align="left">
+                    <div id="bill-product2" align="right">
+                        <span class="title-gray-Light-small">
+                            <img src="/themes/img/appversion/iconaboutsmall.png" alt="deployapp"> Discount:</span>
+                        <br>
+                        <span class="title-gray-Light-small">
+                            <img src="/themes/img/appversion/iconaboutsmall.png" alt="deployapp"> Shipping:</span>
+                        <br>
+                        <span class="title-gray-Light-small">VAT:</span>
+                        <br>
+                        <span class="title-gray-Regular-small ">Amount payable:</span>
+                    </div>
+                    <div id="bill-product3" align="right">
+                        <span>
+                            <%=detailOrder.curency+detailOrder.discount.toFixed(2)%>
+                        </span>
+                        <br>
+                        <span>
+                            <%=detailOrder.curency+detailOrder.feeShip.toFixed(2)%>
+                        </span>
+                        <br>
+                        <span>
+                            <%=detailOrder.curency+detailOrder.feeVat.toFixed(2)%>
+                        </span>
+                        <br>
+                        <span class="title-gray-Regular-small ">
+
+                            <%=detailOrder.curency + detailOrder.totalMonney%>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script type=" text/javascript " charset="utf-8 " src="/themes/js/dashboard/myorder/detailorder.js "></script>
+    <!-- <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/appversion/pagination.js
+                "></script> -->

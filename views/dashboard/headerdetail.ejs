@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%=title %> - DeployApp.net
+
+    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free Tools for deploy your mobile application. The Easiest Mobile App Builder">
+    <meta name="author" content="TaydoTech">
+    <link rel="shortcut icon" href="/themes/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/themes/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/themes/css/font-awesome.min.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="/themes/css/froala_editor.pkgd.min.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="/themes/css/froala_style.min.css" /> -->
+    <link rel="stylesheet" type="text/css" href="/themes/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/themes/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/detail.css">
+    <link rel="stylesheet" type="text/css" href="/themes/css/login/login.css">
+    <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/editprofile.css">
+    <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/homeapp/homeapp.css">
+    <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/appversion/appversion.css">
+
+    <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/datetimepicker.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/datetimepicker.min.css"> -->
+
+    <script type="text/javascript" charset="utf-8" src="/themes/js/libsetting.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/socket.io.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/jquery.easing.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/ejs.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="/themes/js/jquery.animateNumber.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/chartjs/chartjs.js"></script>
+
+
+    <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/menudetail.js"></script> -->
+
+    <!-- datetime picker -->
+    <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/momentdatetimepicker.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/datetimerpicker.min.js"></script>
+    <!-- chart google -->
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/chartgg.js "></script>
+    <!-- new 21-11 -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.post(
+                "/getaccount", {},
+                function (data) {
+                    $('.imgavatarsmall').attr('src', data.picture);
+                    $('.setspanfullname').text(data.fullname);
+
+                }
+
+            )
+            $.post(
+                "/getamountapp", {},
+                function (data) {
+                    $('.textamountapp').text("MyApp(" + data.amount + ")");
+                }
+            )
+        });
+    </script>
+</head>
+
+<body id="body">
+    <div id="loading" style="display:none">
+        <div class="content-loading">
+            <div class="img-loading">
+                <img class="img-responsive" src="/themes/img/spinner.gif" alt="">
+            </div>
+            <div class="text-loading">
+                <span>Please wait...</span>
+            </div>
+        </div>
+    </div>
+    <div class="successPopup" id="successPopup">
+        <div class="alert alert-danger alert-dismissable alert-success" id="success-alert">
+            <button type="button" class=" button-close-notification" data-dismiss="alert" aria-hidden="true">×</button>
+            <span class="text-title-error">
+                <i class="fa fa-check icon-check-mail" aria-hidden="true"></i>
+                <span class="contenemail">Email sent</span>
+            </span>
+            <br>
+        </div>
+    </div>
+    <div class="errPopup" id="errPopup">
+        <div class="alert alert-danger  alert-dismissable alert-error" id="danger-alert">
+            <button type="button" class="button-close-notification" aria-hidden="true">×</button>
+            <!-- <i class="fa fa-exclamation-circle" aria-hidden="true"></i> -->
+            <span class="text-title-error">
+                <img class="img-icon-error" src="/themes/img/error-icon.png" alt="icon error"> Error </span>
+            <br>
+            <span class="alert-upload"></span>
+        </div>
+    </div>
+    <div id="deploy-detail-content">
+        <% include ./menuleft %>
+            <div id="content-detail" class="clsmenu">
+
+                <div class="navbar1 clsmenu">
+                    <!-- <div class="collapse navbar-collapse top-menu-right"> -->
+                    <!-- <div class="editbtn-menuleft">
+                        <button type="button" id="nomenu" class="menuleftshow">
+                            <img class="imgfirst" src="/themes/img/dashboard/iconmenu.png">
+                        </button>
+                        <button type="button" id="okmenu" class="menulefthide">
+                            <img class="imgfirst" src="/themes/img/dashboard/iconmenu.png">
+                        </button>
+                    </div> -->
+                    <div id="viewaccount">
+                        <div id="user-deploy">
+                            <div class="showmenuaccount">
+                                <span class="setspanfullname showmenuuser showmenuaccount">
+                                </span>
+                                <img class="showmenuuser showmenuaccount imgavatarsmall" src="/themes/img/dashboard/Avatar.png" alt="deployapp">
+                                <img class="setarrow showmenuuser showmenuaccount" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                            </div>
+                            <div id="menuaccount">
+                                <div class="arrowmenuuser">
+                                </div>
+                                <div class="arrowmenuuser1">
+                                </div>
+                                <div id="menuuser">
+                                    <a href="/dashboard">
+                                        <div class="selectmenu divhover showmenuaccount">
+                                            <img class="imgfirst" src="/themes/img/dashboard/icondashboardhover.png">
+                                            <img class="imglast" src="/themes/img/dashboard/icondashboard.png">
+                                            <span class="spanmenuaccount">Dashboard</span>
+                                        </div>
+                                    </a>
+                                    <a href="/editprofile">
+                                        <div class="selectmenu divhover showmenuaccount">
+                                            <img class="imgfirst" src="/themes/img/dashboard/Iconacountt.png">
+                                            <img class="imglast" src="/themes/img/dashboard/iconaccountactive.png">
+                                            <span class="spanmenuaccount">Edit profile</span>
+                                        </div>
+                                    </a>
+                                    <a href="/logout">
+                                        <div class="selectmenu divhover showmenuaccount">
+                                            <img class="imgfirst" src="/themes/img/dashboard/Iconlogout.png">
+                                            <img class="imglast" src="/themes/img/dashboard/Iconlogoutative.png">
+                                            <span class="spanmenuaccount">Log Out</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ringing">
+                            <a href="#">
+                                <span id="number-notifications">
+                                    2
+                                </span>
+                                <img src="/themes/img/dashboard/ringnotifications.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div id="navigate-text">
+                        <!-- <span>Home</span>
+                        <span class="setarrownavigate">
+                            <img src="/themes/img/dashboard/iconarrowbreadcrumb.png">
+                        </span>
+                        <span id="text-href">My app</span> -->
+                    </div>
+                </div>

@@ -1,0 +1,160 @@
+<%include header%>
+    <div class="container">
+        <div id="">
+            <h2>How to Create a Distribution Certificate</h2>
+            <div class="sub-step" id="">
+                <h3>1. On your Mac go to the folder Applications &gt; Utilities and open Keychain Access.</h3>
+                <div class="image">
+                    <img alt="On your Mac go to the folder Applications &amp;gt; Utilities and open Keychain Access." height="172" src="/themes/img/post/certificate01.png" width="231">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>2. Go to Keychain Access &gt; Certificate Assistant &gt; Request a Certificate from a Certificate Authority.</h3>
+                <div class="image">
+
+                    <img alt="Go to Keychain Access &amp;gt; Certificate Assistant &amp;gt; Request a Certificate from a Certificate Authority." height="265" src="/themes/img/post/certificate02.png" width="640">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>3. Fill out the information in the Certificate Information window as specified below and click "Continue.".</h3>
+                <div class="step-instructions">
+                    <ul>
+                        <li>In the <strong>User Email Address</strong> field, enter the email address to identify with this certificate</li>
+                        <li>In the <strong>Common Name</strong> field, enter your name</li>
+                        <li>In the <strong>Request</strong> group, click the "Saved to disk" option</li>
+                    </ul>
+                </div>
+                <div class="image">
+                    <img alt="Fill out the information in the Certificate Information window as specified below and click &amp;quot;Continue.&amp;quot;." height="433" src="/themes/img/post/certificate03.png" width="615">
+                </div>
+
+            </div>
+            <div class="sub-step" id="">
+                <h3>4. Save the file to your hard drive.</h3>
+                <div class="step-instructions">
+                    <p>The assistant creates a Certificate Signing Request (CSR) file which contains a public/private key pair.</p>
+                </div>
+                <div class="image">
+                    <img alt="Save the file to your hard drive." height="433" src="/themes/img/post/certificate04.png" width="615">
+                </div>
+
+            </div>
+            <div class="sub-step" id="">
+                <h3>5. To login into the iOS Developer Console goto &lt;https://developer.apple.com&gt; and click Account at the top</h3>
+                <div class="image">
+                    <img alt="To login into the iOS Developer Console goto &amp;lt;https://developer.apple.com&amp;gt; and click Account at the top" height="87" src="/themes/img/post/certificate05.png" width="855">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>6. Click "Certificates, Identifiers &amp; Profiles."</h3>
+                <div class="image">
+                    <img alt="Click &amp;quot;Certificates, Identifiers &amp;amp; Profiles.&amp;quot;" height="468" src="/themes/img/post/certificate06.png" width="855">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>7. Click on the "Certificates" link under "iOS Apps."</h3>
+                <div class="image">
+                    <img alt="Click on the &amp;quot;Certificates&amp;quot; link under &amp;quot;iOS Apps.&amp;quot;" height="392" src="/themes/img/post/certificate07.png" width="322">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>8. Go to Certificates &gt; Production and click on the "+" button to add a new certificate.</h3>
+                <div class="image">
+                    <img alt="Go to Certificates &amp;gt; Production and click on the &amp;quot;+&amp;quot; button to add a new certificate." height="540" src="/themes/img/post/certificate08.png" width="640">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>9. Select "App Store and Ad Hoc" from the Production options and click "Continue."</h3>
+                <div class="step-instructions">
+                    <pre><code>Note: <span style="color: rgb(38,38,38)">To use your certificates, you must have the intermediate signing certificate in your OS X system keychain. This is automatically installed by Xcode. However, if you need to reinstall the intermediate signing certificate click the link at the bottom of the page.</span></code></pre>
+                </div>
+                <div class="image">
+                    <img alt="Select &amp;quot;App Store and Ad Hoc&amp;quot; from the Production options and click &amp;quot;Continue.&amp;quot;" height="1064" src="/themes/img/post/certificate09.png" width="640">
+                </div>
+
+            </div>
+            <div class="sub-step" id="">
+                <h3>10. Click on "Continue" again.</h3>
+                <div class="step-instructions">
+                    <p>You created your CSR file in the previous steps, so there's no need to create another one.</p>
+                </div>
+                <div class="image">
+                    <img alt="Click on &amp;quot;Continue&amp;quot; again." height="569" src="/themes/img/post/certificate10.png" width="640">
+                </div>
+
+            </div>
+            <div class="sub-step" id="">
+                <h3>11. Click on "Choose File" and select the CSR file you created previously and then click on "Generate."</h3>
+                <div class="image">
+                    <img alt="Click on &amp;quot;Choose File&amp;quot; and select the CSR file you created previously and then click on &amp;quot;Generate.&amp;quot;" height="530" src="/themes/img/post/certificate11.png" width="640">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>12. Click on the "Download" button to download a .cer file to your machine and then click "Done."</h3>
+                <div class="image">
+                    <img alt="Click on the &amp;quot;Download&amp;quot; button to download a .cer file to your machine and then click &amp;quot;Done.&amp;quot;" height="619" src="/themes/img/post/certificate12.png" width="640">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>13. Double-click the .cer file to install it in Keychain Access.</h3>
+                <div class="step-instructions">
+                    <p>It will have the name "iPhone Distribution &lt;firstname&gt; &lt;lastname&gt;" and will expire one year from today's date.</p>
+                </div>
+                <div class="image">
+                    <img alt="Double-click the .cer file to install it in Keychain Access." height="317" src="/themes/img/post/certificate13.png" width="640">
+                </div>
+
+            </div>
+        </div>
+        <div id="">
+            <h2>How to Export a Distribution Certificate as a .p12 File</h2>
+            <div class="step-instructions">
+                <p>A .p12 file is a specially-formatted and encrypted file that contains your distribution certificate. It's embedded by the Mag+ Publishing portal when building your app. iTunes Connect checks for this file when you submit an app and will
+                    only accept the app if it contains a .p12 file that matches what you have configured in your iTunes Connect account.</p>
+            </div>
+            <div class="sub-step" id="">
+                <h3>1. On your Mac, launch Keychain Access, select the certificate entry and right-click on it to select "Export."</h3>
+                <div class="step-instructions">
+                    <p>All certificates you have installed will be in the "login" keychain (Label 1) under the category "My Certificates" (Label 2).</p>
+                </div>
+                <div class="image">
+                    <img alt="On your Mac, launch Keychain Access, select the certificate entry and right-click on it to select &amp;quot;Export.&amp;quot;" height="317" src="/themes/img/post/certificate14.png" width="640">
+                </div>
+
+            </div>
+            <div class="sub-step" id="">
+                <h3>2. In the window that appears, make sure the File Format is set to "Personal Information Exchange (.p12)" and click on "Save" to save it to your machine.</h3>
+                <div class="image">
+                    <img alt="In the window that appears, make sure the File Format is set to &amp;quot;Personal Information Exchange (.p12)&amp;quot; and click on &amp;quot;Save&amp;quot; to save it to your machine." height="216" src="/themes/img/post/certificate15.png"
+                        width="563">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>3. When asked for a password, leave it blank and click on "Ok."</h3>
+                <div class="image">
+                    <img alt="When asked for a password, leave it blank and click on &amp;quot;Ok.&amp;quot;" height="298" src="/themes/img/post/certificate16.png" width="444">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>4. When asked for the computer password, enter it and click on "Allow."</h3>
+                <div class="image">
+                    <img alt="When asked for the computer password, enter it and click on &amp;quot;Allow.&amp;quot;" height="198" src="/themes/img/post/certificate17.png" width="434">
+                </div>
+            </div>
+            <div class="sub-step" id="">
+                <h3>5. Your .p12 file will be saved in the location you specified.</h3>
+                <div class="image">
+                    <img alt="Your .p12 file will be saved in the location you specified." height="188" src="/themes/img/post/certificate18.png" width="218">
+                </div>
+            </div>
+            <!-- <div class="sub-step" id="">
+                <h3>6. Login to the Mag+ Publish portal &lt;https://publish.magplus.com&gt; and go to Apps &gt; iOS &gt; Certificate and Provisioning Files.</h3>
+                <div class="image">
+                    <a href="https://s3.amazonaws.com/screensteps_live/images/magplus/171034/7/rendered/8ed85c46-5fae-40c1-baa4-4b3aac2fd2be.png" class="screensteps-image-zoom"><img alt="Login to the Mag+ Publish portal &amp;lt;https://publish.magplus.com&amp;gt; and go to Apps &amp;gt; iOS &amp;gt; Certificate and Provisioning Files." height="452" src="https://s3.amazonaws.com/screensteps_live/images/magplus/171034/7/rendered/8ed85c46-5fae-40c1-baa4-4b3aac2fd2be_display.png"
+                            width="640"></a>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+    <%include footer%>

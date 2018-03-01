@@ -1,0 +1,100 @@
+<%include header%>
+
+    <div class="container">
+        <div class="content-guide">
+            <div class="title-head-guide">
+                <span>Create a P12 Certificate</span>
+            </div>
+            <div class="content-body-guide">
+                <span>To run an app on an iOS device, you need to code sign it. One of the files that you need for signing it is a P12 certificate file. The entire process of obtaining it is split into three parts</b>.</span>
+            </div>
+            <div class="content-head-guide">
+                <ul class="ul-text-content-guide">
+                    <li><span> 1. Create a <b>Certificate Signing Request.</b></span></li>
+                    <li><span> 2. Create a <b>Production Certificate.</b></span></li>
+                    <li><span> 3. Convert the Certificate Into a <b>P12 File.</b></span></li>
+
+                </ul>
+            </div>
+            <div class="title-head-sub">Prerequisites</div>
+            <div class="content-body-guide">
+                <ul class="ul-text-content">
+                    <li><span>Verify that you are logged in the <b>Apple Member Center</b> at here <a href="https://developer.apple.com/account" target="_blank">https://developer.apple.com/account</a>
+                     </span></li>
+                    <li><span>Verify that you are logged in a <b>Mac machine</b> (Mac Book or iMAC)</span></li>
+                </ul>
+            </div>
+            <div class="title-head-sub">Procedure</div>
+            <div class="step-body-guide">
+                <span>Step 1: Create a Certificate Signing Request</span>
+            </div>
+            <div class="desc-step-body">
+                <span><span>On a Mac machine, you can create a <b>certificate signing request</b> using<b> Keychain Access</b>. To do so, follow the steps below:</span></span>
+            </div>
+            <div class="content-body-procedure">
+                <ul class="ul-text-content-guide">
+                    <li><span> 1. Go to Applications/Utilities and open Keychain Access.</span></li>
+                    <li> <img src="/themes/img/post/certificate01.png" alt="register an app id" width="231" height="172"></li>
+                    <li><span> 2. In the Preferences menu, turn off both <b>Online Certificate Status Protocol</b> (OCSP) and <b>Certificate Revocation List (CRL).</b></b></span></li>
+                    <li><span> 3. From the Keychain Access menu, choose <b>Certificate Assistant -> Request a Certificate From a Certificate Authority...</b></span></li>
+                    <li> <img alt="Go to Keychain Access &amp;gt; Certificate Assistant &amp;gt; Request a Certificate from a Certificate Authority." height="265" src="/themes/img/post/certificate02.png" width="640"></li>
+                    <li><span> 4. Fill in the required <b>User Email Address</b> and <b>Common Name</b> fields. <span class="color-red"><b> Leave</b></span> the <b>CA Email Address</b> field blank. </span>
+                    </li>
+                    <li> <img alt="Fill out the information in the Certificate Information window as specified below and click &amp;quot;Continue.&amp;quot;." height="433" src="/themes/img/post/certificate03.png" width="615"></li>
+                    <li><span> 5. Check <b>Saved to Disk.</b> </span></li>
+                    <li><span> 6. Click <b>Continue.</b></span></li>
+                    <li> <img alt="Save the file to your hard drive." height="433" src="/themes/img/post/certificate04.png" width="615"></li>
+                    <li><span> The Certificate Assistant creates the certificate signing request and saves it on your machine.</span></li>
+                </ul>
+            </div>
+            <div class="step-body-guide">
+                <span>Step 2: Create a Development or Production Certificate</span>
+            </div>
+            <div class="content-body-procedure">
+                <ul class="ul-text-content-guide">
+                    <li><span> 1. In your browser, in the <b>Apple Member Center</b> at </span>
+                        <p> <a href="https://developer.apple.com/account/ios/certificate/distribution" target="_blank">https://developer.apple.com/account/ios/certificate/distribution</a> </p>
+                        <p> click <b>Certificates, Identifiers & Profiles.</b> </p>
+                    </li>
+                    <li><img alt="Click &amp;quot;Certificates, Identifiers &amp;amp; Profiles.&amp;quot;" height="468" src="/themes/img/post/certificate06.png" width="855"></li>
+                    <li><span> 2. Click <b>Certificates → Production</b></span></li>
+                    <li><span> 3. Click <b>+ </b>in the top right corner</span></li>
+                    <li><img alt="Go to Certificates &amp;gt; Production and click on the &amp;quot;+&amp;quot; button to add a new certificate." height="540" src="/themes/img/post/certificate08.png" width="640"></li>
+                    <li><span> 4. Select<b> App Store and Ad Hoc</b> from the Production options and click <b>Continue</b></span></li>
+                    <li> <img alt="Select &amp;quot;App Store and Ad Hoc&amp;quot; from the Production options and click &amp;quot;Continue.&amp;quot;" height="1064" src="/themes/img/post/certificate09.png" width="640"></li>
+                    <li><span> 5. On the <b>About Creating a Certificate Signing Request (CSR)</b> page, click <b>Continue.</b></span></li>
+                    <li><span> 6. On the <b>Generate Your Certificate</b> page, click <b>Choose File.</b></span></li>
+                    <li> <img alt="Click on &amp;quot;Choose File&amp;quot; and select the CSR file you created previously and then click on &amp;quot;Generate.&amp;quot;" height="530" src="/themes/img/post/certificate11.png" width="640"></li>
+                    <li><span> 7. Browse to the location where the <b>CSR file</b> for your code signing request is stored (in step 1), select it, and confirm the upload.</span></li>
+                    <li><span> 8. Click <b>Generate.</b></span></li>
+                    <li><span> 9. Click <b>Download</b> to download your certificate.</span></li>
+                </ul>
+                <span>Now, you have the CER file representing your certificate. However, it <b>cannot be used outside of your machine</b>, so in order to use it in <a href="http://deployapp.net" target="_blank">http://deployapp.net</a>, you need to export a P12 file.</span>
+            </div>
+            <div class="step-body-guide">
+                <span>Step 3: Convert the Certificate Into a P12 File</span>
+            </div>
+            <div class="desc-step-body">
+                <span><span>On a Mac machine, you can double-click the downloaded CER file (File created in step 2), thus opening Keychain Access and installing your new certificate. To export a P12 file:</span></span>
+            </div>
+            <div class="content-body-procedure">
+                <ul class="ul-text-content-guide">
+                    <li><span> 1. In Keychain Access, under <b>Keychains </b>, select <b>System</b>. </span> </li>
+                    <li><span> 2. Under Category, select <b>My Certificates.</b></span></li>
+                    <li><span> 3. Select <b>your certificate</b> and <b>select File -> Export Items</b>.</span></li>
+                    <li><span> <img alt="On your Mac, launch Keychain Access, select the certificate entry and right-click on it to select &amp;quot;Export.&amp;quot;" height="317" src="/themes/img/post/certificate14.png" width="640"></span></li>
+                    <li><span> 4. Provide a name for the certificate and make sure that <b>File Format</b> is set to <b>Personal Information Exchange .p12.</b></span></li>
+                    <li> <img alt="In the window that appears, make sure the File Format is set to &amp;quot;Personal Information Exchange (.p12)&amp;quot; and click on &amp;quot;Save&amp;quot; to save it to your machine." height="216" src="/themes/img/post/certificate15.png"
+                            </li>
+                        <li><span> 5. Click <b>Save</b>.</span></li>
+                        <li><span> 6. Provide a password for the certificate when prompted and click <b>OK</b></span></li>
+                        <li><span> 7. Type in your admin password when prompted and click <b>Allow</b>.</span></li>
+                        <li> <img alt="When asked for the computer password, enter it and click on &amp;quot;Allow.&amp;quot;" height="198" src="/themes/img/post/certificate17.png" width="434"></li>
+                        <li><span> 8. Your <b>.p12</b> file will be saved in the location you specified.</span></li>
+                        <li> <img alt="Your .p12 file will be saved in the location you specified." height="188" src="/themes/img/post/certificate18.png" width="218"></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <%include footer%>

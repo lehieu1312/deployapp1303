@@ -1,0 +1,479 @@
+<% include ./../headerdetail %>
+    <div class="xcontent clsmenu">
+        <div id="title-detail" class="row row1">
+            <div id="title-appversion" class="content-title-detail has-feedback">
+                <span class="textmyapp">My Team
+                </span>
+                <span class="setsearch">
+                    <input type="text" onkeyup="searchappversion()" id="inputsearchapp1" name="search" placeholder="Search...">
+                    <span class="form-control-feedback2" aria-hidden="true">
+                        <img src="/themes/img/dashboard/iconsearch.png">
+                    </span>
+                </span>
+            </div>
+        </div>
+        <%
+            var Pending = 0;
+            var Processing = 0;
+            var onhold = 0;
+            var Completed = 0;
+            var Cancelled = 0;
+            var Refunded = 0;
+            var Failed = 0;
+            for(let i=0;i<myorder.length;i++){
+                if(myorder[i].order.statusOrder == 1){
+                    Pending++;
+                }
+                if(myorder[i].order.statusOrder == 2){
+                    Processing++;
+                }
+                if(myorder[i].order.statusOrder == 3){
+                    onhold++;
+                }
+                if(myorder[i].order.statusOrder == 4){
+                    Completed++;
+                }
+                if(myorder[i].order.statusOrder == 5){
+                    Cancelled++;
+                } 
+                if(myorder[i].order.statusOrder == 6){
+                    Refunded++;
+                }
+                if(myorder[i].order.statusOrder == 7){
+                    Failed++;
+                }
+            }
+        %>
+            <div class="showall row row1">
+                <span>All(
+                    <%=myorder.length%>) |</span>
+                <span class="colora">Pending payment</span>(
+                <%=Pending%>) |
+                    <span class="colora">Processing</span>(
+                    <%=Processing%>) |
+                        <span class="colora">On Hold</span>(
+                        <%=onhold%>) |
+                            <span class="colora">Completed</span>(
+                            <%=Completed%>) |
+                                <span class="colora">Cancelled(</span>(
+                                <%=Cancelled%>) |
+                                    <span class="colora">Refunded</span>(
+                                    <%=Refunded%>) |
+                                        <span class="colora">Failed</span>(
+                                        <%=Failed%>)
+            </div>
+            <div id="filter-table-appversion" class="row row1">
+                <span class="table-show">Show</span>
+                <div id="filter-number" class="btn-group">
+                    <button class="btn btn-default btn-sm dropdown-toggle btn-filternumber" type="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <span id="span-show-number" class="span-button-select">18</span>
+                        <span class="caret arow-button-select"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li id="show9">
+                            <a href="#">9 Per page</a>
+                        </li>
+                        <li id="show18">
+                            <a href="#">18 Per page</a>
+                        </li>
+                        <li id="show27">
+                            <a href="#">27 Per page</a>
+                        </li>
+                        <li id="show36">
+                            <a href="#">36 Per page</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div id="filter-date" class="btn-group">
+                    <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span id="span-selcect-date" class="span-button-select">All Dates</span>
+                        <span class="caret arow-button-select"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li id="select-date-1">
+                            <a href="#">Hours Ago</a>
+                        </li>
+                        <li id="select-date-2">
+                            <a href="#">Yesterday</a>
+                        </li>
+                        <li id="select-date-3">
+                            <a href="#">Last Weed</a>
+                        </li>
+                        <li id="select-date-4">
+                            <a href="#">All Dates</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li id="select-date-5">
+                            <input hidden id="fillter-date-custom" value="">
+                            <a href="#">Custom...</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <div id="filter-status" class="btn-group">
+                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span id="span-selcect-status" class="span-button-select">New</span>
+                    <span class="caret arow-button-select"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li id="slect-status-1">
+                        <a href="#">New</a>
+                    </li>
+                    <li id="slect-status-2">
+                        <a href="#">Feature</a>
+                    </li>
+                    <li id="slect-status-3">
+                        <a href="#">All</a>
+                    </li>
+                </ul>
+            </div> -->
+                <div class="pagination-table-appversion1 row">
+                    <ul class="pagination">
+                        <li class="edit-li-pagination">
+                            <a class="number-items" href="#"></a>
+                        </li>
+                        <li class="limitsuperback">
+                            <a class="limitpagination" href="#">
+                                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="superback">
+                            <a href="#">
+                                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="backpage">
+                            <a href="#">
+                                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="limitback">
+                            <a class="limitpagination" href="#">
+                                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="thispage" href="#">
+
+                            </a>
+                        </li>
+                        <li class="edit-li-pagination">
+                            <a class="numberpage" href="#">
+                            </a>
+                        </li>
+                        <li class="limitnext">
+                            <a class="limitpagination" href="#">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="nextpage">
+                            <a href="#">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="supernext">
+                            <a href="#">
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="limitsupernext">
+                            <a class="limitpagination" href="#">
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row row1">
+                <div id="content-appversion">
+                    <table id="table-appversion">
+                        <tr id="title-table-header">
+                            <th width="7.8%">ID
+                                <img class="setarrow showmenuuser" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                            </th>
+                            <th width="18%">Customer
+                                <img class="setarrow showmenuuser" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                            </th>
+                            <th width="12.2%">Date
+                                <img class="setarrow showmenuuser" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                            </th>
+                            <th width="25.2%">Ship to
+                                <img class="setarrow showmenuuser" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                            </th>
+                            <th width="10%">Total
+                                <img class="setarrow showmenuuser" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                            </th>
+                            <th width="14.8%">Status
+                                <img class="setarrow showmenuuser" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                            </th>
+                            <td width="4%">
+                            </td>
+                        </tr>
+                        <tbody>
+                            <%for(var i = 0;i<myorder.length;i++){ %>
+                                <%var d = myorder[i].order.dateCreate%>
+                                    <%var m = d.getMonth() + 1%>
+                                        <%var updated = d.getDate() + "/" + m + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + " GMT";%>
+                                            <%var arr = updated.split(" ")%>
+                                                <tr id="version<%=i%>" class="tr-content-appversion">
+                                                    <td class="findcode">
+                                                        <input id="idapp-using" hidden value="<%=appuse.idApp%>">
+                                                        <a class="colora" href="/myorder/detail/<%=appuse.idApp%>?codeorder=<%=myorder[i].order.codeOrder%>">
+                                                            <%="#"+myorder[i].order.codeOrder%>
+                                                        </a>
+                                                    </td>
+                                                    <td class="findnameapp">
+                                                        <%=myorder[i].order.nameCustomer%>
+                                                            <span class="colora">
+                                                                <%=myorder[i].order.email%>
+                                                            </span>
+                                                    </td>
+                                                    <td class="table-time-appversion finddate">
+                                                        <input id="time-ready<%=i%>" type="hidden" value="<%=d%>">
+                                                        <span>
+                                                            <%=arr[0]%>
+                                                        </span>
+                                                        <br>
+                                                        <span>
+                                                            <%=arr[1]%>
+                                                                <%=arr[2]%>
+                                                        </span>
+                                                    </td>
+                                                    <td class="table-changelog findnote">
+                                                        <%=myorder[i].order.addressShip%>
+                                                            <br> Via
+                                                            <%=myorder[i].order.methodOrder%>
+                                                    </td>
+                                                    <td class="table-version findversion">
+                                                        <%=myorder[i].order.totalMonney%>
+                                                            <%=myorder[i].order.curency%>
+                                                                <br> Via
+                                                                <%=myorder[i].order.methodPayment%>
+                                                    </td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <input class="getstatuspayment" hidden value=" <%=myorder[i].status%>">
+                                                            <input class="getcodeorder" hidden value=" <%=myorder[i].order.codeOrder%>">
+                                                            <% switch(myorder[i].order.statusOrder){
+                                                        case 1:%>
+                                                                <span class="paddingstatus orderblue statuspayment" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                    <span class="textstatus">
+                                                                        <%=myorder[i].status%>
+                                                                    </span>
+                                                                    <img class="arrowselecsattus" src="/themes/img/appversion/iconarrowselectwhite.png" alt="">
+                                                                </span>
+                                                                <% break; 
+                                                        case 2: %>
+                                                                    <span class="paddingstatus orderorange statuspayment" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                        <span class="textstatus">
+                                                                            <%=myorder[i].status%>
+                                                                        </span>
+                                                                        <img class="arrowselecsattus" src="/themes/img/appversion/iconarrowselectwhite.png" alt="">
+                                                                    </span>
+                                                                    <% break; 
+                                                           case 3:%>
+                                                                        <span class="paddingstatus ordergray statuspayment" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                            <span class="textstatus">
+                                                                                <%=myorder[i].status%>
+                                                                            </span>
+                                                                            <img class="arrowselecsattus" src="/themes/img/appversion/iconarrowselectwhite.png" alt="">
+                                                                        </span>
+                                                                        <% break; 
+                                                              case 4: %>
+                                                                            <span class="paddingstatus ordergreen statuspayment" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                                <span class="textstatus">
+                                                                                    <%=myorder[i].status%>
+                                                                                </span>
+                                                                                <img class="arrowselecsattus" src="/themes/img/appversion/iconarrowselectwhite.png" alt="">
+                                                                            </span>
+                                                                            <% break; 
+                                                                 case 5: %>
+                                                                                <span class="paddingstatus orderpink statuspayment" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                                    <span class="textstatus">
+                                                                                        <%=myorder[i].status%>
+                                                                                    </span>
+                                                                                    <img class="arrowselecsattus" src="/themes/img/appversion/iconarrowselectwhite.png" alt="">
+                                                                                </span>
+                                                                                <%break; 
+                                                                    case 6:%>
+                                                                                    <span class="paddingstatus ordergrayred statuspayment" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                                        <span class="textstatus">
+                                                                                            <%=myorder[i].status%>
+                                                                                        </span>
+                                                                                        <img class="arrowselecsattus" src="/themes/img/appversion/iconarrowselectwhite.png" alt="">
+                                                                                        <%break; 
+                                                                       case 7:%>
+                                                                                            <span class="paddingstatus orderpinkstrong statuspayment" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                                                                                aria-expanded="true">
+                                                                                                <span class="textstatus">
+                                                                                                    <%=myorder[i].status%>
+                                                                                                </span>
+                                                                                                <img class="arrowselecsattus" src="/themes/img/appversion/iconarrowselectwhite.png" alt="">
+                                                                                            </span>
+                                                                                            <%break;} %>
+
+                                                                                                <!-- <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                            <span id="span-show-number" class="span-button-select">18</span>
+                                                                                            <span class="caret arow-button-select"></span>
+                                                                                        </button> -->
+                                                                                                <ul aria-labelledby="dropdownMenu1" class="dropdown-menu selectstatuspayment">
+                                                                                                    <div class=" arrow-upper-order setarrowabot-upper-order">
+                                                                                                    </div>
+                                                                                                    <div class="arrow-under-order setarrowabot-under-order">
+                                                                                                    </div>
+                                                                                                    <li value="1">
+                                                                                                        <a>Pending payment</a>
+                                                                                                    </li>
+                                                                                                    <li value="2">
+                                                                                                        <a>Processing</a>
+                                                                                                    </li>
+                                                                                                    <li value="3">
+                                                                                                        <a>On hold</a>
+                                                                                                    </li>
+                                                                                                    <li value="4">
+                                                                                                        <a>Completed</a>
+                                                                                                    </li>
+                                                                                                    <li value="5">
+                                                                                                        <a>Canelled</a>
+                                                                                                    </li>
+                                                                                                    <li value="6">
+                                                                                                        <a>Refunded</a>
+                                                                                                    </li>
+                                                                                                    <li value="7">
+                                                                                                        <a>Failed</a>
+                                                                                                    </li>
+                                                                                                </ul>
+
+                                                        </div>
+
+
+                                                    </td>
+                                                    <td class="set-position-relative">
+                                                        <img class="setimg-head-myapp deleteuser" src="/themes/img/dashboard/iconmenumore.png">
+                                                        <div class="delete-user" style="display:none">
+                                                            <a href="#" data-toggle="modal" data-target="#myModal-deleteuser">
+                                                                <div class="element-delete">
+                                                                    <img class="imgicondelete" src="/themes/img/dashboard/icondelete.png">
+                                                                    <span>Delete</span>
+                                                                </div>
+                                                            </a>
+                                                            <div class="arrowmenuuser-left">
+                                                            </div>
+                                                            <div class="arrowmenuuser-left1">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <%}%>
+                        </tbody>
+                    </table>
+                    <div class="example">
+                        <div class="container">
+                            <div class="pagination-table-appversion row">
+                                <ul class="pagination">
+                                    <li class="edit-li-pagination">
+                                        <a class="number-items" href="#"></a>
+                                    </li>
+                                    <li class="limitsuperback">
+                                        <a class="limitpagination" href="#">
+                                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="superback">
+                                        <a href="#">
+                                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="backpage">
+                                        <a href="#">
+                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="limitback">
+                                        <a class="limitpagination" href="#">
+                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="thispage" href="#">
+
+                                        </a>
+                                    </li>
+                                    <li class="edit-li-pagination">
+                                        <a class="numberpage" href="#">
+                                        </a>
+                                    </li>
+                                    <li class="limitnext">
+                                        <a class="limitpagination" href="#">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="nextpage">
+                                        <a href="#">
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="supernext">
+                                        <a href="#">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="limitsupernext">
+                                        <a class="limitpagination" href="#">
+                                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="showing-footer">Showing 1-
+                    <span id="number-show-footer"></span> of
+                    <span class="number-items" href="#"></span>
+                </span>
+                <div class="container ">
+                    <div class="modal fade" id="myModal-deleteuser" role="dialog">
+                        <div class="modal-dialog  ">
+                            <div class="modal-content1">
+                                <div class="dialogdeleteapp">
+                                    <div class="dialogdeleteapp-head">
+                                        Are you sure you want to delete this order ?
+                                    </div>
+                                    <div class="dialogdeleteapp-foot">
+                                        <button id="delete-ok">Delete</button>
+                                        <button type="button" id="close-ok" data-dismiss="modal" aria-label="Close">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="container ">
+                <div class="modal fade" id="myModa-adduser" role="dialog">
+                    <div class="modal-dialog  ">
+                        <div class="modal-content1">
+                            <div class="dialogdeleteapp">
+                                <div class="dialogdeleteapp-head-history">
+                                    Add a User
+                                </div>
+                                <form id="form-adduser" onsubmit="return false">
+                                    <textarea placeholder="Email address" rows="1" class="textarea-adduser"></textarea>
+                                    <div class="dialogdeleteapp-foot-history">
+                                        <button id="cancel-adduser" class="float-right btn-gray margin-btn" data-dismiss="modal" aria-label="Close">Cancel</button>
+                                        <button type="submit" class="float-right btn-blue" id="adduser">Add user</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/myorder/myorder.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/appversion/pagination.js"></script>

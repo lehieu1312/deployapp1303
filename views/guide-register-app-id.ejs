@@ -1,0 +1,49 @@
+<%include header%>
+
+    <div class="container">
+        <div class="content-guide">
+            <div class="title-head-guide">
+                <span>Register an App ID</span>
+            </div>
+            <div class="content-body-guide">
+                <span>Before you can create a provisioning profile, you need to have a registered App ID. The iOS App ID uniquely identifies an application with the Apple application services and lets you incorporate them in your app. The Apple application services include Push Notifications, In-App Purchase, Game Center and so on.</span>
+            </div>
+            <div class="title-head-sub">Prerequisites</div>
+            <div class="content-body-guide">
+                <ul class="ul-text-content">
+                    <li><span>Verify that you are logged in the <b>Apple Member Center</b>: <a href="https://developer.apple.com/account" target="_blank">https://developer.apple.com/account</a>
+                     </span></li>
+                    <li><span>App ID like Package name or Application ID (<b>com.example.myapp</b>) in Android App</span></li>
+                </ul>
+            </div>
+            <div class="title-head-sub">Procedure</div>
+            <div class="content-body-procedure">
+                <ul class="ul-text-content-guide">
+                    <li><span> 1. Run Google Chrome, Mozilla Firefox, or Safari.</span></li>
+                    <li><span> 2. Sign in to <a href="https://developer.apple.com/account" target="_blank"> https://developer.apple.com/account</a>, and click <b>Certificates, IDs & Profiles.</b></span></li>
+                    <li><span> 3. In the drop-down menu in the top left corner, verify that <b> iOS, tvOS, watchOS</b> is selected.</span></li>
+                    <li><span> 4. In the left-hand sidebar, select <b>Identifiers → App IDs</b>.</span></li>
+                    <li><span> 5. Click + in the top right corner. </span></li>
+                    <li><span> 6. Type a description for your app in the <b>App ID Description</b> text box. The description is visible in the Apple Member Center only and will help you identify your App ID in the list of identifiers that are available
+                            to your Apple developer account.</span></li>
+                    <li> <img src="/themes/img/post/13_createappID_2_2x.png" alt="register an app id" width="673" height="425"></li>
+
+                </ul>
+                <ul>
+                    <li><span>To use one App ID with <b>multiple provisioning profiles</b>, register a wildcard App ID.</span></li>
+                    <li><span>If you want to build and publish an app with a <b>unique App ID identifier and provisioning profile</b>, register an explicit App ID.</span></li>
+                </ul>
+                <ul class="ul-text-content-guide">
+                    <li>7. Select the <b>app services</b> that you want to incorporate in your application.</li>
+                    <li><img src="/themes/img/post/13_createappID_3_2x.png" lt="register an app id" width="673" height="425"></li>
+                    <li><span>8.	Click <b>Continue</b>.</span></li>
+                    <li><span>9.	Review the details for your App ID and click <b>Register</b> to confirm the registration</span></li>
+                </ul>
+                <p>Read more from Apple Developer Program: <br>
+                    <a href="https://developer.apple.com/library/content/documentation/General/Conceptual/DevPedia-CocoaCore/AppID.html" target="_blank">https://developer.apple.com/library/content/documentation/General/Conceptual/DevPedia-CocoaCore/AppID.html </a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <%include footer%>

@@ -1,0 +1,45 @@
+<%include header%>
+
+    <div class="container">
+        <div class="content-guide">
+            <div class="title-head-guide">
+                <span>Creating App Store Provisioning Profiles </span>
+            </div>
+            <div class="content-body-guide">
+                <ul class="ul-text-content">
+                    <li><span>If you want to send out your app for testing to selected users or to develop a private app which is available to a limited number of devices, you can create it with an Ad Hoc provisioning profile.</span></li>
+                    <li><span>You cannot debug on device apps that are created with this type of provisioning profile.</span></li>
+                    <li><span>You can create a provisioning profile in the Apple Member Center only.</span></li>
+                </ul>
+            </div>
+            <div class="title-head-sub">Prerequisites</div>
+            <div class="content-body-guide">
+                <ul class="ul-text-content">
+                    <li><span>Verify that you have a <b><a href="/guide/create-a-p12-certificate" target="_blank">*.p12 certificate</a></b> </span></li>
+                    <li><span>Verify that you have <b><a href="/guide/register-an-app-id" target="_blank">registered an App ID </b></a>for your app.</span></li>
+                    <li><span>Verify that you have <b><a href="/guide/register-device-for-testing" target="_blank" >registered at least one device</a></b> with your Apple developer account.
+                    </span>
+                    </li>
+                    <li><span>Verify that you are logged in the <b>Apple Member Center</b> at <a href="https://developer.apple.com/account/ " target="_blank"><b>https://developer.apple.com/account/</b> </a></span></li>
+                </ul>
+            </div>
+            <div class="title-head-sub">Procedure</div>
+            <div class="content-body-procedure">
+                <ul class="ul-text-content-guide">
+                    <li><span> 1. In your browser, in the <b>Apple Member Center</b>, click <b>Certificates, Identifiers & Profiles.</b></span></li>
+                    <li><span> 2. Click <b>All</b> under <b>Provisioning Profiles</b>.</b></span></li>
+                    <li><span> 3. Click <b>+</b> in the top right corner.</span></li>
+                    <li><span> 4. Choose<b> App Store </b> and click <b>Continue.</b></span></li>
+                    <li> <img src="/themes/img/post/create-provision-appstore.png" alt="create ad-hoc provision" width="640" height="668"></li>
+                    <li><span> 5. Select the <b>App Id</b> that you want to link the provisioning profile to and click<b> Continue.</b> </span></li>
+                    <li><span> 6. Select the <b>iOS certificates</b> that you want to link the provisioning profile to and click <b>Continue.</b></span></li>
+                    <li><span> 7. Input a name for the provisioning profile so that you can identify it later and click<b> Continue.</b></span></li>
+                    <li> <img src="/themes/img/post/6_ios_createdistributionprofile_3_2x.png" alt="register an app id" width="640" height="594"></li>
+                    <li><span> 8. Your <b>App Store Provisioning Profiles</b> is now generated. You can download it by clicking <b>Download</b> and upload it to <b>DeployApp.net</b> when needed.</span></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+    <%include footer%>

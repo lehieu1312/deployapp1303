@@ -1,0 +1,172 @@
+<% include header%>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/handle-io-index.js"></script>
+    <!-- start banner + information top -->
+    <div id="dialog-history-file-uploaded">
+        <div class="content-noti-info-android">
+            <div class="head-noti-info-build">
+                <div class="text-title-review">Recent Files Upload</div>
+                <div class="close-recent-file-upload"><a href="javascript:void(0)" class="btn-icon-close-recent-file"><i class="fa fa-times" aria-hidden="true"></i></a></div>
+            </div>
+            <div class="text-file-zip-uploaded">
+                <%if(arrFilesUploaded!=''){%>
+                    <% arrFilesUploaded.forEach(function(iFile){ %>
+                        <div class="item-file">
+                            <div class="img-item-file"><img class="img-icon-file-zip" src="/themes/img/icon-file-zip.png" alt="icon file zip"></div>
+                            <div class="content-file-item">
+                                <div class="item-name-file-zip">
+                                    <%=iFile.fileName%>
+                                </div>
+                                <div class="item-detail-file-zip">
+                                    <%=iFile.sizeFile%> -
+                                        <%=iFile.dateCreate%>
+                                </div>
+                            </div>
+                            <div class="link-use-file-zip">
+                                <div class="btn-use-file-zip">
+                                    <button type="button" class="link-use-a-file-zip">USE
+                                        <input type="hidden" value="<%=iFile.keyFolder%>" class="value-keyfolder-uploaded">
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <%})%>
+                            <%}else{%>
+                                <div class="text-file-zip-null">
+                                    <span class="text-not-file-zip-uploaded">No zip files have been uploaded</span>
+                                </div>
+                                <%}%>
+            </div>
+            <div class="box-add-new-file-zip">
+                <div class="content-bottom-file-upload">
+                    <button type="button" class="btn btn-uploaded-file" id="btn-add-new-file-zip">
+                             <img src="/themes/img/add-new-file-upload.png" class="img-add-new-file-zip" title="add new file" alt="add new file">&nbsp;  ADD NEW FILE
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <%if(banneriOS==0){%>
+        <div id="openmodalios" class="modaldialogios">
+            <div class="content-modal-ios">
+                <img src="/themes/img/banner-ios.png" alt="banner ios" width="100%">
+                <a href="javascript:void(0)" title="Close" class="close-modal-ios">X</a>
+            </div>
+        </div>
+        <%}%>
+            <div class="infobanner">
+                <div class="banner-head">
+                    <div class="container-upload">
+                        <div class="row">
+                            <div class="col-xs-12 col-upload">
+                                <div class="">
+                                    <!-- <% if(typeof errors != 'undefined'){ %>
+                            <div class="alert alert-danger alert-dismissable">
+                                <ul>
+                                    <li>
+                                        <strong><%= errors %></strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <%}%> -->
+                                    <div class="panel-body">
+                                        <form>
+                                            <!-- <i class="fa fa-cloud-upload" aria-hidden="true"></i> -->
+                                            <div class="around-upload">
+                                                <!-- <span class="icon-upload fa fa-cloud-upload"></span> -->
+                                                <img src="/themes/img/img-upload.svg" class="img-responsive img-upload" alt="image upload">
+                                                <span class="text-uploadfile">
+                                                <h5 class="text-fileuploadname">Select the file to upload </h5>
+                                                <h5  class="text-fileuploadsize">( Zip file up to 200MB Max )</h5>
+                                            </span>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div><span class="help-block" id="error"></span></div>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar"></div>
+                                            </div>
+                                            <button class="btn btn-lg upload-btn" type="button"> <span class="fa fa-upload"></span>&nbsp; UPLOAD FILE</button>
+
+                                            <input id="upload-input" type="file" name="uploads"><br/>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Start information  -->
+                <div class="list-info">
+                    <div class="container">
+                        <div class="col-md-4 col-sm-4 col-xs-4  index-download">
+                            <div class="boxshadow-uploaded">
+                                <div class="data-down">
+                                    <span class="text-dtdown" id="numUpload"><%=sUploaded%> </span>
+                                </div>
+                                <div class="text-down">
+                                    <span class="text-tdown">Uploads</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 index-download">
+                            <div class="boxshadow-deployed">
+                                <div class="data-upload">
+                                    <span class="text-dtupload" id="numDeploy"><%=sDeployed%> </span>
+                                </div>
+                                <div class="text-upload">
+                                    <span class="text-tupload">Deployed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 index-download">
+                            <div class="boxshadow-register">
+                                <div class="data-registered">
+                                    <span class="text-dtregistered" id="numRegister"><%=sRegister%> </span>
+                                </div>
+                                <div class="text-registered">
+                                    <span class="text-tregistered">Registed Users</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End banner + information top -->
+            <div class="news ">
+                <div class="container">
+                    <div class="news-head">
+                        <span>Deploy Ionic App for Free in 3 easy Steps</span>
+                    </div>
+
+                    <div class="news-body ">
+                        <div class="col-md-4 col-sm-4 content-text-new">
+                            <h3 class="title-color">1) Upload Source </h3>
+                            <p class="text-infonews">It is very simple, upload your ionic source in formatted ZIP’s file. Take a tea cup while uploading the source</p>
+                        </div>
+                        <div class="col-md-4 col-sm-4 content-text-new">
+                            <h3 class="title-color">2) Customize your app</h3>
+                            <p class="text-infonews">No-code, change Settings, customize something in your app. Make your app better in your ability</p>
+                        </div>
+                        <div class="col-md-4 col-sm-4 content-text-new">
+                            <h3 class="title-color">3) Deploy & Publish </h3>
+                            <p class="text-infonews">Deploy your app, download & test app or submit your app to Google Play or Apple Store when it is ready</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <!-- <script type="text/javascript" charset="utf-8" src="/themes/js/handle-io-index.js"></script> -->
+
+            <% include footer%>

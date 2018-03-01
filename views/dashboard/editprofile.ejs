@@ -1,0 +1,409 @@
+<% include ./headerdetail %>
+    <div class="xcontent clsmenu">
+        <div id="title-detail" class="row row1 setgroupp">
+            <div class="content-title-detail has-feedback">
+                <h3 class="textmyapp">Edit Profile</h3>
+
+            </div>
+        </div>
+        <div class="row row1 setgroupp info-profile">
+            <div class="title-profile">
+                <div class="avater-email">
+                    <div class="boder-avartar-large">
+                        <%if(picture==""){%>
+                            <img id="avartaruser" class="avartar-large" src="/themes/img/dashboard/Avatar.png">
+                            <%}else{%>
+                                <img id="avartaruser" class="avartar-large" src="/themes/img/profile/<%=picture%>">
+                                <%}%>
+                                    <img id="rolling-avatar-medium" class="avartar-large" src="/themes/img/rolling.gif">
+                    </div>
+                    <div class="top-addpicture" id="change-avartar" onclick=openFileOption()>
+                        <form id="formavartar">
+                            <input type="file" id="fileavartar" style="display:none" accept="image/*">
+                            <img class="avartar-small" src="/themes/img/editprofile/iconupphoto.png">
+                        </form>
+                    </div>
+                </div>
+                <div class="name-email">
+                    <span>
+                        <%=firstname%>
+                            <%=lastname%>
+                    </span>
+                    <div class="text-email-user">
+                        <%=email%>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row1 setgroupp">
+            <div class="tap-editprofile-changepassword">
+                <div class="head-setproflie">
+                    <h3 class="title-setprofile">PROFILE ACCOUNT</h3>
+                    <ul class="nav nav-tabs">
+                        <li class="active" id="edit-personal">
+                            <a href="#personal" class="edit-a-profile" data-toggle="tab">Personal Info</a>
+                        </li>
+                        <li id="change-pass">
+                            <a href="#change" data-toggle="tab">Change Password</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content clearfix">
+                    <div class="tab-pane active" id="personal">
+                        <form id="form-editprofile" onsubmit="return false">
+                            <div class="col-sm-6 ">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="inputSuccess2">First Name *</label>
+                                    <input type="text" class="resetinputlogin" id="editprofile-firstname" name="firstname" aria-describedby="inputSuccess2Status"
+                                        value="<%=firstname%>">
+                                    <span class="form-control-feedback" aria-hidden="true">
+                                        <img class="seticoneye iconerr icon" id="iconerr1" src="" alt="">
+                                    </span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="inputSuccess2">Last Name *</label>
+                                    <input type="text" class="resetinputlogin" id="editprofile-lastname" name="lastname" aria-describedby="inputSuccess2Status"
+                                        value="<%=lastname%>">
+                                    <span class="form-control-feedback" aria-hidden="true">
+                                        <img class="seticoneye iconerr icon" id="iconerr2" src="" alt="">
+                                    </span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="inputSuccess2">Username *</label>
+                                    <input readonly class="resetinputlogin" id="editprofile-username" name="username" aria-describedby="inputSuccess2Status"
+                                        value="<%=username%>">
+                                    <span class="form-control-feedback">
+                                        <img class="seticoneye iconerr icon" src="/themes/img/editprofile/iconlockusename.png" alt="">
+                                    </span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="inputSuccess2">Email *</label>
+                                    <input type="text" class="resetinputlogin" id="editprofile-email" name="email" aria-describedby="inputSuccess2Status" value="<%=email%>">
+                                    <span class="form-control-feedback" aria-hidden="true">
+                                        <img class="seticoneye iconerr icon" id="iconerr4" src="" alt="">
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="inputSuccess2">Address *</label>
+                                    <input type="text" class="resetinputlogin" id="editprofile-address" name="address" aria-describedby="inputSuccess2Status"
+                                        value="<%=address%>">
+                                    <span class="form-control-feedback" aria-hidden="true">
+                                        <img class="seticoneye iconerr icon" id="iconerr7" src="" alt="">
+                                    </span>
+                                </div>
+                                <div class="form-group has-feedback" id="editprofile-country5">
+                                    <label class="control-label" for="inputSuccess2">Country *</label>
+                                    <option id="editprofile-country" value="<%=valuecountry%>" class="resetoption clickcountry">
+                                        <%=country%>
+                                    </option>
+                                    <span class="glyphicon glyphicon-triangle-bottom setarrowcountryeditprofile clickcountry">
+                                        <img class="seticoneye iconerr" src="/themes/img/login/IconArrow.png" alt="">
+                                    </span>
+                                    <div id="country1">
+                                        <li class="licountry" value="1" class="init">Afghanistan
+                                        </li>
+                                        <li class="licountry" value="2">Åland Islands</li>
+                                        <li class="licountry" value="3">Albania</li>
+                                        <li class="licountry" value="4">Algeria</li>
+                                        <li class="licountry" value="5">American Samoa</li>
+                                        <li class="licountry" value="6">AndorrA</li>
+                                        <li class="licountry" value="7">Angola</li>
+                                        <li class="licountry" value="8">Anguilla</li>
+                                        <li class="licountry" value="9">Antarctica</li>
+                                        <li class="licountry" value="10">Antigua and Barbuda</li>
+                                        <li class="licountry" value="11">Argentina</li>
+                                        <li class="licountry" value="12">Armenia</li>
+                                        <li class="licountry" value="13">Aruba</li>
+                                        <li class="licountry" value="14">Australia</li>
+                                        <li class="licountry" value="15">Austria</li>
+                                        <li class="licountry" value="16">Azerbaijan</li>
+                                        <li class="licountry" value="17">Bahamas</li>
+                                        <li class="licountry" value="18">Bahrain</li>
+                                        <li class="licountry" value="19">Bangladesh</li>
+                                        <li class="licountry" value="20">Barbados</li>
+                                        <li class="licountry" value="21">Belarus</li>
+                                        <li class="licountry" value="22">Belgium</li>
+                                        <li class="licountry" value="23">Belize</li>
+                                        <li class="licountry" value="24">Benin</li>
+                                        <li class="licountry" value="25">Bermuda</li>
+                                        <li class="licountry" value="26">Bhutan</li>
+                                        <li class="licountry" value="27">Bolivia</li>
+                                        <li class="licountry" value="28">Bosnia and Herzegovina</li>
+                                        <li class="licountry" value="29">Botswana</li>
+                                        <li class="licountry" value="30">Bouvet Island</li>
+                                        <li class="licountry" value="31">Brazil</li>
+                                        <li class="licountry" value="32">British Indian Ocean Territory</li>
+                                        <li class="licountry" value="33">Brunei Darussalam</li>
+                                        <li class="licountry" value="34">Bulgaria</li>
+                                        <li class="licountry" value="35">Burkina Faso</li>
+                                        <li class="licountry" value="36">Burundi</li>
+                                        <li class="licountry" value="37">Cambodia</li>
+                                        <li class="licountry" value="38">Cameroon</li>
+                                        <li class="licountry" value="39">Canada</li>
+                                        <li class="licountry" value="40">Cape Verde</li>
+                                        <li class="licountry" value="41">Cayman Islands</li>
+                                        <li class="licountry" value="42">Central African Republic</li>
+                                        <li class="licountry" value="43">Chad</li>
+                                        <li class="licountry" value="44">Chile</li>
+                                        <li class="licountry" value="45">China</li>
+                                        <li class="licountry" value="46">Christmas Island</li>
+                                        <li class="licountry" value="47">Cocos (Keeling) Islands</li>
+                                        <li class="licountry" value="48">Colombia</li>
+                                        <li class="licountry" value="49">Comoros</li>
+                                        <li class="licountry" value="50">Congo</li>
+                                        <li class="licountry" value="51">Congo, The Democratic Republic of the</li>
+                                        <li class="licountry" value="52">Cook Islands</li>
+                                        <li class="licountry" value="53">Costa Rica</li>
+                                        <li class="licountry" value="54">Cote D\'Ivoire</li>
+                                        <li class="licountry" value="55">Croatia</li>
+                                        <li class="licountry" value="56">Cuba</li>
+                                        <li class="licountry" value="57">Cyprus</li>
+                                        <li class="licountry" value="58">Czech Republic</li>
+                                        <li class="licountry" value="59">Denmark</li>
+                                        <li class="licountry" value="60">Djibouti</li>
+                                        <li class="licountry" value="61">Dominica</li>
+                                        <li class="licountry" value="62">Dominican Republic</li>
+                                        <li class="licountry" value="63">Ecuador</li>
+                                        <li class="licountry" value="64">Egypt</li>
+                                        <li class="licountry" value="65">El Salvador</li>
+                                        <li class="licountry" value="66">Equatorial Guinea</li>
+                                        <li class="licountry" value="67">Eritrea</li>
+                                        <li class="licountry" value="68">Estonia</li>
+                                        <li class="licountry" value="69">Ethiopia</li>
+                                        <li class="licountry" value="70">Falkland Islands (Malvinas)</li>
+                                        <li class="licountry" value="71">Faroe Islands</li>
+                                        <li class="licountry" value="72">Fiji</li>
+                                        <li class="licountry" value="73">Finland</li>
+                                        <li class="licountry" value="74">France</li>
+                                        <li class="licountry" value="75">French Guiana</li>
+                                        <li class="licountry" value="76">French Polynesia</li>
+                                        <li class="licountry" value="77">French Southern Territories</li>
+                                        <li class="licountry" value="78">Gabon</li>
+                                        <li class="licountry" value="79">Gambia</li>
+                                        <li class="licountry" value="80">Georgia</li>
+                                        <li class="licountry" value="81">Germany</li>
+                                        <li class="licountry" value="82">Ghana</li>
+                                        <li class="licountry" value="83">Gibraltar</li>
+                                        <li class="licountry" value="84">Greece</li>
+                                        <li class="licountry" value="85">Greenland</li>
+                                        <li class="licountry" value="86">Grenada</li>
+                                        <li class="licountry" value="87">Guadeloupe</li>
+                                        <li class="licountry" value="88">Guam</li>
+                                        <li class="licountry" value="89">Guatemala</li>
+                                        <li class="licountry" value="90">Guernsey</li>
+                                        <li class="licountry" value="91">Guinea</li>
+                                        <li class="licountry" value="92">Guinea-Bissau</li>
+                                        <li class="licountry" value="93">Guyana</li>
+                                        <li class="licountry" value="94">Haiti</li>
+                                        <li class="licountry" value="95">Heard Island and Mcdonald Islands</li>
+                                        <li class="licountry" value="96">Holy See (Vatican City State)</li>
+                                        <li class="licountry" value="97">Honduras</li>
+                                        <li class="licountry" value="98">Hong Kong</li>
+                                        <li class="licountry" value="99">Hungary</li>
+                                        <li class="licountry" value="100">Iceland</li>
+                                        <li class="licountry" value="101">India</li>
+                                        <li class="licountry" value="102">Indonesia</li>
+                                        <li class="licountry" value="103">Iran, Islamic Republic Of</li>
+                                        <li class="licountry" value="104">Iraq</li>
+                                        <li class="licountry" value="105">Ireland</li>
+                                        <li class="licountry" value="106">Isle of Man</li>
+                                        <li class="licountry" value="107">Israel</li>
+                                        <li class="licountry" value="108">Italy</li>
+                                        <li class="licountry" value="109">Jamaica</li>
+                                        <li class="licountry" value="110">Japan</li>
+                                        <li class="licountry" value="111">Jersey</li>
+                                        <li class="licountry" value="112">Jordan</li>
+                                        <li class="licountry" value="113">Kazakhstan</li>
+                                        <li class="licountry" value="114">Kenya</li>
+                                        <li class="licountry" value="115">Kiribati</li>
+                                        <li class="licountry" value="116">Korea, Democratic People\'S Republic of</li>
+                                        <li class="licountry" value="117">Korea, Republic of</li>
+                                        <li class="licountry" value="118">Kuwait</li>
+                                        <li class="licountry" value="119">Kyrgyzstan</li>
+                                        <li class="licountry" value="120">Lao People\'S Democratic Republic</li>
+                                        <li class="licountry" value="121">Latvia</li>
+                                        <li class="licountry" value="122">Lebanon</li>
+                                        <li class="licountry" value="123">Lesotho</li>
+                                        <li class="licountry" value="124">Liberia</li>
+                                        <li class="licountry" value="125">Libyan Arab Jamahiriya</li>
+                                        <li class="licountry" value="126">Liechtenstein</li>
+                                        <li class="licountry" value="127">Lithuania</li>
+                                        <li class="licountry" value="128">Luxembourg</li>
+                                        <li class="licountry" value="129">Macao</li>
+                                        <li class="licountry" value="130">Macedonia, The Former Yugoslav Republic of</li>
+                                        <li class="licountry" value="131">Madagascar</li>
+                                        <li class="licountry" value="132">Malawi</li>
+                                        <li class="licountry" value="133">Malaysia</li>
+                                        <li class="licountry" value="134">Maldives</li>
+                                        <li class="licountry" value="135">Mali</li>
+                                        <li class="licountry" value="136">Malta</li>
+                                        <li class="licountry" value="137">Marshall Islands</li>
+                                        <li class="licountry" value="138">Martinique</li>
+                                        <li class="licountry" value="139">Mauritania</li>
+                                        <li class="licountry" value="140">Mauritius</li>
+                                        <li class="licountry" value="141">Mayotte</li>
+                                        <li class="licountry" value="142">Mexico</li>
+                                        <li class="licountry" value="143">Micronesia, Federated States of</li>
+                                        <li class="licountry" value="144">Moldova, Republic of</li>
+                                        <li class="licountry" value="145">Monaco</li>
+                                        <li class="licountry" value="146">Mongolia</li>
+                                        <li class="licountry" value="147">Montserrat</li>
+                                        <li class="licountry" value="148">Morocco</li>
+                                        <li class="licountry" value="149">Mozambique</li>
+                                        <li class="licountry" value="150">Myanmar</li>
+                                        <li class="licountry" value="151">Namibia</li>
+                                        <li class="licountry" value="152">Nauru</li>
+                                        <li class="licountry" value="153">Nepal</li>
+                                        <li class="licountry" value="154">Netherlands</li>
+                                        <li class="licountry" value="155">Netherlands Antilles</li>
+                                        <li class="licountry" value="156">New Caledonia</li>
+                                        <li class="licountry" value="157">New Zealand</li>
+                                        <li class="licountry" value="158">Nicaragua</li>
+                                        <li class="licountry" value="159">Niger</li>
+                                        <li class="licountry" value="160">Nigeria</li>
+                                        <li class="licountry" value="161">Niue</li>
+                                        <li class="licountry" value="162">Norfolk Island</li>
+                                        <li class="licountry" value="163">Northern Mariana Islands</li>
+                                        <li class="licountry" value="164">Norway</li>
+                                        <li class="licountry" value="165">Oman</li>
+                                        <li class="licountry" value="166">Pakistan</li>
+                                        <li class="licountry" value="167">Palau</li>
+                                        <li class="licountry" value="168">Palestinian Territory, Occupied</li>
+                                        <li class="licountry" value="169">Panama</li>
+                                        <li class="licountry" value="170">Papua New Guinea</li>
+                                        <li class="licountry" value="171">Paraguay</li>
+                                        <li class="licountry" value="172">Peru</li>
+                                        <li class="licountry" value="173">Philippines</li>
+                                        <li class="licountry" value="174">Pitcairn</li>
+                                        <li class="licountry" value="175">Poland</li>
+                                        <li class="licountry" value="176">Portugal</li>
+                                        <li class="licountry" value="177">Puerto Rico</li>
+                                        <li class="licountry" value="178">Qatar</li>
+                                        <li class="licountry" value="179">Reunion</li>
+                                        <li class="licountry" value="180">Romania</li>
+                                        <li class="licountry" value="181">Russian Federation</li>
+                                        <li class="licountry" value="182">RWANDA</li>
+                                        <li class="licountry" value="183">Saint Helena</li>
+                                        <li class="licountry" value="184">Saint Kitts and Nevis</li>
+                                        <li class="licountry" value="185">Saint Lucia</li>
+                                        <li class="licountry" value="186">Saint Pierre and Miquelon</li>
+                                        <li class="licountry" value="187">Saint Vincent and the Grenadines</li>
+                                        <li class="licountry" value="188">Samoa</li>
+                                        <li class="licountry" value="189">San Marino</li>
+                                        <li class="licountry" value="190">Sao Tome and Principe</li>
+                                        <li class="licountry" value="191">Saudi Arabia</li>
+                                        <li class="licountry" value="192">Senegal</li>
+                                        <li class="licountry" value="193">Serbia and Montenegro</li>
+                                        <li class="licountry" value="194">Seychelles</li>
+                                        <li class="licountry" value="195">Sierra Leone</li>
+                                        <li class="licountry" value="196">Singapore</li>
+                                        <li class="licountry" value="197">Slovakia</li>
+                                        <li class="licountry" value="198">Slovenia</li>
+                                        <li class="licountry" value="199">Solomon Islands</li>
+                                        <li class="licountry" value="200">Somalia</li>
+                                        <li class="licountry" value="201">South Africa</li>
+                                        <li class="licountry" value="202">South Georgia and the South Sandwich Islands</li>
+                                        <li class="licountry" value="203">Spain</li>
+                                        <li class="licountry" value="204">Sri Lanka</li>
+                                        <li class="licountry" value="205">Sudan</li>
+                                        <li class="licountry" value="206">SuricountryName</li>
+                                        <li class="licountry" value="207">Svalbard and Jan Mayen</li>
+                                        <li class="licountry" value="208">Swaziland</li>
+                                        <li class="licountry" value="209">Sweden</li>
+                                        <li class="licountry" value="210">Switzerland</li>
+                                        <li class="licountry" value="211">Syrian Arab Republic</li>
+                                        <li class="licountry" value="212">Taiwan, Province of China</li>
+                                        <li class="licountry" value="213">Tajikistan</li>
+                                        <li class="licountry" value="214">Tanzania, United Republic of</li>
+                                        <li class="licountry" value="215">Thailand</li>
+                                        <li class="licountry" value="216">Timor-Leste</li>
+                                        <li class="licountry" value="217">Togo</li>
+                                        <li class="licountry" value="218">Tokelau</li>
+                                        <li class="licountry" value="219">Tonga</li>
+                                        <li class="licountry" value="220">Trinidad and Tobago</li>
+                                        <li class="licountry" value="221">Tunisia</li>
+                                        <li class="licountry" value="222">Turkey</li>
+                                        <li class="licountry" value="223">Turkmenistan</li>
+                                        <li class="licountry" value="224">Turks and Caicos Islands</li>
+                                        <li class="licountry" value="225">Tuvalu</li>
+                                        <li class="licountry" value="226">Uganda</li>
+                                        <li class="licountry" value="227">Ukraine</li>
+                                        <li class="licountry" value="228">United Arab Emirates</li>
+                                        <li class="licountry" value="229" selected>United Kingdom</li>
+                                        <li class="licountry" value="230">United States</li>
+                                        <li class="licountry" value="231">United States Minor Outlying Islands</li>
+                                        <li class="licountry" value="232">Uruguay</li>
+                                        <li class="licountry" value="233">Uzbekistan</li>
+                                        <li class="licountry" value="234">Vanuatu</li>
+                                        <li class="licountry" value="235">Venezuela</li>
+                                        <li class="licountry" value="236">Viet Nam</li>
+                                        <li class="licountry" value="237">Virgin Islands, British</li>
+                                        <li class="licountry" value="238">Virgin Islands, U.S.</li>
+                                        <li class="licountry" value="239">Wallis and Futuna</li>
+                                        <li class="licountry" value="240">Western Sahara</li>
+                                        <li class="licountry" value="241">Yemen</li>
+                                        <li class="licountry" value="242">Zambia</li>
+                                        <li class="licountry" value="243">Zimbabwe</li>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="inputSuccess2">Zipcode *</label>
+                                    <input type="text" class="resetinputlogin" id="editprofile-zipcode" name="zipcode" aria-describedby="inputSuccess2Status"
+                                        value="<%=zipcode%>">
+                                    <span class="form-control-feedback" aria-hidden="true">
+                                        <img class="seticoneye iconerr icon" id="iconerr9" src="" alt="">
+                                    </span>
+                                </div>
+                            </div>
+                            <br>
+
+                    </div>
+                    <div class="tab-pane" id="change">
+                        <!-- <form id="form-changepass" onsubmit="return false"> -->
+                        <div class="col-sm-6 ">
+                            <div class="form-group has-feedback">
+                                <label class="control-label" for="inputSuccess2">Current Password *</label>
+                                <input type="password" name="passcurrent" class="resetinputlogin" aria-describedby="inputSuccess2Status">
+                                <span class="form-control-feedback" aria-hidden="true">
+                                    <img class="seticoneye iconerr" id="iconeye1" src="/themes/img/login/iconeye1.png" alt="">
+                                    <img class="seticoneye iconerr" id="iconeyehide1" src="/themes/img/login/iconeyehide.png" alt="">
+                                </span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="control-label" for="inputSuccess2">New Password *</label>
+                                <input type="password" name="passnew" class="resetinputlogin" aria-describedby="inputSuccess2Status">
+                                <span class="form-control-feedback" aria-hidden="true">
+                                    <img class="seticoneye iconerr" id="iconeye" src="/themes/img/login/iconeye1.png" alt="">
+                                    <img class="seticoneye iconerr" id="iconeyehide" src="/themes/img/login/iconeyehide.png" alt="">
+                                </span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label class="control-label" for="inputSuccess2">Re-type New Password *</label>
+                                <input type="password" name="passretype" class="resetinputlogin" aria-describedby="inputSuccess2Status">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row1 set-group-btn">
+                <div class="group-submit row row1">
+                    <input id="btn-editprofile" class="setcolorfontinput setcolorloginbackround btn btn-lg-editprofile" type="submit" value="Save Change">
+                    <input id="btn-editprofile-reset" class=" setcolorfontinput setcolorloginbackround btn btn-white" type="button" value="Reset">
+                </div>
+            </div>
+        </div>
+        </form>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/submenu.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/editprofile/editprofile.js"></script>

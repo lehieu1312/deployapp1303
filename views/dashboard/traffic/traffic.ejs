@@ -1,0 +1,497 @@
+<% include ./../headerdetail %>
+    <div class="xcontent padding-traffic clsmenu">
+        <div id="title-detail" class="row row1">
+            <div class="content-title-detail has-feedback">
+                <h3 class="textmyapp">Traffic</h3>
+            </div>
+        </div>
+        <div class="row row1">
+            <div class="sub-content-statistics-top">
+                <div class="sub-content-statistics-left">
+                    <div class="sub-content-statistics-tracking boderadiusmodermshop">
+                        <div class="head-statistics">
+                            <div class="content-head-statistics">
+                                <span class="settext-h1-traffic">Statistics Tracking</span>
+
+                                <span class="graytext-h3 floatright setcusor dropbtn-traffic showmenu">
+                                    <div class="dropdown-custom">
+                                        <span class="selected-date"> Last 7 days</span>
+                                        <span class="caret"></span>
+                                        <div class="dropdown-traffic myDropdown-traffic" style="display: none">
+                                            <div class="head-dropdaw">
+                                                <span class="selected-date1">Today</span>
+                                                <br>
+                                                <span class="show-date">Sep 28,2017 - Sep 28,2017</span>
+                                            </div>
+                                            <a>Today</a>
+                                            <a>Yesterday</a>
+                                            <a>Last 7 days</a>
+                                            <a>Last 30 days</a>
+                                            <a>Last 90 days</a>
+                                            <!-- <a  >More preset ranges</a> -->
+                                            <div class="footer-dropdaw">
+                                                <a>Custom...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="footer-content-statistics">
+                            <span class="regular-medium-gray">Users</span>
+                            <br>
+                            <span class="light-large-gray">124</span>
+                            <br>
+                            <span class="background-green">
+                                <img class="settihg-arrow" src="/themes/img/traffic/iconarrowup.png">88.1%
+                            </span>
+                        </div>
+                        <div class="footer-content-statistics">
+                            <span class="regular-medium-gray">Sessions</span>
+                            <br>
+                            <span class="light-large-gray">224</span>
+                            <br>
+                            <span class="background-green">
+                                <img class="settihg-arrow" src="/themes/img/traffic/iconarrowup.png">9.4%</span>
+                        </div>
+                        <div class="footer-content-statistics">
+                            <span class="regular-medium-gray">Bounce Rate</span>
+                            <br>
+                            <span class="light-large-gray">59.43%</span>
+                            <br>
+                            <span class="background-red">
+                                <img class="settihg-arrow" src="/themes/img/traffic/iconarrowunder.png">3.5%</span>
+                        </div>
+                        <div class="footer-content-statistics">
+                            <span class="regular-medium-gray">Session Duration</span>
+                            <br>
+                            <span class="light-large-gray">7m 27s</span>
+                            <br>
+                            <span class="background-red">
+                                <img class="settihg-arrow" src="/themes/img/traffic/iconarrowunder.png">4.9%</span>
+                        </div>
+                    </div>
+                    <div class="sub-content-order-statistics boderadiusmodermshop">
+                        <div class="content-head-statistics">
+                            <span class="settext-h1-traffic">Order Statistics</span>
+                        </div>
+                        <div id="orderStatistics">
+                            <div id="linetime-border">
+                                <div id="chartjsLegend" class="chartjsLegend">
+                                    <ul>
+                                        <li>
+                                            <img src="/themes/img/traffic/iconorder.png"> Order
+                                        </li>
+                                        <li>
+                                            <img src="/themes/img/traffic/iconuser.png"> User
+                                        </li>
+                                    </ul>
+                                </div>
+                                <canvas id="linetime"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-content-rightnow boderadiusmodermshop">
+                    <div class="content-head-statistics">
+                        <span class="settext-h1-traffic">Right Now</span>
+                    </div>
+                    <div id="right-now">
+                        <div class="around-rightnow">
+                            <canvas id="chart-rightnow" width="10" height="10"></canvas>
+                        </div>
+                    </div>
+                    <div class="parameter-rightnow">
+                        <div>
+                            <img src="/themes/img/traffic/iconiospie.png">
+                            <span>Ios</span>
+                            <span class="set-Percent-ios">64%</span>
+                            <span class="float-right">
+                                <span class="quantily-ios">64 </span>
+                                <img class="setimg-rightnow" src="/themes/img/traffic/user.png">
+                            </span>
+                            </span>
+                        </div>
+                        <div>
+                            <img src="/themes/img/traffic/iconandroidpie.png">
+                            <span>Android</span>
+                            <span class="set-Percent-android">36%</span>
+                            <span class="float-right">
+                                <span class="quantily-android">64 </span>
+                                <img class="setimg-rightnow" src="/themes/img/traffic/user.png">
+                            </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="page-active-rightnow">
+                        <span class="write-note">Top Active Pages</span>
+                        <div id="page-rightnow">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" row row1 ">
+            <div class="sub-content-statistics-mid boderadiusmodermshop ">
+                <div class="content-head-statistics ">
+                    <span class="settext-h1-traffic ">What Pages Do Your Users Visit? </span>
+                    <span class="graytext-h3 floatright setcusor dropbtn-traffic showmenu">
+                        <div class="dropdown-custom">
+                            <span class="selected-date"> Last 7 days</span>
+                            <span class="caret"></span>
+                            <div class="dropdown-traffic myDropdown-traffic" style="display:none">
+                                <div class="head-dropdaw">
+                                    <span class="selected-date1">Today</span>
+                                    <br>
+                                    <span class="show-date">Sep 28,2017 - Sep 28,2017</span>
+                                </div>
+                                <a>Today</a>
+                                <a>Yesterday</a>
+                                <a>Last 7 days</a>
+                                <a>Last 30 days</a>
+                                <a>Last 90 days</a>
+                                <!-- <a>More preset ranges</a> -->
+                                <div class="footer-dropdaw">
+                                    <a>Custom...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+
+                </div>
+                <table class="table-traffic ">
+                    <tr>
+                        <th width="55% ">page</th>
+                        <th width="15% ">Pageviews</th>
+                        <th width="15% ">Access time</th>
+                        <th width="15% ">Average time</th>
+                    </tr>
+                </table>
+                <div class="content-page-user ">
+                    <table class="table-traffic ">
+                        <tbody id="body-table-pageuser">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-traffic ">
+                    <div class="setpagination1">
+                        <span> Showing 1-18 of 120item(s) </span>
+                    </div>
+                    <div class="setpagination2">
+                        <div class="float-left set-span-pagination">
+                            <span> 120 item(s)</span>
+                        </div>
+                        <div class="sub-pagination float-left">
+                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                        </div>
+                        <div class="sub-pagination1 float-left">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        </div>
+                        <div class="sub-pagination float-left set-span-pagination">
+                            <span>1</span>
+                        </div>
+                        <div class="float-left set-span-pagination">
+                            <span>of 6</span>
+                        </div>
+                        <div class="sub-pagination1 float-left">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </div>
+                        <div class="sub-pagination float-left">
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row1 ">
+                <div class="sub-content-statistics-mid boderadiusmodermshop ">
+                    <div class="content-head-statistics ">
+                        <span class="settext-h1-traffic ">Product Statistics</span>
+                        <span class="graytext-h3 floatright setcusor dropbtn-traffic showmenu">
+                            <div class="dropdown-custom">
+                                <span class="selected-date"> Last 7 days</span>
+                                <span class="caret"></span>
+                                <div class="dropdown-traffic myDropdown-traffic" style="display: none">
+                                    <div class="head-dropdaw">
+                                        <span class="selected-date1">Today</span>
+                                        <br>
+                                        <span class="show-date">Sep 28,2017 - Sep 28,2017</span>
+                                    </div>
+                                    <a>Today</a>
+                                    <a>Yesterday</a>
+                                    <a>Last 7 days</a>
+                                    <a>Last 30 days</a>
+                                    <a>Last 90 days</a>
+                                    <!-- <a>More preset ranges</a> -->
+                                    <div class="footer-dropdaw">
+                                        <a>Custom...</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                    <table class="table-traffic ">
+                        <tr>
+                            <th width="8% ">ID</th>
+                            <th width="36% ">Product</th>
+                            <th width="10% ">views</th>
+                            <th width="10% ">Average time</th>
+                            <th width="6% ">Order</th>
+                            <th width="10% ">total Order</th>
+                        </tr>
+                    </table>
+                    <div class="content-page-user ">
+                        <table class="table-traffic ">
+                            <tbody id="content-productstatictis">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination-traffic">
+                        <div class="setpagination1">
+                            <span> Showing 1-18 of 120item(s) </span>
+                        </div>
+                        <div class="setpagination2">
+                            <div class="float-left set-span-pagination">
+                                <span> 120 item(s)</span>
+                            </div>
+                            <div class="sub-pagination float-left">
+                                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                            </div>
+                            <div class="sub-pagination1 float-left">
+                                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            </div>
+                            <div class="sub-pagination float-left set-span-pagination">
+                                <span>1</span>
+                            </div>
+                            <div class="float-left set-span-pagination">
+                                <span>of 6</span>
+                            </div>
+                            <div class="sub-pagination1 float-left">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </div>
+                            <div class="sub-pagination float-left">
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row row1 ">
+                <div class="sub-content-statistics-mid-user boderadiusmodermshop ">
+                    <div class="user-active">
+                        <div class="content-head-statistics ">
+                            <span class="settext-h1-traffic ">User trend is active</span>
+                            <span class="graytext-h3 floatright setcusor dropbtn-traffic showmenu">
+                                <div class="dropdown-custom">
+                                    <span class="selected-date"> Last 7 days</span>
+                                    <span class="caret"></span>
+                                    <div class="dropdown-traffic myDropdown-traffic" style="display: none">
+                                        <div class="head-dropdaw">
+                                            <span class="selected-date1">Today</span>
+                                            <br>
+                                            <span class="show-date">Sep 28,2017 - Sep 28,2017</span>
+                                        </div>
+                                        <a>Today</a>
+                                        <a>Yesterday</a>
+                                        <a>Last 7 days</a>
+                                        <a>Last 30 days</a>
+                                        <a>Last 90 days</a>
+                                        <!-- <a>More preset ranges</a> -->
+                                        <div class="footer-dropdaw">
+                                            <a>Custom...</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+
+                        </div>
+                        <div>
+                            <div id="user-active-chart">
+                                <canvas id="user-active-canvas" height="260px"></canvas>
+                            </div>
+                            <div id="user-active-legend" class="user-active-legend">
+                                <div>
+                                    <span class="head-date">
+                                        <img class="set-img-date" src="/themes/img/traffic/icondate.png"> Monthly
+                                    </span>
+                                    <h3 class="number-useractive">
+                                    </h3>
+                                </div>
+                                <div>
+                                    <span class="head-date">
+                                        <img class="set-img-date" src="/themes/img/traffic/icondate.png"> Weekly
+                                    </span>
+                                    <h3 class="number-useractive">
+                                    </h3>
+                                </div>
+                                <div>
+                                    <span class="head-date">
+                                        <img class="set-img-date" src="/themes/img/traffic/icondate.png"> Daily
+                                    </span>
+                                    <h3 class="number-useractive">
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-by-time">
+                        <div class="content-head-statistics ">
+                            <span class="settext-h1-traffic ">Users by time of day</span>
+                            <span class="graytext-h3 floatright setcusor dropbtn-traffic showmenu">
+                                <div class="dropdown-custom">
+                                    <span class="selected-date"> Last 7 days</span>
+                                    <span class="caret"></span>
+                                    <div class="dropdown-traffic myDropdown-traffic" style="display: none">
+                                        <div class="head-dropdaw">
+                                            <span class="selected-date1">Today</span>
+                                            <br>
+                                            <span class="show-date">Sep 28,2017 - Sep 28,2017</span>
+                                        </div>
+                                        <a>Today</a>
+                                        <a>Yesterday</a>
+                                        <a>Last 7 days</a>
+                                        <a>Last 30 days</a>
+                                        <a>Last 90 days</a>
+                                        <!-- <a  >More preset ranges</a> -->
+                                        <div class="footer-dropdaw">
+                                            <a>Custom...</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+
+                        </div>
+                        <div id="border-userbytime">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row1 ">
+                <div class="sub-content-statistics-mid-sessionbycountry boderadiusmodermshop ">
+                    <div>
+                        <div id="border-map-session-cpuntry">
+                            <div id="map-session-cpuntry"></div>
+                        </div>
+                        <div id="progress-session">
+                            <div>
+                                <span class="settext-h1-traffic ">Session by Country</span>
+                            </div>
+                            <div>
+
+                            </div>
+                            <div>
+                                <span>sounth Korea</span>
+                                <span class="float-right">40%</span>
+                                <div class="progress-map">
+                                    <div class="progress-bar color-progress" style="width:40%">
+                                        <span class="sr-only">70% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <span>taiwan</span>
+                                <span class="float-right">50%</span>
+                                <div class="progress-map">
+                                    <div class="progress-bar color-progress" style="width:50%">
+                                        <span class="sr-only">70% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <span>Thailand</span>
+                                <span class="float-right">60%</span>
+                                <div class="progress-map">
+                                    <div class="progress-bar color-progress" style="width:60%">
+                                        <span class="sr-only">70% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <span>VietNam</span>
+                                <span class="float-right">70%</span>
+                                <div class="progress-map">
+                                    <div class="progress-bar color-progress" style="width:70%">
+                                        <span class="sr-only">70% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row1 ">
+                <div class="sub-content-statistics-mid-sessionbysystem boderadiusmodermshop ">
+                    <div class="content-head-statistics ">
+                        <span class="settext-h1-traffic ">Session by operating system</span>
+                        <span class="graytext-h3 floatright setcusor dropbtn-traffic showmenu">
+                            <div class="dropdown-custom">
+                                <span class="selected-date"> Last 7 days</span>
+                                <span class="caret"></span>
+                                <div class="dropdown-traffic myDropdown-traffic" style="display: none">
+                                    <div class="head-dropdaw">
+                                        <span class="selected-date1">Today</span>
+                                        <br>
+                                        <span class="show-date">Sep 28,2017 - Sep 28,2017</span>
+                                    </div>
+                                    <a>Today</a>
+                                    <a>Yesterday</a>
+                                    <a>Last 7 days</a>
+                                    <a>Last 30 days</a>
+                                    <a>Last 90 days</a>
+                                    <!-- <a  >More preset ranges</a> -->
+                                    <div class="footer-dropdaw">
+                                        <a>Custom...</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+
+                    </div>
+                    <div class="content-session-system">
+                        <div class="sub-session-system">
+                            <span>
+                                <img src="/themes/img/dashboard/iconios.png">
+                                <span>Ios</span>
+                            </span>
+                            <br>
+                            <span class="light-large-gray">59.43%</span>
+                            <br>
+                            <span class="background-green">
+                                <img class="settihg-arrow" src="/themes/img/traffic/iconarrowup.png">88.1%
+                            </span>
+                        </div>
+                        <div class="sub-session-system">
+                            <span>
+                                <img src="/themes/img/dashboard/iconandroid.png">
+                                <span>Android</span>
+                            </span>
+                            <br>
+                            <span class="light-large-gray">59.43%</span>
+                            <br>
+                            <span class="background-red">
+                                <img class="settihg-arrow" src="/themes/img/traffic/iconarrowunder.png">3.5%
+                            </span>
+                        </div>
+                        <div class="chart-session-system">
+                            <canvas id="chart-session"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <input id="idapp-using" hidden value="<%=appuse.idApp%>">
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/traffic.js "></script>
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/useractive.js "></script>
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/orderstatistic.js "></script>
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/rightnow.js "></script>
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/map-session.js "></script>
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/userbytime.js "></script>
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/sessionsystem.js "></script>
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/pagination.js "></script>
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/pageuser.js "></script>
+    <script type="text/javascript " charset="utf-8 " src="/themes/js/dashboard/traffic/productstatictis.js "></script>
+    <!-- <script src="/themes/js/dashboard/traffic/orderstatistic.js "></script> -->

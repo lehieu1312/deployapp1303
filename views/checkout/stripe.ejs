@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Stripe</title>
+</head>
+
+<body>
+    <form action="/paymentstripe" method="POST">
+        <h1>Deployapp</h1>
+        <span>Prive:</span>
+        <input readonly type="text" value="30">
+        <input type="hidden" value="3000" name="amountnew">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_xYmUswZQLVIBJFvOpVAgvN5K" data-amount="3000"
+            data-name="WetWired" data-description="Widget" data-locale="auto">
+            </script>
+    </form>
+
+
+</body>
+
+</html>

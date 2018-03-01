@@ -1,0 +1,105 @@
+<% include header%>
+    <script lang="text/javascript">
+    </script>
+    <div class="container infoapp">
+        <div class="tilte">
+            <h3>Setting your application </h3>
+        </div>
+
+        <!-- action="/info-app" method="POST" onsubmit="return(validateForm())"  -->
+        <form class="form form-horizontal" id="fSettingApp" method="POST">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Collapsible Group Item #1
+        </a>
+                    </h4>
+                </div>
+
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+
+
+            <%var i=0,j=0; %>
+                <%for(i=0;i<arrFile.length;i++){%>
+                    <div class="panel panel-default ">
+
+                        <div class="panel-heading ">
+                            <h4 class="panel-title ">
+                                <a class="accordion-toggle " data-toggle="collapse " data-parent="#accordion " href="#<%=arrFile[i][ '$'].path.split( '.').shift().replace( '/', '') %>">
+                                    <%=arrFile[i]['$'].path %>
+                                </a>
+                            </h4>
+                        </div>
+
+
+
+                        <div id="<%=arrFile[i]['$'].path.split('.').shift().replace('/','') %>" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <%for(j=0;j<arrFile[i].field.length;j++){
+                                var path=arrFile[i]['$'].path;
+                                %>
+
+                                    <div class="form-group ">
+                                        <label class="col-sm-2 control-label ">
+                                            <%=arrFile[i]['field'][j]['$'].label %>
+                                           <% if(arrFile[i][ 'field'][j][ '$'].required=='true'){%>
+                                            <span>*</span> 
+                                           <% }
+                                            %>
+                                    
+                                        </label>
+                                        <% if(arrFile[i]['field'][j]['$'].type=='text'){%>
+                                            <div class="col-sm-6 "><input class="form-control " required="<%=arrFile[i][ 'field'][j][ '$'].required %>" type="text" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>" value="a" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>"
+                                                /></div>
+                                            <%}else  if(arrFile[i]['field'][j]['$'].type=='boolean'){%>
+                                                <label class="radio-inline">
+                                                <input type="radio" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>"  value="true" checked rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" /> true
+                                            </label>
+                                                <label class="radio-inline">
+                                                <input type="radio" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>"  value="false" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" /> false
+                                            </label>
+                                                <%}else  if(arrFile[i]['field'][j]['$'].type=='textarea'){%>
+                                                    <div class="col-sm-6 ">
+                                                        <textarea class="form-control" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>" required="<%=arrFile[i][ 'field'][j][ '$'].required %>" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" rows="5"></textarea>
+                                                    </div>
+                                                    <%}else  if(arrFile[i]['field'][j]['$'].type=='editor'){%>
+                                                        <div class="col-sm-6 ">
+                                                            <textarea class="form-control editor" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>" required="<%=arrFile[i][ 'field'][j][ '$'].required %>" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" rows="10"></textarea>
+                                                        </div>
+                                                        <%}else{%>
+                                                            <div class="col-sm-6"><input class="form-control" required="<%=arrFile[i]['field'][j]['$'].required %>" type="<%=arrFile[i]['field'][j]['$'].type %>" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>" value="1"
+                                                                    rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" /></div>
+                                                            <%}%>
+                                                                <span class="help-block" id="error"></span>
+                                    </div>
+                                    <%}%>
+                                        <hr>
+                            </div>
+                        </div>
+
+                    </div>
+                    <%}%>
+                        <div class="form-group">
+                            <div class="col-sm-6 ">
+                                <input type="" rules="" hidden name="" value="" />
+                                <button type="button" class="btn btn-lg btn-infoapp" onclick="send_data_setting()">Next →</span></button>
+                            </div>
+                        </div>
+        </form>
+
+    </div>
+
+    <script>
+        $(function() {
+            $('.editor').froalaEditor()
+        });
+    </script>
+    <% include footer%>

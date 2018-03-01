@@ -1,0 +1,146 @@
+<% include header%>
+    <!-- Dialog Notifi -->
+    <div id="dialog-noti-succes-android">
+        <div class="content-noti-success-android">
+            <div class="text-noti-ok-success">
+                <span>Keep your keystore and private key in a safe and secure place, and ensure that you
+                        have secure backups of them.</span>
+                <p>If you publish an app to Google Play and then lose the key with which you signed your app, <span class="color-red"> you will not be able to publish any updates</span> to your app, since you must always sign all versions of your app with
+                    the same key.</p>
+            </div>
+
+            <div class="box-btn-ok-success-android">
+                <div class="content-bottom-noti">
+                    <a href="javascript:void(0)" class="btn-ok-success-android" id="btn-noti-success-android">
+                                OK. I understand
+                            </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Close dialog notifi -->
+    <div class="container">
+        <div class="pn-success center">
+            <div class="img-success ">
+                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNS4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0M3B4IiB2aWV3Qm94PSIwIDAgNDMgNDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQzIDQzIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiMzNDk5NDYiIGQ9Ik0xMi42ODIsMTcuNDE1TDkuNjgsMjAuNDNsOS42NjcsOS42NjdsMjEuNS0yMS41bC0zLjAxMy0zLjAxM0wxOS4zNDgsMjQuMDgyTDEyLjY4MiwxNy40MTV6IE0zOC42OTUsMjEuNQ0KCQljMCw5LjQ1OS03LjczNiwxNy4xOTUtMTcuMTk1LDE3LjE5NWMtOS40NiwwLTE3LjE5NS03LjczNi0xNy4xOTUtMTcuMTk1YzAtOS40Niw3LjczNS0xNy4xOTUsMTcuMTk1LTE3LjE5NQ0KCQljMS43MjIsMCwzLjIyMywwLjIxLDQuNzM0LDAuNjM5bDMuNDM0LTMuNDQyQzI3LjA4NSwwLjYzOSwyNC4yOTMsMCwyMS41LDBDOS42OCwwLDAsOS42OCwwLDIxLjVDMCwzMy4zMiw5LjY4LDQzLDIxLjUsNDMNCgkJQzMzLjMyLDQzLDQzLDMzLjMyLDQzLDIxLjVIMzguNjk1eiBNMzguNjk1LDIxLjUiLz4NCjwvZz4NCjwvc3ZnPg0K"
+                    alt="check-success">
+            </div>
+
+            <div class="text-title-success ">
+                <span>Build Successfully </span>
+            </div>
+            <div class="text-content-success">
+                <span>Your application has been successfully built. To install the application you can download the file as a link,
+QR Code (or) Sign up your e-mail to receive the file.</span>
+            </div>
+
+        </div>
+        <div class="content-app">
+            <div class="tilte-app-download center">
+                <span class="tile-name-app">Download <%=sAppName%></span>
+            </div>
+            <div class="link-app-qrcode">
+                <div class="col-xs-12 col-md-6">
+                    <div class="row qr-debug">
+                        <div class="linkqr-top">
+                            <div class="col-md-9 col-xs-7 platform-left">
+                                <div class="title-file-succes">APK File - Debug</div>
+                                <div class="text-link-success">
+                                    <span class="text-word-wrap">
+                                    <a href="<%=linkAppDebug%>" class="link-down-qrcode">
+                                        <i class="fa fa-download" aria-hidden="true"> </i>&nbsp;
+                                        <%=linkDisplayDebug%>
+                                    </a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-xs-5 box-img-qrcode">
+                                <% if(qrCodeUnsign){%>
+                                    <img src='<%=qrCodeUnsign%>' class="img-qrcode" />
+                                    <%} %>
+                            </div>
+                        </div>
+                        <%if(linkAppKeyStoretxt){%>
+                            <div class="linkqr-bottom">
+                                <div class="link-down-keystore">
+
+                                    <a href="<%=linkAppKeyStoretxt%>" class="link-down-qrcode">
+                                        <i class="fa fa-download" aria-hidden="true"> </i>&nbsp; keys-tore.txt
+                                    </a>
+
+                                </div>
+
+                            </div>
+                            <%}%>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-md-6 box-success-right">
+                    <div class="row qr-signed">
+                        <div class="linkqr-top">
+                            <div class="col-md-9 col-xs-7 platform-left">
+                                <div class="title-file-succes">APK File - Signed</div>
+                                <div class="text-link-success-signed">
+                                    <span class="text-word-wrap">
+                                        <a href="<%=linkAppSigned%>" class="link-down-qrcode">
+                                            <i class="fa fa-download" aria-hidden="true"> </i>&nbsp;
+                                            <%=linkDisplaySigned%>
+                                        </a>
+                                     </span>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-3 col-xs-5 box-img-qrcode">
+                                <% if(qrCodeSigned){%>
+                                    <img src='<%=qrCodeSigned%>' class="img-qrcode " />
+                                    <%} %>
+                            </div>
+                        </div>
+                        <div class="linkqr-bottom">
+                            <div class="link-down-keystore">
+
+                                <a href="<%=linkAppKeyStore%>" class="link-down-qrcode">
+                                    <i class="fa fa-download" aria-hidden="true"> </i>&nbsp; my-keystore.keystore
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div id="mail-sent" class="container">
+        <div class="content-send-mail">
+            <!-- onsubmit="return send_ajax_send_mail()" -->
+            <form method="POST" action="javascript:void(0)" autocomplete="off" id="form-sendmail">
+                <!-- <div id=" form-group">
+                    <input type="text" class="form-control input-email-ios" id="email" name="email" placeholder="Enter Your Email Address" value="" autocomplete="off">
+                </div> -->
+
+                <div class="form-group">
+                    <input type="hidden" value="<%=sKeyFolder%>" id="cKey">
+                    <input type="text" class="form-control input-email-ios" id="email" name="email" placeholder="Enter Your Email Address" value="" autocomplete="off">
+                </div>
+                <div class="form-group div-btn-infobuild">
+                    <div class="">
+                        <!-- <input type="button"  value="Build android" class="btn btn-primary"> -->
+                        <button type="submit" id="btn-send-mail" class="btn btn-lg btn-sendmail"><img src="/themes/img/plane.png" class="plane-mail" alt="Sent mail"> &nbsp;Send </span></button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/build-success-android.js"></script>
+    <% include footer%>

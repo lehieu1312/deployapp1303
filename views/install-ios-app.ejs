@@ -1,0 +1,100 @@
+<!-- <div style="text-align:center;">
+    <h3>Install iOS App:
+        <%=appName%>
+    </h3>
+</div>
+
+<div style="text-align:center;">
+    <img src="" border="0" align="center"></img>
+</div>
+
+<div style="text-align:center;">
+    <a href="itms-services://?action=download-manifest&url=https://dev.deployapp.net/get-plist/<%=keyFolder%>">Install  <%=appName%></a>
+</div> -->
+<%include header%>
+    <%if(!CheckSafari){%>
+        <div id="loading-check-safari">
+            <div class="content-check-safari">
+                <div class="text-noti-safari">
+                    <span>Open the link in Safari on  your iPhone or iPad</span>
+                </div>
+                <a href="javascript:void(0)" id="btn-ok-check-safari">
+                    <div class="btn-check-safari">
+                        OK
+                    </div>
+                </a>
+            </div>
+        </div>
+        <%}%>
+            <!-- <div class="modal-check-safari">
+        <div class="content-chek-safari">
+            <div class="check-safari-top">
+                <span>Open the link in Safari on  your iPhone or iPad</span>
+            </div>
+            <div class="check-safari-bottom">
+                <button class="btn btn-info" id="btn-ok-checksafari">OK</button>
+            </div>
+        </div>
+    </div> -->
+
+            <div id="body-install-app-ios">
+                <div class="container">
+                    <div class="title-name-app">
+                        <span> <%=appName%> </span>
+                    </div>
+                    <div class="bundleid-install-ios">
+                        <div class="title-bundleid-ios">
+                            <span>Bundle identifier: </span>
+                        </div>
+                        <div class="content-bundleid-ios">
+                            <span><%=bundleID%></span>
+                        </div>
+                    </div>
+                    <div class="bundleid-install-ios">
+                        <div class="title-bundleid-ios">
+                            <span>Profile type: </span>
+                        </div>
+                        <div class="content-bundleid-ios">
+                            <span>Ad Hoc</span>
+                        </div>
+                    </div>
+                    <div class="bundleid-install-ios">
+                        <div class="title-bundleid-ios">
+                            <span>Profile expiration: </span>
+                        </div>
+                        <div class="content-bundleid-ios">
+                            <span> <%=moment(sDate).format('YYYY-MM-DD HH:mm:ss')%> UTC</span>
+                        </div>
+                    </div>
+                    <div class="bundleid-install-ios">
+                        <div class="box-device-title">
+                            <a data-toggle="collapse" class="link-box-device accordion-toggle" data-parent="#accordion" href="#list-device">
+
+                                <div class="box-total-title-device">
+                                    <div class="title-device">
+                                        <span> Provisioned devices:</span>
+                                    </div>
+                                    <div class="number-device ">
+                                        <span class="bage"> <%=sDevice.length%></span>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="accor-device-icon "></div> -->
+                            </a>
+                        </div>
+                        <div id="list-device" class="panel-collapse collapse in body-input-setting">
+                            <%for(i=0;i<sDevice.length;i++){%>
+                                <div class="item-device"><span><%=sDevice[i]%></span></div>
+                                <%}%>
+                        </div>
+                    </div>
+
+                    <div class="box-btn-install-ios">
+                        <a href="itms-services://?action=download-manifest&url=<%=hostServer%>/get-plist/<%=keyFolder%>" class="btn-install-ios-device">
+                            <img src="/themes/img/icon-setting-install-app.png" class="plane-mail" alt="Sent mail"> &nbsp; Installation application
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <%include footer%>

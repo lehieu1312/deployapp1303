@@ -1,0 +1,105 @@
+<% include header%>
+    <!-- <div id="loading" style="display:none"></div> -->
+    <div class="container">
+        <div class="stepProcess">
+            <ul class="steps">
+                <li class="step completed">
+                    <div class="step-info">
+                        <span class="step-name">Upload Source</span>
+                    </div>
+                </li>
+
+                <li class="step completed">
+                    <div class="step-info">
+                        <span class="step-name">Setting Your App</span>
+                    </div>
+                </li>
+                <li class="step completed">
+                    <div class="step-info">
+                        <span class="step-name">Choose Platforms</span>
+                    </div>
+                </li>
+                <li class="step active">
+                    <div class="step-info">
+                        <span class="step-name">Customization</span>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12 info-build-content">
+                <span class="text-custom-build">Customization</span>
+                <div class="error-all">
+                    <div><span class="help-block" id="error"></span></div>
+                </div>
+                <span class="title-build-app">Sign iOS Application</span>
+                <div class="info-form-build">
+                    <!-- Open form -->
+
+                    <form class="form" id="fBuildiosdiawi" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-group form-group-email has-feedback input-error">
+                                    <label class="control-label"> Email * </label>
+                                    <div class="">
+                                        <input class="form-control input-form-info" type="text" id="email" displaytext="Email" name="email" value="hieu.ric@gmail.com" />
+                                        <span id="icon-err-email" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback input-error">
+                                    <label class="control-label"> TeamID *</label>
+                                    <div class=""><input class="form-control input-form-info" type="text" displaytext="TeamID" id="teamID" name="teamID" value="32H24MWD26" /></div>
+                                    <span id="icon-err-teamid" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                                </div>
+                                <div class="form-group has-feedback input-error">
+                                    <label class=" control-label"> UUID Install Device* </label>
+                                    <div class="">
+                                        <input class="form-control input-form-info" type="text" displaytext="UUID " id="UUID-Device" name="UUID-Device" value="" />
+                                        <span id="icon-err-uuid-device" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback input-error">
+                                    <label class=" control-label"> Provision file install device* </label>
+                                    <div class="">
+                                        <input class="form-control input-form-info" type="file" id="provision-device" name="Provisiondevice" value="" />
+                                        <span id="icon-err-provision-device" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback input-error">
+                                    <label class=" control-label"> UUID app store* </label>
+                                    <div class="">
+                                        <input class="form-control input-form-info" type="text" displaytext="UUID " id="UUID-appstore" name="UUID-appstore" value="" />
+                                        <span id="icon-err-uuid-appstore" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback input-error">
+                                    <label class=" control-label"> Provision file app store* </label>
+                                    <div class="">
+                                        <input class="form-control input-form-info" type="file" id="provision-appstore" name="provision-app-store" value="" />
+                                        <span id="icon-err-provision-app-store" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group div-btn-infobuild">
+                                    <div class="">
+                                        <!-- <input type="button"  value="Build android" class="btn btn-primary"> -->
+                                        <!-- onclick="send_ajax_build_ios()" -->
+                                        <button type="submit" id="btn-deploy-ios-diawi" class="btn btn-lg btn-infobuild">DEPLOY →</span></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <!-- Close form -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <% include footer%>

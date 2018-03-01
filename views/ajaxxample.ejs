@@ -1,0 +1,44 @@
+<% include header%>
+    <script language="javascript">
+        function click() {
+
+        }
+
+        function load_ajax() {
+            $("#loading").show();
+            var obj = {};
+            // $("input").each(function() {
+            //     var name = $(this).attr("rules");
+            //     alert(name);
+            // })
+            $.ajax({
+                url: "/getajax",
+                type: "post",
+                dataType: "text",
+                data: {
+                    number: $('#number').val(),
+                    rule: $('#number').attr('rules')
+
+                },
+                success: function(result) {
+                    console.log('out: ' + result);
+                    $('#result').html(result);
+
+                }
+            }).always(function() {
+                $("#loading").hide();
+            });
+        }
+    </script>
+    <div id="result">
+        Nội dung ajax sẽ được load ở đây
+    </div>
+    <form>
+        <input type="text" value="" id="number" rules="le hieu" />
+        <input type="text" value="" id="hoan" rules="lam" />
+        <input type="text" value="" id="le" rules="linh" />
+        <input type="text" value="" id="hung" rules="nguyen" />
+        <input type="button" name="clickme" id="clickme" onclick="load_ajax()" value="Click Me" />
+    </form>
+
+    <% include footer%>

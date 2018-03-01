@@ -1,0 +1,33 @@
+<% include ../header%>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/login/senlinkreset.js"></script>
+    <div id="mainlogin">
+        <div class="container ">
+            <div id="contenmailforgot">
+                <div class=" setdivmodal ">
+                    <div class="form-group textcenter ">
+                        <img src="/themes/img/login/iconchamhoi1.png " alt=" ">
+                    </div>
+                    <div class="form-group textcenter abc">
+                        <h2 class="fontforgot ">Forgot Your password?</h2>
+                        <span class="font-forgotmail ">
+                            Please enter your email address below and we will email you with instructions in how to reset your password
+                        </span>
+                    </div>
+                    <form id="form-forgotpass" onsubmit="return false" method="post">
+                        <div class="form-group1 has-feedback">
+                            <label class="control-label" for="inputSuccess2"></label>
+                            <input type="text" class="resetinputlogin" name="emailresetpass" aria-describedby="inputSuccess2Status" placeholder="Email address">
+                            <span class="form-control-feedback1" aria-hidden="true">
+                                <img class="seticonemail" name="iconemail" src="/themes/img/login/iconemail.png" alt="">
+                            </span>
+                        </div>
+                        <div class="textcenter form-group2">
+                            <button type="submit" id="btn-resetpass" class="btn setcolorfontinput btn-lg-forgot setcolorloginbackround ">
+                                <img src="/themes/img/login/iconbutton.png"> Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include ../footer%>

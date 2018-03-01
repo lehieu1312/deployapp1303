@@ -1,0 +1,46 @@
+<% include header%>
+
+    <link rel="stylesheet" type="text/css" href="/themes/css/upload.css" />
+
+    <div id="loading" style="display:none"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <% if(typeof errors != 'undefined'){ %>
+                        <div class="alert alert-danger alert-dismissable">
+                            <ul>
+                                <li>
+                                    <strong><%= errors %></strong>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <%}%>
+                            <div class="panel-body">
+                                <form>
+
+                                    <span class="glyphicon glyphicon-cloud-upload"></span>
+                                    <h2>File Uploader</h2>
+                                    <h4>coligo.io</h4>
+                                    <div class="form-group">
+                                        <div><span class="help-block" id="error"></span></div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar"></div>
+                                    </div>
+                                    <button class="btn btn-lg upload-btn" type="button">Upload File</button>
+                                    <input id="upload-input" type="file" name="file_uploads"></br>
+
+                                </form>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div></div>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/ejs.min.js"></script>
+
+    <% include footer%>

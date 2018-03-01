@@ -1,0 +1,62 @@
+.boderadiusmodermshop{
+    border-radius: 2px;
+}
+.sub-content-statistics-tracking{
+    height: 190px;
+    width: 100%;
+    background: white;
+    margin-top: 10px;
+}
+.sub-content-statistics-left{
+    width: 65.5%;
+    float: left;
+}
+.sub-content-order-statistics{
+    height: 500px;
+    width: 100%;
+    background: white;
+    margin-top: 20px;
+}
+.sub-content-rightnow{
+    margin-left: 20px;
+    min-height: 710px;
+    width: 30%;
+    background: white;
+    margin-top: 10px;
+    float: left;
+}
+.sub-content-statistics-top{
+    width: 100%;
+    margin-right: 20px;
+    margin-left: 20px;
+    background: white;
+}
+.sub-content-statistics-mid{
+    margin-right: 20px;
+    margin-left: 20px;
+    min-height: 350px;
+    background: white;
+    margin-top: 20px;
+}
+.sub-content-statistics-mid-user{
+    margin-right: 20px;
+    margin-left: 20px;
+    min-height: 470px;
+    background: white;
+    margin-top: 20px;
+}
+.sub-content-statistics-mid-sessionbycountry{
+    margin-right: 20px;
+    margin-left: 20px;
+    min-height: 310px;
+    background: white;
+    margin-top: 20px;
+} 
+.sub-content-statistics-mid-sessionbysystem{
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 50%;
+    min-height: 210px;
+    background: white;
+    margin-top: 20px;
+}

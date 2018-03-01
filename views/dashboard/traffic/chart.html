@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Line Chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="./../../../public/themes/js/dashboard/chartjs/chartjs.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <canvas id="linetime" width="500" height="400"></canvas>
+
+    <canvas id="canvas"></canvas>
+
+    <script>
+        let chart1 = document.getElementById("myChart").getContext("2d")
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 20;
+        Chart.defaults.global.defaultFontColor = '#777';
+
+        let mychart1 = new Chart(chart1, {
+            type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data: {
+                labels: ['Ios', 'Android'],
+                datasets: [{
+                    label: 'Population',
+                    data: [
+                        617594,
+                        181045,
+                        // 153060,
+                        // 106519,
+                        // 105162,
+                        // 95072
+                    ],
+                    //backgroundColor:'green',
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        // 'rgba(255, 206, 86, 0.6)',
+                        // 'rgba(75, 192, 192, 0.6)',
+                        // 'rgba(153, 102, 255, 0.6)',
+                        // 'rgba(255, 159, 64, 0.6)',
+                        // 'rgba(255, 99, 132, 0.6)'
+                    ],
+                    // borderWidth: 1,
+                    // borderColor: '#777',
+                    // hoverBorderWidth: 3,
+                    // hoverBorderColor: '#000'
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'User active',
+                    fontSize: 25
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                }
+            }
+
+        })
+
+        var datalinetime = {
+            labels: ['t2', 't3', 't4', 't5', 't6', 't7', 'cn'],
+            datasets: [{
+                    label: 'Users',
+                    data: [
+                        100, 60, 70, 25, 23, 12, 120
+                    ],
+                    backgroundColor: Chart.helpers.color("red").alpha(0.5).rgbString()
+                },
+                {
+                    label: 'Order',
+                    data: [
+                        80, 70, 25, 12, 120, 200, 100
+                    ],
+                    backgroundColor: Chart.helpers.color("blue").alpha(0.5).rgbString(),
+                    borderColor: 'green',
+                    fill: false,
+                }
+            ]
+        }
+        let chartlinetime = document.getElementById("linetime")
+        let mychart2 = new Chart(chartlinetime, {
+            type: 'line',
+            data: datalinetime,
+            options: {
+                elements: {
+                    line: {
+                        tension: 0, // disables bezier curves
+                    }
+                },
+                scales: {
+
+                },
+            }
+
+        })
+    </script>
+    <script>
+        function newDate(days) {
+            return moment().add(days, 'd').toDate();
+        }
+
+        function newDateString(days) {
+            return moment().add(days, 'd').format();
+        }
+
+        var color = Chart.helpers.color;
+        var config = {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: "Dataset with string point data",
+                    backgroundColor: color('red').alpha(0.5).rgbString(),
+                    borderColor: 'red',
+                    fill: false,
+                    data: [{
+                        x: newDateString(0),
+                        y: randomScalingFactor()
+                    }, {
+                        x: newDateString(2),
+                        y: randomScalingFactor()
+                    }, {
+                        x: newDateString(4),
+                        y: randomScalingFactor()
+                    }, {
+                        x: newDateString(5),
+                        y: randomScalingFactor()
+                    }],
+                }, {
+                    label: "Dataset with date object point data",
+                    backgroundColor: color('blue').alpha(0.5).rgbString(),
+                    borderColor: 'blue',
+                    fill: false,
+                    data: [{
+                        x: newDate(0),
+                        y: randomScalingFactor()
+                    }, {
+                        x: newDate(2),
+                        y: randomScalingFactor()
+                    }, {
+                        x: newDate(4),
+                        y: randomScalingFactor()
+                    }, {
+                        x: newDate(5),
+                        y: randomScalingFactor()
+                    }]
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: "Chart.js Time Point Data"
+                },
+                scales: {
+                    xAxes: [{
+                        type: "time",
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date'
+                        },
+                        ticks: {
+                            major: {
+                                fontStyle: "bold",
+                                fontColor: "#FF0000"
+                            }
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'value'
+                        }
+                    }]
+                }
+            }
+        };
+
+
+        var ctx = document.getElementById("canvas").getContext("2d");
+        let myLine = new Chart(ctx, config);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+{
+    "_id": {
+        "$oid": "5a3c87e7dec4430d7c2e4238"
+    },
+    "__v": 0,
+    "idApp": "app1",
+    "nameApp": "Thiên Long",
+    "onlineCurrent": 142,
+    "usetoday": "1256",
+    "useIos": "345",
+    "useAndroid": "365",
+    "idUser": [{
+        "idUser": "06517fb6f210355bd73620f38b4d5469",
+        "dateAdded": {
+            "$date": "2017-12-28T06:55:18.447Z"
+        },
+        "status": true
+    }, {
+        "idUser": "b1e104e4bb8b198d0626c653e3d88b9a",
+        "dateAdded": {
+            "$date": "2017-12-28T06:55:18.447Z"
+        },
+        "status": true
+    }, {
+        "idUser": "5e308230df2399df3eb98da10314f819",
+        "dateAdded": {
+            "$date": "2017-12-28T06:55:18.447Z"
+        },
+        "status": true
+    }],
+    "useToday": "1256"
+} {
+    "_id": {
+        "$oid": "5a3c87eedec4430d7c2e4239"
+    },
+    "__v": 0,
+    "idApp": "app2",
+    "onlineCurrent": 433,
+    "nameApp": "Thiên Long1",
+    "useToday": "1256",
+    "useIos": "345",
+    "useAndroid": "365",
+    "idUser": [{
+        "idUser": "06517fb6f210355bd73620f38b4d5469"
+    }]
+} {
+    "_id": {
+        "$oid": "5a3c8822dec4430d7c2e423a"
+    },
+    "__v": 0,
+    "idApp": "app3",
+    "nameApp": "Thiên Long2",
+    "onlineCurrent": 432,
+    "useToday": "1200",
+    "useIos": "345",
+    "useAndroid": "365",
+    "idUser": [{
+        "idUser": "06517fb6f210355bd73620f38b4d5469"
+    }]
+} {
+    "_id": {
+        "$oid": "5a3c89c78a8d8216b8c9818c"
+    },
+    "__v": 0,
+    "idApp": "app4",
+    "onlineCurrent": 455,
+    "usetoday": "1256",
+    "useIos": "345",
+    "useAndroid": "365",
+    "idUser": []
+} {
+    "_id": {
+        "$oid": "5a3c89ca8a8d8216b8c9818d"
+    },
+    "__v": 0,
+    "idApp": "app5",
+    "onlineCurrent": 455,
+    "usetoday": "1256",
+    "useIos": "345",
+    "useAndroid": "365",
+    "idUser": []
+} {
+    "_id": {
+        "$oid": "5a3c89cd8a8d8216b8c9818e"
+    },
+    "__v": 0,
+    "idApp": "app56",
+    "onlineCurrent": 455,
+    "usetoday": "1256",
+    "useIos": "345",
+    "useAndroid": "365",
+    "idUser": []
+} {
+    "_id": {
+        "$oid": "5a3c89d18a8d8216b8c9818f"
+    },
+    "__v": 0,
+    "idApp": "app6",
+    "onlineCurrent": 455,
+    "usetoday": "1256",
+    "useIos": "345",
+    "useAndroid": "365",
+    "idUser": []
+} {
+    "_id": {
+        "$oid": "5a3c8b588a8d8216b8c98190"
+    },
+    "__v": 0,
+    "idApp": "app7",
+    "onlineCurrent": 455,
+    "usetoday": "1256",
+    "useIos": "345",
+    "useAndroid": "365",
+    "idUser": []
+} {
+    "_id": {
+        "$oid": "5a3cabf5fae52e2230f84898"
+    },
+    "__v": 0,
+    "idApp": "app10",
+    "onlineCurrent": 432,
+    "usetoday": "1200",
+    "useIos": "345",
+    "useAndroid": "365",
+    "idUser": []
+}

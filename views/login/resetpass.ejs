@@ -1,0 +1,43 @@
+<% include ../header%>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/login/forgot.js"></script>
+    <div id="mainlogin">
+        <div class="container ">
+            <div class="container">
+                <div class="col-sm-6 col-sm-offset-3 formlogin1 bodorformlogin">
+
+                    <div style="margin-top: 30px">
+                        <div style="padding-left: 5px;">
+                            <form id="form-resetpass" onsubmit="return false">
+                                <p class="fontsingin1">Create new password</p>
+                                <p class="pforgot">We'll ask for this password whenever you sign in</p>
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="inputSuccess2">New Password *</label>
+                                    <input type="password" name="pass" class="resetinputlogin" aria-describedby="inputSuccess2Status">
+                                    <span class="form-control-feedback" aria-hidden="true">
+                                        <img class="seticoneye iconerr" id="iconeye" src="/themes/img/login/iconeye1.png" alt="">
+                                        <img class="seticoneye iconerr" id="iconeyehide" src="/themes/img/login/iconeyehide.png" alt="">
+                                    </span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <label class="control-label" for="inputSuccess2">Re-type New Password *</label>
+                                    <input type="password" name="pass1" class="resetinputlogin" aria-describedby="inputSuccess2Status">
+                                    <span class="form-control-feedback" aria-hidden="true">
+                                        <img class="seticoneye iconerr" id="iconeye1" src="/themes/img/login/iconeye1.png" alt="">
+                                        <img class="seticoneye iconerr" id="iconeyehide1" src="/themes/img/login/iconeyehide.png" alt="">
+                                    </span>
+                                </div>
+                                <br>
+
+                                <input type="submit" id="btn-resetpass" class="btn setcolorfontinput setcolorloginbackround btn-lg btn-block" value="Update">
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <% include ../footer%>

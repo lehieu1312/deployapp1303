@@ -1,0 +1,64 @@
+<% include ./../headerdetail %>
+
+    <div class="xcontent clsmenu">
+        <div id="title-detail" class="row row1">
+            <div class="content-title-detail has-feedback">
+                <h3 class="textmyapp">Traffic</h3>
+            </div>
+        </div>
+        <div class="row row1">
+            <div class="sub-content-statistics-top">
+                <div class="sub-content-statistics-left">
+                    <div class="sub-content-statistics-tracking boderadiusmodermshop"></div>
+                    <div class="sub-content-order-statistics boderadiusmodermshop"></div>
+                </div>
+                <div class="sub-content-rightnow boderadiusmodermshop" style="padding: 0 2% 0 3%">
+                    <canvas id="doughnut-chart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row row1">
+            <div class="sub-content-statistics-mid boderadiusmodermshop">
+            </div>
+        </div>
+        <div class="row row1">
+            <div class="sub-content-statistics-mid boderadiusmodermshop">
+            </div>
+        </div>
+        <div class="row row1">
+            <div class="sub-content-statistics-mid-user boderadiusmodermshop">
+            </div>
+        </div>
+        <div class="row row1">
+            <div class="sub-content-statistics-mid-sessionbycountry boderadiusmodermshop">
+            </div>
+        </div>
+        <div class="row row1">
+            <div class="sub-content-statistics-mid-sessionbysystem boderadiusmodermshop">
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="/themes/js/dashboard/chartjs/chartjs.js"></script>
+    <script type="text/javascript">
+        var mychartrightnow = document.getElementById("doughnut-chart");
+        mychartrightnow.width = 10;
+        mychartrightnow.height = 10;
+        new Chart(document.getElementById("doughnut-chart"), {
+            type: 'doughnut',
+            data: {
+                labels: ["IOS", "Android"],
+                datasets: [{
+                    backgroundColor: ["#00afee", "#31c9fc"],
+                    data: [64, 36]
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: "82",
+            }
+        });
+    </script>

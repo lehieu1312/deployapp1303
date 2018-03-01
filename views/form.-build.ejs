@@ -1,0 +1,87 @@
+<form class="form" method="POST">
+    <div class="row">
+        <input type="hidden" id="keyID" name="keyID" value="<%=sKeyFolder%>">
+        <div class="col-md-6">
+            <!-- <div class="form-group form-group-email has-feedback input-error">
+                        <label class="control-label"> Email * </label>
+                        <div class="">
+                            <input class="form-control input-form-info" type="text" id="email" displaytext="Email" name="email" value="hieu.ric@gmail.com" />
+                            <span id="icon-err-email" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                        </div>
+                    </div> -->
+            <div class="form-group has-feedback input-error">
+                <label class="control-label"> Create a secure password for your keystore *</label>
+                <div class=""><input class="form-control input-form-info" placeholder="" type="password" displaytext=" Key Store Password" id="keystore" name="keystore" value="taydotech" /></div>
+                <span id="icon-err-keystore" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+            </div>
+            <div class="form-group has-feedback input-error">
+                <label class=" control-label"> Confirm a secure password for your keystore * </label>
+                <div class="">
+                    <input class="form-control input-form-info" type="password" placeholder="" displaytext="Key Store Confirm Password " id="confirmkeystore" name="confirmkeystore" value="taydotech" />
+                    <span id="icon-err-confirmkeystore" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                </div>
+            </div>
+            <div class="form-group has-feedback input-error">
+                <label class=" control-label"> First and last name * </label>
+                <div class="">
+                    <input class="form-control input-form-info" type="text" id="CN" placeholder="" displaytext="First and last name" name="CN" value="Taydo Tech" />
+                    <span id="icon-err-CN" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                </div>
+            </div>
+            <div class="form-group has-feedback input-error">
+                <label class="control-label">  Organizational unit * </label>
+                <div class="">
+                    <input class="form-control input-form-info" type="text" id="OU" placeholder="" displaytext="Organizational unit" name="OU" value="TaydoTech" />
+                    <span id="icon-err-OU" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group has-feedback input-error">
+                <label class=" control-label">  Organizational * </label>
+                <div class="">
+                    <input class="form-control input-form-info" type="text" id="O" placeholder="" displaytext="Organizational" name="O" value="TaydoTech" />
+                    <span id="icon-err-O" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                </div>
+            </div>
+            <div class="form-group has-feedback input-error">
+                <label class=" control-label"> City or location * </label>
+                <div class="">
+                    <input class="form-control input-form-info" type="text" id="L" placeholder="" displaytext="City or location" name="L" value="Hanoi" />
+                    <span id="icon-err-L" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                </div>
+            </div>
+            <div class="form-group has-feedback input-error">
+                <label class=" control-label"> State or Province *</label>
+                <div class="">
+                    <input class="form-control input-form-info" type="text" id="ST" placeholder="" displaytext="State or Province" name="ST" value="Vietnam" />
+                    <span id="icon-err-ST" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                </div>
+            </div>
+            <div class="form-group has-feedback input-error">
+                <label class=" control-label"> Two-letter country *</label>
+                <div class="">
+                    <input type="text" class="form-control input-form-info" id="C" placeholder="" displaytext="Two-letter country" name="C" value="vn" />
+                    <span id="icon-err-C" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                </div>
+            </div>
+            <div class="form-group has-feedback input-error">
+                <label class=" control-label"> Alias name *</label>
+                <div class="">
+                    <input type="text" class="form-control input-form-info" placeholder="" displaytext="Alias name" id="alias" name="alias" value="TaydoTech" />
+                    <span id="icon-err-alias" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group div-btn-infobuild">
+                <div class="">
+                    <!-- <input type="button"  value="Build android" class="btn btn-primary"> -->
+                    <!-- onclick="send_ajax_build_android()" -->
+                    <button type="button" id="btn-deploy-android" class="btn btn-lg btn-infobuild">DEPLOY →</span></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

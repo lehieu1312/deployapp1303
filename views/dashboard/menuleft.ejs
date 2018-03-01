@@ -1,0 +1,172 @@
+<div id="menu-detail">
+    <div class="setlogo">
+        <a href="/">
+            <img id="logo-big" class="set-a-logo" src="/themes/img/logo-appbuilder.svg" />
+            <img id="logo-small" class="set-a-logo" src="/themes/img/dashboard/iconhome.png" />
+        </a>
+    </div>
+    <a href="/dashboard">
+        <div id="myapp" class="setlimenu divhover">
+            <div class="imgiconmenu">
+                <img class="imgfirst" src="/themes/img/dashboard/iconmyapp.png">
+                <img class="imglast" src="/themes/img/dashboard/iconmyappactive.png">
+            </div>
+            <span class="textamountapp spantextmenu" id="spanmenuleft"></span>
+            <div class="beauti-menusmall">
+                <span class="textamountapp"></span>
+                <div class="arrowmenuuser-right">
+                </div>
+                <div class="arrowmenuuser-right1">
+                </div>
+            </div>
+        </div>
+    </a>
+    <% if(appuse != ""){%>
+        <div id="submenuleft">
+            <div id="app-used-menuleft" class="setlimenu divhover">
+                <span class="subspantextmenu spantextmenu nameapp-menu" id="spanmenuleft">
+                    <%=appuse.nameApp%>
+                </span>
+                <span class="setarrowmenu">
+                    <img class="arrow-top showmenuuser" src="/themes/img/login/IconArrow.png" alt="">
+                    <img id="arowwx" class="setarrow showmenuuser " src="/themes/img/login/IconArrow.png" alt="">
+                </span>
+                <div class="beauti-menusmall">
+                    <span class="nameapp-menu"></span>
+                    <div class="arrowmenuuser-right">
+                    </div>
+                    <div class="arrowmenuuser-right1">
+                    </div>
+                </div>
+            </div>
+            <a href="/appversion/<%=appuse.idApp%>">
+                <div id="appversion" class="setlimenu submenuleft-edit divhover1">
+                    <span class="caret right-arrow set-span-arrow-right"></span>
+                    <span class="subspantextmenu1 spantextmenu">App Version</span>
+                    <div class="beauti-menusmall">App Version
+                        <div class="arrowmenuuser-right">
+                        </div>
+                        <div class="arrowmenuuser-right1">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/history/<%=appuse.idApp%>">
+                <div id="history" class="setlimenu submenuleft-edit divhover1">
+                    <span class="caret right-arrow set-span-arrow-right"></span>
+                    <span class="subspantextmenu1 spantextmenu">History</span>
+                    <div class="beauti-menusmall">History
+                        <div class="arrowmenuuser-right">
+                        </div>
+                        <div class="arrowmenuuser-right1">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/myteam/<%=appuse.idApp%>">
+                <div id="myteam" class="setlimenu submenuleft-edit divhover1">
+                    <span class="caret right-arrow set-span-arrow-right"></span>
+                    <span class="subspantextmenu1 spantextmenu">My Team</span>
+                    <div class="beauti-menusmall">My Team
+                        <div class="arrowmenuuser-right">
+                        </div>
+                        <div class="arrowmenuuser-right1">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <!-- <a href="/appsettings/<%=appuse.idApp%>">
+                <div id="appsetting" class="setlimenu submenuleft-edit divhover1">
+                    <span class="caret right-arrow set-span-arrow-right"></span>
+                    <span class="subspantextmenu1 spantextmenu">App Settings</span>
+                    <div class="beauti-menusmall">App Settings
+                        <div class="arrowmenuuser-right">
+                        </div>
+                        <div class="arrowmenuuser-right1">
+                        </div>
+                    </div>
+                </div>
+            </a> -->
+            <a href="/myorder/<%=appuse.idApp%>">
+                <div id="myorder" class="setlimenu submenuleft-edit divhover1">
+                    <span class="caret right-arrow set-span-arrow-right"></span>
+                    <span class="subspantextmenu1 spantextmenu">My Orders</span>
+                    <div class="beauti-menusmall">My Orders
+                        <div class="arrowmenuuser-right">
+                        </div>
+                        <div class="arrowmenuuser-right1">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="/traffic/<%=appuse.idApp%>">
+                <div id="traffic" class="setlimenu submenuleft-edit divhover1">
+                    <span class="caret right-arrow set-span-arrow-right"></span>
+                    <span class="subspantextmenu1 spantextmenu">Traffic</span>
+                    <div class="beauti-menusmall">Traffic
+                        <div class="arrowmenuuser-right">
+                        </div>
+                        <div class="arrowmenuuser-right1">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <!-- <div id="notification" class="setlimenu submenuleft-edit divhover1">
+                <span class="caret right-arrow set-span-arrow-right"></span>
+                <span class="subspantextmenu1 spantextmenu">Notification</span>
+                <div class="beauti-menusmall">Notification
+                    <div class="arrowmenuuser-right">
+                    </div>
+                    <div class="arrowmenuuser-right1">
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <%}%>
+            <!-- <div id="Affiliate" class="setlimenu divhover">
+                <div class="imgiconmenu">
+                    <img class="imgfirst" src="/themes/img/dashboard/iconlink.png">
+                    <img class="imglast" src="/themes/img/dashboard/iconlinkactive.png">
+                </div>
+                <div class="beauti-span-munusmall">
+                    <span class="spantextmenu" id="spanmenuleft">Affiliate</span>
+                </div>
+                <span class="setarrowmenu">
+
+                </span>
+                <div class="beauti-menusmall">Affiliate
+                    <div class="arrowmenuuser-right">
+                    </div>
+                    <div class="arrowmenuuser-right1">
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div id="Membership" class="setlimenu divhover">
+
+                <div class="imgiconmenu">
+                    <img class="imgfirst" src="/themes/img/dashboard/iconmembership.png">
+                    <img class="imglast" src="/themes/img/dashboard/iconmembershipactive.png">
+                </div>
+                <span class="spantextmenu">Membership</span>
+                <div class="beauti-menusmall">Membership
+                    <div class="arrowmenuuser-right">
+                    </div>
+                    <div class="arrowmenuuser-right1">
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div id="History" class="setlimenu divhover">
+                <div class="imgiconmenu">
+                    <img class="imgfirst" src="/themes/img/dashboard/iconmylong.png">
+                    <img class="imglast" src="/themes/img/dashboard/iconmylongactive.png">
+                </div>
+                <span class="spantextmenu" id="spanmenuleft">My log</span>
+
+                <div class="beauti-menusmall">My log
+                    <div class="arrowmenuuser-right">
+                    </div>
+                    <div class="arrowmenuuser-right1">
+                    </div>
+                </div>
+            </div> -->
+</div>

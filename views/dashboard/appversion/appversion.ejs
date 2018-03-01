@@ -1,0 +1,320 @@
+<% include ./../headerdetail %>
+    <div class="xcontent clsmenu">
+        <div id="title-detail" class="row row1">
+            <div id="title-appversion" class="content-title-detail has-feedback">
+                <span class="textmyapp">App Version</span>
+                <span class="setsearch">
+                    <input type="text" onkeyup="searchappversion()" id="inputsearchapp1" name="search" placeholder="Search...">
+                    <span class="form-control-feedback2" aria-hidden="true">
+                        <img src="/themes/img/dashboard/iconsearch.png">
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div id="filter-table-appversion" class="row row1">
+            <span class="table-show">Show</span>
+            <div id="filter-number" class="btn-group">
+                <button class="btn btn-default btn-sm dropdown-toggle btn-filternumber" type="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <span id="span-show-number" class="span-button-select">18</span>
+                    <span class="caret arow-button-select"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li id="show9">
+                        <a href="#">9 Per page</a>
+                    </li>
+                    <li id="show18">
+                        <a href="#">18 Per page</a>
+                    </li>
+                    <li id="show27">
+                        <a href="#">27 Per page</a>
+                    </li>
+                    <li id="show36">
+                        <a href="#">36 Per page</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div id="filter-date" class="btn-group">
+                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span id="span-selcect-date" class="span-button-select">All Dates</span>
+                    <span class="caret arow-button-select"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li id="select-date-1">
+                        <a href="#">Hours Ago</a>
+                    </li>
+                    <li id="select-date-2">
+                        <a href="#">Yesterday</a>
+                    </li>
+                    <li id="select-date-3">
+                        <a href="#">Last Weed</a>
+                    </li>
+                    <li id="select-date-4">
+                        <a href="#">All Dates</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li id="select-date-5">
+                        <input hidden id="fillter-date-custom" value="">
+                        <a href="#">Custom...</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="filter-status" class="btn-group">
+                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span id="span-selcect-status" class="span-button-select">New</span>
+                    <span class="caret arow-button-select"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li id="slect-status-1">
+                        <a href="#">New</a>
+                    </li>
+                    <li id="slect-status-2">
+                        <a href="#">Feature</a>
+                    </li>
+                    <li id="slect-status-3">
+                        <a href="#">All</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pagination-table-appversion1 row">
+                <ul class="pagination">
+                    <li class="edit-li-pagination">
+                        <a class="number-items" href="#"></a>
+                    </li>
+                    <li class="limitsuperback">
+                        <a class="limitpagination" href="#">
+                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="superback">
+                        <a href="#">
+                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="backpage">
+                        <a href="#">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="limitback">
+                        <a class="limitpagination" href="#">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="thispage" href="#">
+
+                        </a>
+                    </li>
+                    <li class="edit-li-pagination">
+                        <a class="numberpage" href="#">
+                        </a>
+                    </li>
+                    <li class="limitnext">
+                        <a class="limitpagination" href="#">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="nextpage">
+                        <a href="#">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="supernext">
+                        <a href="#">
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="limitsupernext">
+                        <a class="limitpagination" href="#">
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row row1">
+            <div id="content-appversion">
+                <table id="table-appversion">
+                    <tr id="title-table-header">
+                        <th width="7.6%">#</th>
+                        <th width="20%">App Name
+                            <img class="setarrow showmenuuser" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                        </th>
+                        <th width="12.2%">Version
+                            <img class="setarrow showmenuuser" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                        </th>
+                        <th width="34.9%">Changelog
+                            <img class="setarrow showmenuuser" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                        </th>
+                        <th width="15%">Updated
+                            <img class="setarrow showmenuuser" src="/themes/img/login/IconArrow.png" alt="deployapp">
+                        </th>
+                        <th width="10.3%"></th>
+                    </tr>
+                    <%for(var i = 0; i<appversions.inforAppversion.length;i++){ %>
+                        <% 
+                        var d = appversions.inforAppversion[i].updatedDate;
+                        var number = appversions.inforAppversion.length - i - 1;
+                        var m = d.getMonth() + 1;
+                        var updated = d.getDate() + "/" + m + "/" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + " GMT";    
+                        var arr = updated.split(" ");
+                         %>
+                            <tr id="version<%=i%>" class="tr-content-appversion">
+                                <td class="findcode">
+                                    <%= i + 1%>
+                                </td>
+                                <td id="nameapp-table" class="table-nameapp findnameapp">
+                                    <%=appversions.nameApp%>
+                                        <%
+                                        var numberappversion = appversions.inforAppversion[number].version.split(".");
+                                        if(i == 0){%>
+                                            <img src="/themes/img/appversion/iconnew.png">
+                                            <%}%>
+                                                <%  if(i == 1){%>
+                                                    <img src="/themes/img/appversion/iconfeature.png">
+                                                    <%}%>
+                                </td>
+                                <input hidden id="nameapp-appversion" value="<%=appversions.nameApp%>">
+                                <td class="table-version findversion">
+                                    <%=appversions.inforAppversion[number].version%>
+                                </td>
+                                <td class="table-changelog findnote">
+
+                                    <span class="text-head-changelog">Release version
+                                        <%=appversions.inforAppversion[number].version%>
+                                    </span>
+                                    <br>
+                                    <% function trimSpace(str) {
+                                            return str.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g, "").replace(/\s+/g, " ");
+                                        }
+                                        if(trimSpace(appversions.inforAppversion[number].changeLog).length < 100){
+                                        %>
+                                        <%=appversions.inforAppversion[number].changeLog%>
+                                            <%}else{%>
+                                                <%=appversions.inforAppversion[number].changeLog.slice(0,100)%>
+                                                    <a href="#" id="more-changelog<%=i%>" data-toggle="modal" data-target="#myModal-appversion">[...more]</a>
+                                                    <%}%>
+                                                        <input hidden id="content-changelog-hiden<%=i%>" value="<%=appversions.inforAppversion[number].changeLog%>">
+                                </td>
+                                <td class="table-time-appversion finddate">
+                                    <input id="time-ready<%=i%>" type="hidden" value="<%=d%>">
+                                    <span>
+                                        <%=arr[0]%>
+                                    </span>
+                                    <br>
+                                    <span>
+                                        <%=arr[1]%>
+                                            <%=arr[2]%>
+                                    </span>
+                                </td>
+                                <td>
+                                    <%if(appversions.inforAppversion[number].isDeployed==true){%>
+                                        <button id="btn-deploy">DEPLOYED</button>
+                                        <%}else{%>
+                                            <button class="btn-blue-deploy">DEPLOY</button>
+                                            <%}%>
+                                </td>
+                            </tr>
+                            <%}%>
+
+                                </tbody>
+                </table>
+                <span class="showing-footer1">Showing 1-
+                    <span id="number-show-footer"></span> of
+                    <span class="number-items" href="#"></span>
+                </span>
+                <div class="example">
+                    <div class="container">
+                        <div class="pagination-table-appversion row">
+                            <ul class="pagination">
+                                <li class="edit-li-pagination">
+                                    <a class="number-items" href="#"></a>
+                                </li>
+                                <li class="limitsuperback">
+                                    <a class="limitpagination" href="#">
+                                        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="superback">
+                                    <a href="#">
+                                        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="backpage">
+                                    <a href="#">
+                                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="limitback">
+                                    <a class="limitpagination" href="#">
+                                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="thispage" href="#">
+
+                                    </a>
+                                </li>
+                                <li class="edit-li-pagination">
+                                    <a class="numberpage" href="#">
+                                    </a>
+                                </li>
+                                <li class="limitnext">
+                                    <a class="limitpagination" href="#">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="nextpage">
+                                    <a href="#">
+                                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="supernext">
+                                    <a href="#">
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="limitsupernext">
+                                    <a class="limitpagination" href="#">
+                                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container ">
+        <div class="modal fade" id="myModal-appversion" role="dialog">
+            <div class="modal-dialog  ">
+                <div class="modal-content1">
+                    <div class="dialogdeleteapp">
+                        <div class="dialogdeleteapp-head-history">
+                        </div>
+                        <!-- <form id="form-note-history" onsubmit="return false"> -->
+                        <div id="text-changelog" class="textarea-history">
+                            <span class="text-head-changelog headlog"></span>
+                            <br>
+                            <span class="content-changelog"></span>
+                        </div>
+                        <div class="dialogdeleteapp-foot-history">
+                            <!-- <button id="cancel-histoty" class="float-right btn-gray margin-btn" >Cancel</button> -->
+                            <button class="float-right btn-blue" id="close-appversion" data-dismiss="modal" aria-label="Close">Close</button>
+                        </div>
+                        <!-- </form> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/appversion/appversion.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/appversion/pagination.js"></script>

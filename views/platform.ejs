@@ -1,0 +1,88 @@
+<% include header%>
+
+    <div class="container">
+        <div class="stepProcess">
+            <ul class="steps">
+                <li class="step completed">
+                    <div class="step-info">
+                        <span class="step-name">Upload Source</span>
+                    </div>
+                </li>
+
+                <li class="step completed">
+                    <div class="step-info">
+                        <span class="step-name">Setting Your App</span>
+                    </div>
+                </li>
+                <li class="step active">
+                    <div class="step-info">
+                        <span class="step-name">Choose Platforms</span>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="step-info">
+                        <span class="step-name">Customization</span>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="pl-panel">
+            <input type="hidden" id="platformval" />
+            <input type="hidden" id="aKey" value="<%=fKeyFolder%>" />
+            <div class="row head-platform">
+                <h1 class="font-bold chose-platform-text">Chose Platforms</h1>
+                <!-- <p class="textinfo-choseplatform">You are about to get your app done</p> -->
+            </div>
+
+            <div class="row content-platform">
+                <div class="row-platform">
+                    <div class="col-xs-12 col-md-6 box-platform-android">
+                        <a href="javascript:void(0);" id="android" class="">
+                            <div class="row pl-android">
+                                <div class="col-xs-10 platform-left padding-0">
+                                    <div class="tile-pl-android text-tile-platform">Android</div>
+                                    <div class="text-info-platform">Build your project for testing on android device</div>
+                                </div>
+                                <div class="col-xs-2 padding-0">
+                                    <img class="img-responsive icon-row-platform" alt="android platforms" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNS4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDMuOTQzcHgiIGhlaWdodD0iNTJweCIgdmlld0JveD0iMCAwIDQzLjk0MyA1MiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNDMuOTQzIDUyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGw9IiNBNEM2MzkiIGQ9Ik0zLjI1MywxNi4yNzFDMS40NTYsMTYuMjcxLDAsMTcuNTQ0LDAsMTkuMTE4djEyLjE3NWMwLDEuNTcyLDEuNDU3LDIuODQ5LDMuMjUzLDIuODQ5DQoJCWMxLjc5NSwwLDMuMjUzLTEuMjc1LDMuMjUzLTIuODQ5VjE5LjExOEM2LjUwNywxNy41NDUsNS4wNDksMTYuMjcxLDMuMjUzLDE2LjI3MXogTTI3Ljg2MSw0LjM2NGwyLjg0NC0yLjgzNQ0KCQljMC4zNTItMC4zNTEsMC4zNTItMC45MTUsMC0xLjI2N2MtMC4zNTMtMC4zNS0wLjkxOC0wLjM1LTEuMjcxLDBsLTMuNDk5LDMuNDkzQzI0LjY4NCwzLjQ1LDIzLjM2NCwzLjI4LDIxLjk5LDMuMjgNCgkJYy0xLjM1NiwwLTIuNjY2LDAuMTY4LTMuOTAyLDAuNDY2bC0zLjQ5My0zLjQ4M2MtMC4zNTMtMC4zNS0wLjkxOS0wLjM1LTEuMjcxLDBjLTAuMzUxLDAuMzUxLTAuMzUxLDAuOTE3LDAsMS4yNjhsMi44MjksMi44MTkNCgkJYy00LjcyLDEuODExLTcuOTk5LDUuNzM0LTcuOTk5LDEwLjI5NWMwLDAuMDU2LDI3LjY2OCwwLjAwMywyNy42NjgsMEMzNS44MjQsMTAuMDk1LDMyLjU2Myw2LjE4MSwyNy44NjEsNC4zNjR6IE0xNy45MjEsMTEuMzk2DQoJCWMtMC45LDAtMS42MjctMC43MjYtMS42MjctMS42MjVjMC0wLjg5NiwwLjcyNy0xLjYyNSwxLjYyNy0xLjYyNWMwLjg5OSwwLDEuNjI3LDAuNzI5LDEuNjI3LDEuNjI1DQoJCUMxOS41NSwxMC42NjksMTguODE2LDExLjM5NiwxNy45MjEsMTEuMzk2eiBNMjYuMDU5LDExLjM5NmMtMC44OTksMC0xLjYyOC0wLjcyNi0xLjYyOC0xLjYyNWMwLTAuODk2LDAuNzI5LTEuNjI1LDEuNjI4LTEuNjI1DQoJCXMxLjYyOCwwLjcyOSwxLjYyOCwxLjYyNUMyNy42ODcsMTAuNjY5LDI2Ljk1OCwxMS4zOTYsMjYuMDU5LDExLjM5NnogTTQwLjY5MSwxNi4yNzFjLTEuNzk3LDAtMy4yNTYsMS4yNzItMy4yNTYsMi44NDd2MTIuMTc1DQoJCWMwLDEuNTcyLDEuNDU5LDIuODQ5LDMuMjU2LDIuODQ5YzEuNzk2LDAsMy4yNTEtMS4yNzYsMy4yNTEtMi44NDlWMTkuMTE4QzQzLjk0MiwxNy41NDUsNDIuNDg0LDE2LjI3MSw0MC42OTEsMTYuMjcxeg0KCQkgTTguMTU1LDM1Ljc1MWMwLDIuNjg2LDIuMTc5LDQuODYsNC44NjYsNC44Njl2OC41MzJjMCwxLjU3MiwxLjQ1NywyLjg0OCwzLjI1MywyLjg0OGMxLjc5NSwwLDMuMjUxLTEuMjc0LDMuMjUxLTIuODQ4VjQwLjYyDQoJCWg0Ljg5MXY4LjUzMmMwLDEuNTcyLDEuNDU2LDIuODQ4LDMuMjUzLDIuODQ4YzEuNzk1LDAsMy4yNTItMS4yNzQsMy4yNTItMi44NDhWNDAuNjJoMC4wMjFjMi42OTcsMCw0Ljg4My0yLjE4MSw0Ljg4My00Ljg2OQ0KCQlWMTYuMjY2SDguMTU4djE5LjQ4NUg4LjE1NUw4LjE1NSwzNS43NTF6Ii8+DQo8L2c+DQo8L3N2Zz4NCg=="
+                                    />
+                                </div>
+                            </div>
+
+                        </a>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 box-platform-ios">
+                        <a href="javascript:void(0);" id="ios" class="">
+
+                            <div class="row pl-ios">
+                                <div class="col-xs-10 platform-left padding-0">
+                                    <div class="tile-pl-ios text-tile-platform">iOS</div>
+                                    <div class="text-info-platform">Build your project for testing on iOS device</div>
+                                </div>
+                                <div class="col-xs-2 padding-0">
+                                    <img class="img-responsive icon-row-platform" alt="apple platforms" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNS4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSI0Mi4zNHB4IiBoZWlnaHQ9IjUycHgiIHZpZXdCb3g9IjAgMCA0Mi4zNCA1MiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNDIuMzQgNTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPHBhdGggZmlsbD0iI0M3QzhDOCIgZD0iTTM1LjM2MywyNy42M2MtMC4wNjUtNi41ODUsNS4zNzEtOS43NDQsNS42MTMtOS45MDFjLTMuMDU0LTQuNDctNy44MTMtNS4wODItOS41MDktNS4xNTINCgkJYy00LjA0OS0wLjQxLTcuOSwyLjM4NC05Ljk1NywyLjM4NGMtMi4wNDksMC01LjIyMS0yLjMyNC04LjU3OS0yLjI2M2MtNC40MTQsMC4wNjYtOC40ODMsMi41NjYtMTAuNzU3LDYuNTINCgkJQy0yLjQxLDI3LjE3NSwxLDM4Ljk2Myw1LjQ2OSw0NS40MTdjMi4xODUsMy4xNTgsNC43ODksNi43MDcsOC4yMDksNi41OGMzLjI5My0wLjEzMiw0LjUzNy0yLjEzMSw4LjUxOS0yLjEzMQ0KCQljMy45NzksMCw1LjEwMSwyLjEzMSw4LjU4NCwyLjA2NWMzLjU0NC0wLjA2Niw1Ljc4OC0zLjIyMSw3Ljk1Ny02LjM5YzIuNTA5LTMuNjY0LDMuNTQxLTcuMjEzLDMuNjAzLTcuMzk2DQoJCUM0Mi4yNjIsMzguMTExLDM1LjQzMiwzNS40OTYsMzUuMzYzLDI3LjYzeiBNMjguODE2LDguMzA1QzMwLjYyOSw2LjEwMiwzMS44NTUsMy4wNDgsMzEuNTIxLDANCgkJYy0yLjYxNCwwLjEwNS01Ljc4MiwxLjc0MS03LjY1OCwzLjkzOGMtMS42ODMsMS45NDktMy4xNTUsNS4wNjEtMi43NjEsOC4wNDdDMjQuMDIxLDEyLjIxMSwyNi45OTksMTAuNTAxLDI4LjgxNiw4LjMwNXoiLz4NCjwvZz4NCjwvc3ZnPg0K"
+                                    />
+                                </div>
+                            </div>
+
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="row footer-platform">
+                    <button type="button" class="btn btn-lg btn-platform" id="btn-send-platform">NEXT →</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <% include footer%>

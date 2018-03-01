@@ -1,0 +1,100 @@
+<% include header%>
+    <script language="javascript">
+        function upload(zfile) {
+            var name = document.getElementById('fileupload');
+            if (name.files.item(0).name.split('.').pop() != 'zip') {
+                $('.form-group').find('.help-block').html('File upload is not zip format');
+                $('.form-group').removeClass('has-success').addClass('has-error');
+
+                // alert('file upload is not zip');
+                return false;
+            } else if (name.files.item(0).size > 150000000) {
+                $('.form-group').find('.help-block').html('Upload file size is too large');
+                $('.form-group').removeClass('has-success').addClass('has-error');
+                return false;
+            } else return true
+        };
+
+        //form Submit action
+        $("form").submit(function(evt) {
+            evt.preventDefault();
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: '/up',
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                processData: false,
+                success: function(response) {
+                    alert(response);
+                }
+            });
+
+        });
+
+        function send_ajax() {
+            var obj = {};
+            $('#loading').show();
+            //alert('le an');
+            var formData = new FormData($(this)[0]);
+            // $(".spinner").fadeIn();
+            $.ajax({
+                url: '/up',
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                enctype: 'multipart/form-data',
+                processData: false,
+                success: function(response) {
+                    alert(response);
+                }
+            }).always(function() {
+                $('#loading').hide();
+            });
+        }
+    </script>
+
+    <div class="container">
+        <form class="form form-horizontal">
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Choose file</label>
+                <div class="col-sm-4"><input type="file" id="fileupload" name="file_upload" /></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-4"><span class="help-block" id="error"></span></div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-sm-4 col-sm-offset-2">
+                    <input type="submit" value="upload" onclick="send_ajax()" class="btn btn-primary">
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+    <div class="container">
+        <h1>Build and sign app success.</h1><br/>
+        <h2>Check mail to get file apk!</h2>
+        <div class="row">
+
+            <% if(qrcodeUnsign){%>
+                <div class="col-md-3">
+                    <img src='<%=qrcodeUnsign%>' width="150px" height="150px" />
+                </div>
+
+                <%} %>
+
+        </div>
+    </div>
+    </div>
+
+    <div></div>
+    <% include footer%>

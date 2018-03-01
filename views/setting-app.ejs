@@ -1,0 +1,139 @@
+<% include header%>
+
+
+    <div class="container infoapp">
+        <div class="stepProcess">
+            <ul class="steps">
+                <li class="step completed">
+                    <div class="step-info">
+                        <span class="step-name">Upload Source</span>
+                    </div>
+                </li>
+                <li class="step active">
+                    <div class="step-info">
+                        <span class="step-name">Setting Your App</span>
+                    </div>
+                </li>
+                <li class="step ">
+                    <div class="step-info">
+                        <span class="step-name">Choose Platforms</span>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="step-info">
+                        <span class="step-name">Customization</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="title-setting">
+            <span>Setting your application </span>
+        </div>
+
+        <!-- action="/info-app" method="POST" onsubmit="return(validateForm())"  -->
+        <form class="form" id="fSettingApp" method="POST">
+
+            <%var i=0,j=0; %>
+                <%for(i=0;i<arrFile.length;i++){%>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="##<%=arrFile[i][ '$'].path.split( '.').shift().replace( '/', '') %>">
+                                    <%=arrFile[i]['$'].path %>
+                                </a>
+                            </span>
+                        </div>
+
+                        <div id="<%=arrFile[i]['$'].path.split('.').shift().replace('/','') %>" class="panel-collapse collapse in body-input-setting">
+                            <div class="panel-body setting-app-body">
+                                <%for(j=0;j<arrFile[i].field.length;j++){
+                                var path=arrFile[i]['$'].path;
+                                %>
+
+                                    <div class="form-group group-input-setting has-feedback input-error">
+                                        <label class="control-label ">
+                                            <%=arrFile[i]['field'][j]['$'].label %>
+                                           <% if(arrFile[i][ 'field'][j][ '$'].required=='true'){%>
+                                            <span>*</span> 
+                                           <% }
+                                            %>
+                                    
+                                        </label>
+                                        <% if(arrFile[i]['field'][j]['$'].type=='string'){%>
+                                            <div class="arrFile[i][ 'field'][j][ '$'].rules">
+                                                <% if(arrFile[i][ 'field'][j][ '$'].required=='true'){%>
+                                                    <input class="form-control " maxlength="<%=arrFile[i][ 'field'][j][ '$'].maxLength %>" required="<%=arrFile[i][ 'field'][j][ '$'].required %>" type="text" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>"
+                                                        value="<%=arrFile[i][ 'field'][j][ '$'].Default %>" />
+                                                    <%}else{%>
+                                                        <input class="form-control " maxlength="<%=arrFile[i][ 'field'][j][ '$'].maxLength %>" type="text" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" value="<%=arrFile[i][ 'field'][j][ '$'].Default %>"
+                                                        />
+                                                        <%}%>
+                                                            <span id="icon-err" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                                            </div>
+
+                                            <%}else  if(arrFile[i]['field'][j]['$'].type=='boolean'){%>
+                                                <div class="">
+                                                    <label class="radio-inline">
+                                                     <input type="radio" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>"  value="true" checked rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" /> true
+                                                </label>
+                                                    <label class="radio-inline">
+                                                    <input type="radio" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>"  value="false" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" /> false
+                                                </label>
+                                                </div>
+
+
+                                                <%}else  if(arrFile[i]['field'][j]['$'].type=='textarea'){%>
+                                                    <div class=" ">
+                                                        <% if(arrFile[i][ 'field'][j][ '$'].required=='true'){%>
+                                                            <textarea class="form-control" maxlength="<%=arrFile[i][ 'field'][j][ '$'].maxLength %>" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>" required="<%=arrFile[i][ 'field'][j][ '$'].required %>" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" rows="5"
+                                                                value="<%=arrFile[i][ 'field'][j][ '$'].Default %>"></textarea>
+                                                            <%}else{%>
+                                                                <textarea class="form-control" maxlength="<%=arrFile[i][ 'field'][j][ '$'].maxLength %>" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" rows="5" value="<%=arrFile[i][ 'field'][j][ '$'].Default %>"></textarea>
+                                                                <%}%>
+                                                                    <span id="icon-err" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                                                    </div>
+                                                    <%}else  if(arrFile[i]['field'][j]['$'].type=='editor'){%>
+                                                        <div class="">
+                                                            <% if(arrFile[i][ 'field'][j][ '$'].required=='true'){%>
+                                                                <textarea class="form-control editor" maxlength="<%=arrFile[i][ 'field'][j][ '$'].maxLength %>" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>" required="<%=arrFile[i][ 'field'][j][ '$'].required %>" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>"
+                                                                    rows="10" value="<%=arrFile[i][ 'field'][j][ '$'].Default %>"></textarea>
+                                                                <%}else{%>
+                                                                    <textarea class="form-control editor" maxlength="<%=arrFile[i][ 'field'][j][ '$'].maxLength %>" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>" rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" value="<%=arrFile[i][ 'field'][j][ '$'].Default %>"></textarea>
+                                                                    <%}%>
+                                                                        <span id="icon-err" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                                                        </div>
+                                                        <span id="icon-err" class="glyphicon glyphicon-remove form-control-feedback display-none"> </span>
+                                                        <%}else{%>
+                                                            <% if(arrFile[i][ 'field'][j][ '$'].required=='true'){%>
+                                                                <div class=""><input class="form-control" maxlength="<%=arrFile[i][ 'field'][j][ '$'].maxLength %>" required="<%=arrFile[i]['field'][j]['$'].required %>" type="<%=arrFile[i]['field'][j]['$'].type %>" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>"
+                                                                        rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" value="<%=arrFile[i][ 'field'][j][ '$'].Default %>" />
+                                                                    <%}else{%>
+                                                                        <div class=""><input class="form-control" maxlength="<%=arrFile[i][ 'field'][j][ '$'].maxLength %>" type="<%=arrFile[i]['field'][j]['$'].type %>" name="<%=path+'='+arrFile[i]['field'][j]['$'].name %>"
+                                                                                rules="<%=arrFile[i][ 'field'][j][ '$'].rules %>" value="<%=arrFile[i][ 'field'][j][ '$'].Default %>" />
+                                                                            <%}%>
+                                                                                <span id="icon-err" class="glyphicon glyphicon-remove form-control-feedback display-none"></span>
+                                                                        </div>
+
+                                                                        <%}%>
+                                                                            <span class="help-block" id="error"></span>
+                                                                </div>
+                                                                <%}%>
+
+                                    </div>
+                            </div>
+                        </div>
+
+                        <%}%>
+                            <div class="form-group">
+                                <div class="col-sm-6 div-btn-infoapp">
+                                    <input type="" rules="" hidden name="pathRoot" value="<%=cPathRootFolder%>" />
+                                    <input type="" rules="" hidden name="keyFolder" value="<%=fKeyFolder%>" />
+                                    <!-- onclick="send_data_setting()" -->
+                                    <button type="button" id="btn-setting-app" class="btn btn-lg btn-infoapp">NEXT →</span></button>
+                                </div>
+                            </div>
+
+        </form>
+
+        </div>
+        <% include footer%>
