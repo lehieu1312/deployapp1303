@@ -39,7 +39,7 @@ var multipartMiddleware = multipart();
 var app = express();
 var server = http.Server(app);
 var io = require('socket.io')(server);
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     req.io = io;
     next();
 });
@@ -74,16 +74,16 @@ mongoose.connect('mongodb://127.0.0.1/deployapp', {
     connectTimeoutMS: 300000,
     reconnectTries: 30,
     reconnectInterval: 3000
-        // ssl: true,
-        // sslValidate: false
+    // ssl: true,
+    // sslValidate: false
 });
 var dbMongo = mongoose.connection;
 
-dbMongo.on('error', function(err) {
+dbMongo.on('error', function (err) {
     console.log(err);
 
 });
-dbMongo.on('open', function() {
+dbMongo.on('open', function () {
     console.log('Mongodb conected');
     // console.log(io);
 })
@@ -98,20 +98,22 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-    User.findOne({ id: id }, (err, user) => {
+    User.findOne({
+        id: id
+    }, (err, user) => {
         console.log("deserializeUser user :" + user);
         done(null, user);
     })
 });
 //////////////////////////////////
 
-let updateDataDBUploaded = async() => {
+let updateDataDBUploaded = async () => {
     var sUploaded, sDeployed, sRegister;
     try {
         let staticUpload = await Statistic.find().exec();
         // console.log(staticUpload);
 
-        await staticUpload.forEach(function(kq) {
+        await staticUpload.forEach(function (kq) {
             sUploaded = kq.uploaded;
             // sDeployed = kq.deployed;
             // sRegister = kq.register;
@@ -121,18 +123,24 @@ let updateDataDBUploaded = async() => {
         // sDeployed = sDeployed + 1;
         // sRegister = sRegister + 1;
         //, deployed: sDeployed, register: sRegister
-        let udStatistic = await Statistic.update({}, { $set: { uploaded: sUploaded } }, { upsert: false }).exec();
+        let udStatistic = await Statistic.update({}, {
+            $set: {
+                uploaded: sUploaded
+            }
+        }, {
+            upsert: false
+        }).exec();
     } catch (error) {
 
     }
 }
-let updateDataDBDeployed = async() => {
+let updateDataDBDeployed = async () => {
     var sUploaded, sDeployed, sRegister;
     try {
         let staticUpload = await Statistic.find().exec();
         // console.log(staticUpload);
 
-        await staticUpload.forEach(function(kq) {
+        await staticUpload.forEach(function (kq) {
             // sUploaded = kq.uploaded;
             sDeployed = kq.deployed;
             sRegister = kq.register;
@@ -142,7 +150,14 @@ let updateDataDBDeployed = async() => {
         sDeployed = sDeployed + 1;
         sRegister = sRegister + 1;
         //, deployed: sDeployed, register: sRegister
-        let udStatistic = await Statistic.update({}, { $set: { deployed: sDeployed, register: sRegister } }, { upsert: false }).exec();
+        let udStatistic = await Statistic.update({}, {
+            $set: {
+                deployed: sDeployed,
+                register: sRegister
+            }
+        }, {
+            upsert: false
+        }).exec();
     } catch (error) {
         console.log(error);
     }
@@ -153,7 +168,11 @@ setInterval(updateDataDBDeployed, 500000);
 let delKeyBuilding = () => {
     try {
         var sDateNow = Date.now();
-        listBuilding.remove({ dateStartBuild: { $lt: sDateNow - (1000 * 60 * 30) } }).exec((err, result) => {
+        listBuilding.remove({
+            dateStartBuild: {
+                $lt: sDateNow - (1000 * 60 * 30)
+            }
+        }).exec((err, result) => {
             if (err) {
                 console.log(err);
                 // return res.render('error', { error: err, title: 'Error Data' });
@@ -168,11 +187,11 @@ let delKeyBuilding = () => {
 }
 
 setInterval(delKeyBuilding, 60000);
-io.on('connection', function(socket) {
+io.on('connection', function (socket) {
     console.log('co nguoi ket noi: ' + socket.id + ' ---> ' + moment(Date.now()).format('DD-MM-YYYY, HH:mm:ss'));
     var sUploaded, sDeployed, sRegister;
 
-    let queryDBUploaded = async() => {
+    let queryDBUploaded = async () => {
 
         let realUploaded = await Infomation.find({}).count().exec();
         // let realBuilded = await Infomation.find({ stepBuild: 'builded' }).count().exec();
@@ -181,7 +200,7 @@ io.on('connection', function(socket) {
         let staticUpload = await Statistic.find().exec();
         // console.log(staticUpload);
 
-        await staticUpload.forEach(function(kq) {
+        await staticUpload.forEach(function (kq) {
             sUploaded = kq.uploaded;
             // sDeployed = kq.deployed;
             // sRegister = kq.register;
@@ -196,18 +215,22 @@ io.on('connection', function(socket) {
         // console.log(sRegister);
 
         // uploaded = uploaded + 1;
-        io.sockets.emit('Server-send-data-uploaded', { clUploaded: sUploaded });
+        io.sockets.emit('Server-send-data-uploaded', {
+            clUploaded: sUploaded
+        });
     }
-    let queryDBDeployed = async() => {
+    let queryDBDeployed = async () => {
 
         // let realUploaded = await Infomation.find({ stepBuild: 'uploaded' }).count().exec();
-        let realBuilded = await Infomation.find({ stepBuild: 'builded' }).count().exec();
+        let realBuilded = await Infomation.find({
+            stepBuild: 'builded'
+        }).count().exec();
         let realRegister = await User.find().count().exec();
 
         let staticUpload = await Statistic.find().exec();
         // console.log(staticUpload);
 
-        await staticUpload.forEach(function(kq) {
+        await staticUpload.forEach(function (kq) {
             // sUploaded = kq.uploaded;
             sDeployed = kq.deployed;
             sRegister = kq.register;
@@ -222,7 +245,10 @@ io.on('connection', function(socket) {
         // console.log(sRegister);
 
         // uploaded = uploaded + 1;
-        io.sockets.emit('Server-send-data-deployed', { clDeployed: sDeployed, clRegister: sRegister });
+        io.sockets.emit('Server-send-data-deployed', {
+            clDeployed: sDeployed,
+            clRegister: sRegister
+        });
     }
     setInterval(queryDBUploaded, 120000);
     setInterval(queryDBDeployed, 500000);
@@ -233,14 +259,14 @@ let commandLine = (cmd, optionList) => {
     return new Promise((resolve, reject) => {
         try {
             var commandLine = crossSpawn.spawn(cmd, optionList);
-            commandLine.stdout.on('data', function(data) {
+            commandLine.stdout.on('data', function (data) {
                 console.log('data out: ' + data.toString());
                 if (data instanceof Error) {
                     //console.log(chalk.bold(data.toString()));
                     reject(data);
                 }
             });
-            commandLine.stderr.on('data', function(data) {
+            commandLine.stderr.on('data', function (data) {
                 console.log('data error: ' + data.toString());
                 if (data instanceof Error) {
                     //console.log(chalk.bold(data.toString()));
@@ -251,7 +277,7 @@ let commandLine = (cmd, optionList) => {
                     reject(data);
                 }
             });
-            commandLine.on('close', function(code) {
+            commandLine.on('close', function (code) {
                 if (code > 0) {
                     reject(new Error(code));
                 }
@@ -292,9 +318,11 @@ let delFolderNotExist = () => {
         console.log('====Temporary=====');
         var pathProjectTemp = path.join(appRoot, 'public', 'temporary');
         var arrFolder = fs.readdirSync(pathProjectTemp);
-        async.each(arrFolder, function(result) {
+        async.each(arrFolder, function (result) {
             console.log('res temp: ' + result);
-            Infomation.find({ keyFolder: result }).count().exec((err, data) => {
+            Infomation.find({
+                keyFolder: result
+            }).count().exec((err, data) => {
                 if (err) console.log(err);
                 console.log('data: ' + data);
                 if (data <= 0) {
@@ -306,9 +334,11 @@ let delFolderNotExist = () => {
         console.log('====Project=====');
         var pathProjectPro = path.join(appRoot, 'public', 'project');
         var arrFolderPro = fs.readdirSync(pathProjectPro);
-        async.each(arrFolderPro, function(resultPro) {
+        async.each(arrFolderPro, function (resultPro) {
             console.log('res project: ' + resultPro);
-            Infomation.find({ keyFolder: resultPro }).count().exec((err, data) => {
+            Infomation.find({
+                keyFolder: resultPro
+            }).count().exec((err, data) => {
                 if (err) console.log(err);
                 console.log('data: ' + data);
                 if (data <= 0) {
@@ -320,9 +350,11 @@ let delFolderNotExist = () => {
         console.log('====Uploads=====');
         var pathProjectUploads = path.join(appRoot, 'public', 'uploads');
         var arrFolderUp = fs.readdirSync(pathProjectUploads);
-        async.each(arrFolderUp, function(resultUp) {
+        async.each(arrFolderUp, function (resultUp) {
             console.log('res uploads: ' + resultUp);
-            Infomation.find({ keyFolder: resultUp }).count().exec((err, data) => {
+            Infomation.find({
+                keyFolder: resultUp
+            }).count().exec((err, data) => {
                 if (err) console.log(err);
                 console.log('data: ' + data);
                 if (data <= 0) {
@@ -344,14 +376,21 @@ let delFolderApp = () => {
         var sDateNow = Date.now();
         var sKey;
         console.log('=============Start Del=============');
-        Infomation.find({ dateCreate: { $lt: sDateNow - (1000 * 60 * 60 * 12) } }).exec(async(err, result) => {
+        Infomation.find({
+            dateCreate: {
+                $lt: sDateNow - (1000 * 60 * 60 * 12)
+            }
+        }).exec(async (err, result) => {
             if (err) {
                 console.log(err);
-                return res.render('error', { error: err, title: 'Error Data' });
+                return res.render('error', {
+                    error: err,
+                    title: 'Error Data'
+                });
             }
             console.log('number folder: ' + result.length);
             if (result.length > 0) {
-                async.each(result, function(kq) {
+                async.each(result, function (kq) {
                     // var mang = kq.keyFolder;
                     sKey = kq.keyFolder;
 
@@ -385,14 +424,25 @@ let delFolderNotSuccess = () => {
         var sDateNow = Date.now();
         var sKey;
         console.log('=============Start Del=============');
-        Infomation.find({ logError: '', stepBuild: { $nin: ['stepBuild', 'sendMail'] }, dateCreate: { $lt: sDateNow - (1000 * 60 * 60 * 12) } }).exec(async(err, result) => {
+        Infomation.find({
+            logError: '',
+            stepBuild: {
+                $nin: ['stepBuild', 'sendMail']
+            },
+            dateCreate: {
+                $lt: sDateNow - (1000 * 60 * 60 * 12)
+            }
+        }).exec(async (err, result) => {
             if (err) {
                 console.log(err);
-                return res.render('error', { error: err, title: 'Error Data' });
+                return res.render('error', {
+                    error: err,
+                    title: 'Error Data'
+                });
             }
             console.log('number folder not success: ' + result.length);
             if (result.length > 0) {
-                async.each(result, function(kq) {
+                async.each(result, function (kq) {
                     // var mang = kq.keyFolder;
                     sKey = kq.keyFolder;
 
@@ -456,14 +506,16 @@ function haltOnTimedout(req, res, next) {
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(expressValidator({
-    errorFormatter: function(param, msg, value) {
+    errorFormatter: function (param, msg, value) {
         var namespace = param.split('.'),
             root = namespace.shift(),
             formParam = root;
@@ -479,31 +531,56 @@ app.use(expressValidator({
     }
 }));
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.locals.title = 'Build App Auto one click';
     res.locals.error = '';
     next();
 });
-app.use(session({ resave: true, saveUninitialized: true, secret: 'appbuild' }));
-app.use(function(req, res, next) {
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: 'appbuild'
+}));
+app.use(function (req, res, next) {
     try {
         if (req.session.iduser) {
             // var picturex;
             // console.log('gose....................');
-            res.locals.staticuser = { msglog: "Profile", msgregis: "Logout", statusli: "hideli", useronline: "useronline" };
-            res.locals.menuaccount = { statususer: "" };
+            res.locals.staticuser = {
+                msglog: "Profile",
+                msgregis: "Logout",
+                statusli: "hideli",
+                useronline: "useronline"
+            };
+            res.locals.menuaccount = {
+                statususer: ""
+            };
             next();
 
         } else {
             // console.log('not gose....................');
-            res.locals.staticuser = { msglog: "Login", msgregis: "Register", statusli: "", useronline: "" };
-            res.locals.menuaccount = { statususer: "statususer" };
+            res.locals.staticuser = {
+                msglog: "Login",
+                msgregis: "Register",
+                statusli: "",
+                useronline: ""
+            };
+            res.locals.menuaccount = {
+                statususer: "statususer"
+            };
             next();
         }
     } catch (error) {
         console.log(error);
-        res.locals.staticuser = { msglog: "Login", msgregis: "Register", statusli: "", useronline: "" };
-        res.locals.menuaccount = { statususer: "statususer" };
+        res.locals.staticuser = {
+            msglog: "Login",
+            msgregis: "Register",
+            statusli: "",
+            useronline: ""
+        };
+        res.locals.menuaccount = {
+            statususer: "statususer"
+        };
         next();
         // if (devMode == true)
         //     return res.send({ status: "3", message: error + '' });
@@ -581,23 +658,27 @@ app.use('/deploy-api/', API);
 // app.use('/', paypal);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     // next(err);
-    res.render('404', { title: 'Page Not Found' });
+    res.render('404', {
+        title: 'Page Not Found'
+    });
 });
 // app.use(function(req, res, next) {
 //     res.cookie('arrFileUpload', [])
 // });
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
     // render the error page
     res.status(err.status || 500);
-    res.render('error', { title: 'Page Not Found' });
+    res.render('error', {
+        title: 'Page Not Found'
+    });
 });
 
 
@@ -649,4 +730,6 @@ function onListening() {
     console.log('Listening on ' + bind);
     debug('Listening on ' + bind);
 }
+let testgit = 1123;
+console.log(testgit);
 module.exports = app;
