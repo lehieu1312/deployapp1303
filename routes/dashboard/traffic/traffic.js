@@ -50,6 +50,12 @@ function filtercustom(a) {
     return b;
 }
 
+Array.prototype.sortBy = function (p) {
+    return this.slice(0).sort(function (a, b) {
+        return (a[p] > b[p]) ? 1 : (a[p] < b[p]) ? -1 : 0;
+    });
+}
+
 router.get("/traffic/:idApp", checkAdmin, (req, res) => {
     Inforapp.findOne({
         idApp: req.params.idApp,
@@ -123,11 +129,7 @@ router.post("/rightnow/:idApp", (req, res) => {
             return el.platform == "ios"
         });
         var setpage = filtercustom(getdata);
-        Array.prototype.sortBy = function (p) {
-            return this.slice(0).sort(function (a, b) {
-                return (a[p] > b[p]) ? 1 : (a[p] < b[p]) ? -1 : 0;
-            });
-        }
+
         var arraypage = [];
         for (let i = 0; i < setpage.length; i++) {
             let page = getdata.filter(function (el) {
@@ -169,11 +171,7 @@ router.post("/pageuser/:idApp", (req, res) => {
             });
         }
         var setpage = filtercustom(getdata);
-        Array.prototype.sortBy = function (p) {
-            return this.slice(0).sort(function (a, b) {
-                return (a[p] > b[p]) ? 1 : (a[p] < b[p]) ? -1 : 0;
-            });
-        }
+
         var arraypage = [];
         for (let i = 0; i < setpage.length; i++) {
             let page = getdata.filter(function (el) {
@@ -398,6 +396,35 @@ router.post("/userbytime/:idApp", (req, res) => {
         }
         return await res.json(getdata);
     })()
+})
+
+function filtertraffic(a) {
+    var b = [];
+    while (a.length > 0) {
+        let c = a.filter(function (el) {
+            return el.country == a[0].country
+        });
+        b.push({
+            country: [c[0].country],
+            count: c.length
+        });
+        a = a.filter(function (el) {
+            return el.country != a[0].country
+        });
+    }
+    return b;
+}
+
+router.get("/sessioncountry/:idApp", (req, res) => {
+    traffic.find({
+        idApp: req.params.idApp
+    }).then((traffic) => {
+        let data = [];
+        data = filtertraffic(traffic);
+        res.json(
+            data.sortBy("count").reverse()
+        )
+    })
 })
 
 module.exports = router;

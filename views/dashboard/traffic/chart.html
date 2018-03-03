@@ -1,215 +1,243 @@
-<!doctype html>
-<html>
+<style>
+</style>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/mapdata/index.js?1"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+<script src="https://www.highcharts.com/samples/maps/demo/all-maps/jquery.combobox.js"></script>
 
-<head>
-    <title>Line Chart</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
-    <script src="./../../../public/themes/js/dashboard/chartjs/chartjs.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-    <style>
-        canvas {
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
+<div id="demo-wrapper">
+    <div id="mapBox">
+        <div id="up"></div>
+        <div class="selector">
+            <button id="btn-prev-map" class="prev-next">
+                <i class="fa fa-angle-left"></i>
+            </button>
+            <select id="mapDropdown" class="ui-widget combobox"></select>
+            <button id="btn-next-map" class="prev-next">
+                <i class="fa fa-angle-right"></i>
+            </button>
+        </div>
+        <div id="container"></div>
+    </div>
+</div>
+
+<script>
+    var baseMapPath = "https://code.highcharts.com/mapdata/",
+        showDataLabels = false, // Switch for data labels enabled/disabled
+        mapCount = 0,
+        searchText,
+        mapOptions = '';
+
+    // Populate dropdown menus and turn into jQuery UI widgets
+    $.each(Highcharts.mapDataIndex, function (mapGroup, maps) {
+        if (mapGroup !== "version") {
+            mapOptions += '<option class="option-header">' + mapGroup + '</option>';
+            $.each(maps, function (desc, path) {
+                mapOptions += '<option value="' + path + '">' + desc + '</option>';
+                mapCount += 1;
+            });
         }
-    </style>
-</head>
+    });
+    searchText = 'Search ' + mapCount + ' maps';
+    mapOptions = '<option value="custom/world.js">' + searchText + '</option>' + mapOptions;
+    $("#mapDropdown").append(mapOptions).combobox();
 
-<body>
-    <canvas id="myChart" width="400" height="400"></canvas>
-    <canvas id="linetime" width="500" height="400"></canvas>
+    // Change map when item selected in dropdown
+    $("#mapDropdown").change(function () {
+        var $selectedItem = $("option:selected", this),
+            mapDesc = $selectedItem.text(),
+            mapKey = this.value.slice(0, -3),
+            svgPath = baseMapPath + mapKey + '.svg',
+            geojsonPath = baseMapPath + mapKey + '.geo.json',
+            javascriptPath = baseMapPath + this.value,
+            isHeader = $selectedItem.hasClass('option-header');
 
-    <canvas id="canvas"></canvas>
+        // Dim or highlight search box
+        if (mapDesc === searchText || isHeader) {
+            $('.custom-combobox-input').removeClass('valid');
+            location.hash = '';
+        } else {
+            $('.custom-combobox-input').addClass('valid');
+            location.hash = mapKey;
+        }
 
-    <script>
-        let chart1 = document.getElementById("myChart").getContext("2d")
-        Chart.defaults.global.defaultFontFamily = 'Lato';
-        Chart.defaults.global.defaultFontSize = 20;
-        Chart.defaults.global.defaultFontColor = '#777';
+        if (isHeader) {
+            return false;
+        }
 
-        let mychart1 = new Chart(chart1, {
-            type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-            data: {
-                labels: ['Ios', 'Android'],
-                datasets: [{
-                    label: 'Population',
-                    data: [
-                        617594,
-                        181045,
-                        // 153060,
-                        // 106519,
-                        // 105162,
-                        // 95072
-                    ],
-                    //backgroundColor:'green',
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        // 'rgba(255, 206, 86, 0.6)',
-                        // 'rgba(75, 192, 192, 0.6)',
-                        // 'rgba(153, 102, 255, 0.6)',
-                        // 'rgba(255, 159, 64, 0.6)',
-                        // 'rgba(255, 99, 132, 0.6)'
-                    ],
-                    // borderWidth: 1,
-                    // borderColor: '#777',
-                    // hoverBorderWidth: 3,
-                    // hoverBorderColor: '#000'
-                }]
-            },
-            options: {
+        // Show loading
+        if (Highcharts.charts[0]) {
+            Highcharts.charts[0].showLoading('<i class="fa fa-spinner fa-spin fa-2x"></i>');
+        }
+
+
+        // When the map is loaded or ready from cache...
+        function mapReady() {
+
+            var mapGeoJSON = Highcharts.maps[mapKey],
+                data = [],
+                parent,
+                match;
+
+            // Update info box download links
+            $("#download").html(
+                '<a class="button" target="_blank" href="https://jsfiddle.net/gh/get/jquery/1.11.0/' +
+                'highcharts/highcharts/tree/master/samples/mapdata/' + mapKey + '">' +
+                'View clean demo</a>' +
+                '<div class="or-view-as">... or view as ' +
+                '<a target="_blank" href="' + svgPath + '">SVG</a>, ' +
+                '<a target="_blank" href="' + geojsonPath + '">GeoJSON</a>, ' +
+                '<a target="_blank" href="' + javascriptPath + '">JavaScript</a>.</div>'
+            );
+
+            // Generate non-random data for the map
+            $.each(mapGeoJSON.features, function (index, feature) {
+                data.push({
+                    key: feature.properties['hc-key'],
+                    value: index
+                });
+            });
+
+            // Show arrows the first time a real map is shown
+            if (mapDesc !== searchText) {
+                $('.selector .prev-next').show();
+                $('#sideBox').show();
+            }
+
+            // Is there a layer above this?
+            match = mapKey.match(/^(countries\/[a-z]{2}\/[a-z]{2})-[a-z0-9]+-all$/);
+            if (/^countries\/[a-z]{2}\/[a-z]{2}-all$/.test(mapKey)) { // country
+                parent = {
+                    desc: 'World',
+                    key: 'custom/world'
+                };
+            } else if (match) { // admin1
+                parent = {
+                    desc: $('option[value="' + match[1] + '-all.js"]').text(),
+                    key: match[1] + '-all'
+                };
+            }
+            $('#up').html('');
+            if (parent) {
+                $('#up').append(
+                    $('<a><i class="fa fa-angle-up"></i> ' + parent.desc + '</a>')
+                    .attr({
+                        title: parent.key
+                    })
+                    .click(function () {
+                        $('#mapDropdown').val(parent.key + '.js').change();
+                    })
+                );
+            }
+
+
+            // Instantiate chart
+            $("#container").highcharts('Map', {
+
                 title: {
-                    display: true,
-                    text: 'User active',
-                    fontSize: 25
+                    text: null
                 },
-                legend: {
-                    display: true,
-                    position: 'bottom',
-                    labels: {
-                        fontColor: '#000'
-                    }
-                },
-                layout: {
-                    padding: {
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        top: 0
-                    }
-                },
-                tooltips: {
+
+                mapNavigation: {
                     enabled: true
-                }
-            }
-
-        })
-
-        var datalinetime = {
-            labels: ['t2', 't3', 't4', 't5', 't6', 't7', 'cn'],
-            datasets: [{
-                    label: 'Users',
-                    data: [
-                        100, 60, 70, 25, 23, 12, 120
-                    ],
-                    backgroundColor: Chart.helpers.color("red").alpha(0.5).rgbString()
                 },
-                {
-                    label: 'Order',
-                    data: [
-                        80, 70, 25, 12, 120, 200, 100
-                    ],
-                    backgroundColor: Chart.helpers.color("blue").alpha(0.5).rgbString(),
-                    borderColor: 'green',
-                    fill: false,
-                }
-            ]
-        }
-        let chartlinetime = document.getElementById("linetime")
-        let mychart2 = new Chart(chartlinetime, {
-            type: 'line',
-            data: datalinetime,
-            options: {
-                elements: {
-                    line: {
-                        tension: 0, // disables bezier curves
-                    }
+
+                colorAxis: {
+                    min: 0,
+                    stops: [
+                        [0, '#EFEFFF'],
+                        [0.5, Highcharts.getOptions().colors[0]],
+                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).brighten(-0.5).get()]
+                    ]
                 },
-                scales: {
 
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    verticalAlign: 'bottom'
                 },
-            }
 
-        })
-    </script>
-    <script>
-        function newDate(days) {
-            return moment().add(days, 'd').toDate();
-        }
-
-        function newDateString(days) {
-            return moment().add(days, 'd').format();
-        }
-
-        var color = Chart.helpers.color;
-        var config = {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: "Dataset with string point data",
-                    backgroundColor: color('red').alpha(0.5).rgbString(),
-                    borderColor: 'red',
-                    fill: false,
-                    data: [{
-                        x: newDateString(0),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDateString(2),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDateString(4),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDateString(5),
-                        y: randomScalingFactor()
-                    }],
-                }, {
-                    label: "Dataset with date object point data",
-                    backgroundColor: color('blue').alpha(0.5).rgbString(),
-                    borderColor: 'blue',
-                    fill: false,
-                    data: [{
-                        x: newDate(0),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDate(2),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDate(4),
-                        y: randomScalingFactor()
-                    }, {
-                        x: newDate(5),
-                        y: randomScalingFactor()
-                    }]
-                }]
-            },
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: "Chart.js Time Point Data"
-                },
-                scales: {
-                    xAxes: [{
-                        type: "time",
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Date'
-                        },
-                        ticks: {
-                            major: {
-                                fontStyle: "bold",
-                                fontColor: "#FF0000"
+                series: [{
+                    data: data,
+                    mapData: mapGeoJSON,
+                    joinBy: ['hc-key', 'key'],
+                    name: 'Random data',
+                    states: {
+                        hover: {
+                            color: Highcharts.getOptions().colors[2]
+                        }
+                    },
+                    dataLabels: {
+                        enabled: showDataLabels,
+                        formatter: function () {
+                            return mapKey === 'custom/world' || mapKey ===
+                                'countries/us/us-all' ?
+                                (this.point.properties && this.point.properties['hc-a2']) :
+                                this.point.name;
+                        }
+                    },
+                    point: {
+                        events: {
+                            // On click, look for a detailed map
+                            click: function () {
+                                var key = this.key;
+                                $('#mapDropdown option').each(function () {
+                                    if (this.value === 'countries/' + key.substr(0,
+                                            2) + '/' + key + '-all.js') {
+                                        $('#mapDropdown').val(this.value).change();
+                                    }
+                                });
                             }
                         }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'value'
-                        }
-                    }]
-                }
-            }
-        };
+                    }
+                }, {
+                    type: 'mapline',
+                    name: "Separators",
+                    data: Highcharts.geojson(mapGeoJSON, 'mapline'),
+                    nullColor: 'gray',
+                    showInLegend: false,
+                    enableMouseTracking: false
+                }]
+            });
 
+            showDataLabels = $("#chkDataLabels").prop('checked');
 
-        var ctx = document.getElementById("canvas").getContext("2d");
-        let myLine = new Chart(ctx, config);
-    </script>
-</body>
+        }
 
-</html>
+        // Check whether the map is already loaded, else load it and
+        // then show it async
+        if (Highcharts.maps[mapKey]) {
+            mapReady();
+        } else {
+            $.getScript(javascriptPath, mapReady);
+        }
+    });
+
+    // Toggle data labels - Note: Reloads map with new random data
+    $("#chkDataLabels").change(function () {
+        showDataLabels = $("#chkDataLabels").prop('checked');
+        $("#mapDropdown").change();
+    });
+
+    // Switch to previous map on button click
+    $("#btn-prev-map").click(function () {
+        $("#mapDropdown option:selected").prev("option").prop("selected", true).change();
+    });
+
+    // Switch to next map on button click
+    $("#btn-next-map").click(function () {
+        $("#mapDropdown option:selected").next("option").prop("selected", true).change();
+    });
+
+    // Trigger change event to load map on startup
+    if (location.hash) {
+        $('#mapDropdown').val(location.hash.substr(1) + '.js');
+    } else { // for IE9
+        $($('#mapDropdown option')[0]).attr('selected', 'selected');
+    }
+    $('#mapDropdown').change();
+</script>

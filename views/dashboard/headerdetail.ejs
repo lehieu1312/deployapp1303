@@ -4,7 +4,6 @@
 <head>
     <title>
         <%=title %> - DeployApp.net
-
     </title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +13,6 @@
     <link rel="shortcut icon" href="/themes/img/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/themes/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/themes/css/font-awesome.min.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="/themes/css/froala_editor.pkgd.min.css" /> -->
-    <!-- <link rel="stylesheet" type="text/css" href="/themes/css/froala_style.min.css" /> -->
     <link rel="stylesheet" type="text/css" href="/themes/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/themes/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/detail.css">
@@ -23,10 +20,7 @@
     <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/editprofile.css">
     <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/homeapp/homeapp.css">
     <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/appversion/appversion.css">
-
     <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/datetimepicker.css">
-    <!-- <link rel="stylesheet" type="text/css" href="/themes/css/dashboard/datetimepicker.min.css"> -->
-
     <script type="text/javascript" charset="utf-8" src="/themes/js/libsetting.js"></script>
     <script type="text/javascript" charset="utf-8" src="/themes/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/themes/js/socket.io.js"></script>
@@ -36,14 +30,9 @@
     <script type="text/javascript" charset="utf-8" src="/themes/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/themes/js/froala_editor.pkgd.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/themes/js/ejs.min.js"></script>
-
     <script type="text/javascript" charset="utf-8" src="/themes/js/jquery.animateNumber.min.js"></script>
-
     <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/chartjs/chartjs.js"></script>
-
-
     <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/menudetail.js"></script> -->
-
     <!-- datetime picker -->
     <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/momentdatetimepicker.js"></script>
     <script type="text/javascript" charset="utf-8" src="/themes/js/dashboard/datetimerpicker.min.js"></script>
@@ -57,9 +46,7 @@
                 function (data) {
                     $('.imgavatarsmall').attr('src', data.picture);
                     $('.setspanfullname').text(data.fullname);
-
                 }
-
             )
             $.post(
                 "/getamountapp", {},

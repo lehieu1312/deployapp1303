@@ -122,25 +122,17 @@ function ajaxuserbytime(numberdate) {
         let numDay = now.getDate();
         let setdate = [];
         let setarraydate = [];
-        for (var i = numberdate; i >= 1; i--) {
+        for (var i = 0; i < numberdate; i++) {
             setarraydate.push(i)
         }
         for (let i = 0; i < numberdate; i++) {
             setdate[i] = new Date(now); //copy
-            setdate[i].setDate(numDay - setarraydate[i]);
-            setdate[i].setHours(23, 59, 59, 999);
+            setdate[i].setDate(numDay - setarraydate[i] - 1);
+            setdate[i].setHours(0, 0, 0, 0);
             setdate[i] = setdate[i].toDateString().split(" ");
             setdate[i] = setdate[i][0];
         }
-        // Array.prototype.SumArray = function (arr) {
-        //     var sum = this.map(function (num, idx) {
-        //         return num + arr[idx];
-        //     });
-        //     return sum;
-        // }
-        // var array1 = [1, 2, 3, 4];
-        // var array2 = [5, 6, 7, 8];
-        // var sum = array1.SumArray(array2);
+        console.log(setdate);
         return setdate;
     };
     $.post(linkstatistic, {},

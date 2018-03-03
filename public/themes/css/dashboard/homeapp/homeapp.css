@@ -444,7 +444,7 @@ canvas {
 
 /* map session */
 
-#border-map-session-cpuntry {
+#border-map-session-country {
     width: 50%;
     height: 300px;
     float: left;
@@ -462,7 +462,7 @@ canvas {
     background-color: #00afee;
 }
 
-#map-session-cpuntry {
+#map-session-country {
     width: 100%;
     height: 100%;
     padding: 25px;
