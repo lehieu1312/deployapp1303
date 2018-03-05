@@ -87,7 +87,7 @@ dbMongo.on('open', function () {
     console.log('Mongodb conected');
     // console.log(io);
 })
-
+var lehieu = '123';
 // dang nhap fb, gg, tw su dung passport
 var passport = require('passport');
 
