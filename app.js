@@ -730,6 +730,4 @@ function onListening() {
     console.log('Listening on ' + bind);
     debug('Listening on ' + bind);
 }
-let testgit = 1123;
-console.log(testgit);
 module.exports = app;
