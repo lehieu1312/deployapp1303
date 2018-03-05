@@ -15,6 +15,7 @@ let trafficChema = mongoose.Schema({
     dateUpdate: Date,
     dateOutSession: Date,
     pageAccess: String,
+    codeCountry: String,
     country: String,
     status: Boolean
 });

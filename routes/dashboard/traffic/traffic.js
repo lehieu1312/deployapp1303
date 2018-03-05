@@ -405,8 +405,9 @@ function filtertraffic(a) {
             return el.country == a[0].country
         });
         b.push({
-            country: [c[0].country],
-            count: c.length
+            id: c[0].codeCountry,
+            name: c[0].country,
+            user: c.length
         });
         a = a.filter(function (el) {
             return el.country != a[0].country
@@ -422,7 +423,7 @@ router.get("/sessioncountry/:idApp", (req, res) => {
         let data = [];
         data = filtertraffic(traffic);
         res.json(
-            data.sortBy("count").reverse()
+            data.sortBy("user").reverse()
         )
     })
 })

@@ -42,8 +42,42 @@ $(document).ready(() => {
 })
 anychart.onDocumentReady(function () {
     anychart.data.loadJsonFile(
-        'https://cdn.anychart.com/samples/maps-general-features/world-choropleth-map/data.json',
+        hostSeverSocket + '/sessioncountry/app1',
         function (data) {
+            var userall = 0;;
+            for (let i = 0; i < data.length; i++) {
+                userall = userall + data[i].user;
+            }
+            if (data.length > 4) {
+                let htmlcountry = "";
+                for (let i = 0; i < 4; i++) {
+                    let number = data[i].user * 100 / userall;
+                    htmlcountry += `<div>
+                    <span>${data[i].name}</span>
+                    <span class="float-right">${number.toFixed(0) + "%"}</span>
+                    <div class="progress-map">
+                        <div class="progress-bar color-progress" style="width:${number.toFixed(0) +"%"}">
+                            <span class="sr-only">${number.toFixed(0) +"%"} Complete</span>
+                        </div>
+                    </div>`;
+                }
+                $(".br-session").after(htmlcountry)
+            } else {
+                let htmlcountry = "";
+                for (let i = 0; i < data.length; i++) {
+                    let number = data[i].user * 100 / userall;
+                    htmlcountry += `<div>
+                    <span>${data[i].name}</span>
+                    <span class="float-right">${number.toFixed(0) + "%"}</span>
+                    <div class="progress-map">
+                        <div class="progress-bar color-progress" style="width:${number.toFixed(0) +"%"}">
+                            <span class="sr-only">${number.toFixed(0) +"%"} Complete</span>
+                        </div>
+                    </div>`;
+                }
+                $(".br-session").after(htmlcountry)
+            }
+
             var map = anychart.map();
             map.title().enabled(false);
 
@@ -53,7 +87,7 @@ anychart.onDocumentReady(function () {
 
             var dataSet = anychart.data.set(data);
             var density_data = dataSet.mapAs({
-                'value': 'density'
+                'value': 'user'
             });
             var series = map.choropleth(density_data);
 
@@ -70,12 +104,8 @@ anychart.onDocumentReady(function () {
             series.tooltip()
                 .useHtml(true)
                 .format(function () {
-                    return '<span style="color: #d9d9d9">Density</span>: ' +
-                        parseFloat(this.value).toLocaleString() + ' pop./km&#178 <br/>' +
-                        '<span style="color: #d9d9d9">Population</span>: ' +
-                        parseInt(this.getData('population')).toLocaleString() + '<br/>' +
-                        '<span style="color: #d9d9d9">Area</span>: ' +
-                        parseInt(this.getData('area')).toLocaleString() + ' km&#178';
+                    return '<span style="color: #d9d9d9">User</span>: ' +
+                        parseInt(this.getData('user')).toLocaleString() + '<br/>';
                 });
 
             var scale = anychart.scales.ordinalColor([{
