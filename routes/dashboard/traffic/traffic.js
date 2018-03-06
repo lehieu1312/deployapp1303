@@ -128,11 +128,21 @@ router.post("/rightnow/:idApp", (req, res) => {
         let ios = getdata.filter(function (el) {
             return el.platform == "ios"
         });
-        var setpage = filtercustom(getdata);
+        let arraypagex = [];
 
+        for (let i = 0; i < getdata.length; i++) {
+            for (let j = 0; j < getdata[i].pageAccess.length; j++) {
+                arraypagex.push({
+                    pageAccess: getdata[i].pageAccess[j].page
+                })
+            }
+
+        }
+        // console.log(arraypagex);
+        var setpage = filtercustom(arraypagex);
         var arraypage = [];
         for (let i = 0; i < setpage.length; i++) {
-            let page = getdata.filter(function (el) {
+            let page = arraypagex.filter(function (el) {
                 return el.pageAccess == setpage[i][0].pageAccess
             });
             arraypage.push({
@@ -170,11 +180,22 @@ router.post("/pageuser/:idApp", (req, res) => {
                     el.dateAccess > datenow - 86400000 * req.query.numberdate;
             });
         }
-        var setpage = filtercustom(getdata);
+        let arraypagex = [];
 
+        for (let i = 0; i < getdata.length; i++) {
+            for (let j = 0; j < getdata[i].pageAccess.length; j++) {
+                arraypagex.push({
+                    pageAccess: getdata[i].pageAccess[j].page,
+                    timeAccess: getdata[i].pageAccess[j].timeAccess
+                })
+            }
+
+        }
+        var setpage = filtercustom(arraypagex);
+        console.log(setpage)
         var arraypage = [];
         for (let i = 0; i < setpage.length; i++) {
-            let page = getdata.filter(function (el) {
+            let page = arraypagex.filter(function (el) {
                 return el.pageAccess == setpage[i][0].pageAccess
             });
             let accessTime = 0;
@@ -188,6 +209,7 @@ router.post("/pageuser/:idApp", (req, res) => {
                 averageTime: Math.round(accessTime / page.length)
             })
         }
+        console.log(arraypage)
         let datax = arraypage.sortBy("quantily").reverse()
         return res.json({
             pageuser: datax
@@ -428,4 +450,137 @@ router.get("/sessioncountry/:idApp", (req, res) => {
     })
 })
 
+router.post("/statisticstracking/:idApp", (req, res) => {
+    Inforapp.findOne({
+        idApp: req.params.idApp
+    }).then((infor) => {
+        let usersall = [];
+        let users = [];
+        var datestart = infor.dateCreate;
+        datestart = datestart.setHours(0, 0, 0, 0);
+        // console.log(datestart)
+        var dateend = new Date();
+        dateend = dateend.setHours(0, 0, 0, 0);
+        let length = (dateend - datestart) / 86400000;
+        if (req.query.numberdate > length) {
+            req.query.numberdate = length
+        }
+        let dem = 0;
+        let getuserall = 0;
+        let getuser = 0;
+        let getsessionall = 0;
+        let getsession = 0;
+        let bouncerate = 0;
+        let bouncerateall = 0;
+        let sessiontime = 0;
+        let sessiontimeall = 0;
+        let android = 0;
+        let androidall = 0;
+        let ios = 0;
+        let iosall = 0;
+        (async () => {
+            for (let i = 0; i < length; i++) {
+                // console.log(moment(datestart));
+                let getdata = await traffic.find({
+                    idApp: req.params.idApp,
+                    dateAccess: {
+                        $gt: datestart,
+                        $lt: datestart + 86400000
+                    }
+                }, {
+                    idCustomer: 1,
+                    platform: 1,
+                    dateAccess: 1,
+                    timeAccess: 1,
+                    platform: 1,
+                    pageAccess: 1,
+                    dateOutSession: 1
+                }).exec()
+                if (length - i <= req.query.numberdate) {
+                    console.log(moment(datestart))
+                    users[dem] = getdata;
+                    dem++;
+                    if (getdata.length > 0) {
+                        let datauser = getdata.filter((el) => {
+                            return el.idCustomer != null;
+                        });
+                        let databouncerate = getdata.filter((el) => {
+                            return el.pageAccess.length == 1 &&
+                                el.pageAccess[0].isHome == true
+                        });
+                        for (let time = 0; time < getdata.length; time++) {
+                            sessiontime = sessiontime + getdata[time].timeAccess;
+                        }
+                        let dataandroid = getdata.filter((el) => {
+                            return el.platform == "android"
+                        });
+                        android = android + dataandroid.length;
+                        let dataios = getdata.filter((el) => {
+                            return el.platform == "ios"
+                        });
+                        ios = ios + dataios.length;
+                        getuser = getuser + datauser.length;
+                        getsession = getsession + getdata.length;
+                        bouncerate = bouncerate + databouncerate.length;
+                    }
+                }
+                if (getdata.length > 0) {
+                    let datauser = getdata.filter((el) => {
+                        return el.idCustomer != null
+                    })
+                    let databouncerate = getdata.filter((el) => {
+                        return el.pageAccess.length == 1 &&
+                            el.pageAccess[0].isHome == true
+                    })
+                    for (let time = 0; time < getdata.length; time++) {
+                        sessiontimeall = sessiontimeall + getdata[time].timeAccess;
+                    }
+                    let dataandroid = getdata.filter((el) => {
+                        return el.platform == "android"
+                    });
+                    androidall = androidall + dataandroid.length;
+                    let dataios = getdata.filter((el) => {
+                        return el.platform == "ios"
+                    });
+                    iosall = iosall + dataios.length;
+                    getuserall = getuserall + datauser.length;
+                    getsessionall = getsessionall + getdata.length;
+                    bouncerateall = bouncerateall + databouncerate.length;
+                }
+                usersall[i] = getdata;
+                datestart = datestart + 86400000;
+            }
+            console.log(getuserall)
+            res.json({
+                user: {
+                    getuserall,
+                    getuser
+                },
+                session: {
+                    getsessionall,
+                    getsession
+                },
+                bouncerate: {
+                    bouncerateall,
+                    bouncerate
+                },
+                sessiontime: {
+                    sessiontimeall,
+                    sessiontime
+                },
+                platform: {
+                    android: {
+                        androidall,
+                        android
+                    },
+                    ios: {
+                        iosall,
+                        ios
+                    }
+                },
+                date: length
+            });
+        })()
+    });
+})
 module.exports = router;

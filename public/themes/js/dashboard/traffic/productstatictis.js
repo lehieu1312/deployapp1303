@@ -74,31 +74,4 @@ function ajaxproduct(numberdate) {
 $(document).ready(() => {
     ajaxproduct(7);
     clickmenu(2, ajaxproduct);
-    // let menupageuser = document.getElementsByClassName("myDropdown-traffic")[2];
-    // let selected = document.getElementsByClassName("selected-date")[2];
-    // let tagapageuser = menupageuser.getElementsByTagName("a");
-    // // for (let i = 0; i < tagapageuser.length; i++) {
-    // tagapageuser[0].addEventListener('click', () => {
-    //     selected.innerHTML = "ToDay";
-    //     ajaxproduct(0);
-    // })
-    // tagapageuser[1].addEventListener('click', () => {
-    //     selected.innerHTML = "Yesterday";
-    //     ajaxproduct(1);
-    // })
-    // tagapageuser[2].addEventListener('click', () => {
-    //     selected.innerHTML = "Last 7 days";
-    //     ajaxproduct(7);
-    // })
-    // tagapageuser[3].addEventListener('click', () => {
-    //     selected.innerHTML = "Last 30 days";
-    //     ajaxproduct(30);
-    // })
-    // tagapageuser[4].addEventListener('click', () => {
-    //     selected.innerHTML = "Last 90 days";
-    //     ajaxproduct(90);
-    // })
-    // tagapageuser[5].addEventListener('click', () => {
-    //     ajaxproduct(1);
-    // })
 })

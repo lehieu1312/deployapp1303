@@ -1,4 +1,10 @@
 function ajaxuseractive(numberdate) {
+    if (numberdate == 0) {
+        numberdate = 7;
+    }
+    if (numberdate == 1) {
+        numberdate = 7;
+    }
     let linkpageuer = "/useractive/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
     $.post(
         linkpageuer, {},

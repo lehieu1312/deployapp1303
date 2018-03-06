@@ -12,7 +12,7 @@ let userChema = mongoose.Schema({
     }],
     nameApp: String,
     onlineCurrent: Number,
-    createDate: Date,
+    dateCreate: Date,
     useToday: String,
     useIos: String,
     useAndroid: String,

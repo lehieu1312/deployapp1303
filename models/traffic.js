@@ -14,7 +14,13 @@ let trafficChema = mongoose.Schema({
     timeAccess: Number,
     dateUpdate: Date,
     dateOutSession: Date,
-    pageAccess: String,
+    pageAccess: [{
+        page: String,
+        dateAccess: Date,
+        timeAccess: Number,
+        dateOutSession: Date,
+        isHome: Boolean,
+    }],
     codeCountry: String,
     country: String,
     status: Boolean
