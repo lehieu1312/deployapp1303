@@ -1,11 +1,16 @@
-function ajaxuseractive(numberdate) {
+function ajaxuseractive(numberdate, numberend) {
     if (numberdate == 0) {
         numberdate = 7;
     }
     if (numberdate == 1) {
         numberdate = 7;
     }
-    let linkpageuer = "/useractive/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
+    let linkpageuer;
+    if (numberend == 0) {
+        linkpageuer = "/useractive/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
+    } else {
+        linkpageuer = "/useractive/" + $("#idapp-using").val() + "?numberdate=" + numberdate + "&numberend=" + numberend;
+    }
     $.post(
         linkpageuer, {},
         function (user) {
@@ -35,48 +40,7 @@ function ajaxuseractive(numberdate) {
                     setdate[i - 1] = setdate[i - 1][2] + " " + setdate[i - 1][1];
                 }
                 return setdate;
-                // } else {
-                //     let now = new Date();
-                //     let dayOfWeek = now.getDay(); //0-6
-                //     let numDay = now.getDate();
-                //     let setdate = [];
-                //     let setarraydate = [];
-                //     for (var i = numberdate; i >= 0; i = i - (numberdate / 6)) {
-                //         if (i == 0) {
-                //             setarraydate.push(1)
-                //         } else {
-                //             setarraydate.push(i)
-                //         }
 
-                //     }
-                //     let j = 0;
-                //     console.log(setarraydate)
-                //     for (let i = 0; i < numberdate; i++) {
-
-                //         if (i % (numberdate / 6) == 0) {
-                //             setdate[i] = new Date(now); //copy
-                //             setdate[i].setDate(numDay - setarraydate[j]);
-                //             setdate[i].setHours(23, 59, 59, 999);
-                //             setdate[i] = setdate[i].toDateString().split(" ");
-                //             setdate[i] = setdate[i][2] + " " + setdate[i][1];
-                //             j++;
-                //         } else {
-                //             if (i == 29) {
-                //                 setdate[i] = new Date(now); //copy
-                //                 setdate[i].setDate(numDay - setarraydate[j]);
-                //                 setdate[i].setHours(23, 59, 59, 999);
-                //                 setdate[i] = setdate[i].toDateString().split(" ");
-                //                 setdate[i] = setdate[i][2] + " " + setdate[i][1];
-                //                 j++;
-                //             } else {
-                //                 setdate[i] = "";
-                //             }
-                //         }
-
-
-                //     }
-                //     return setdate;
-                // }
             }
             var label = getWeekDates();
             var datalinetime = {
@@ -237,6 +201,6 @@ function ajaxuseractive(numberdate) {
     )
 }
 $(document).ready(() => {
-    ajaxuseractive(7);
+    ajaxuseractive(7, 0);
     clickmenu(3, ajaxuseractive)
 })

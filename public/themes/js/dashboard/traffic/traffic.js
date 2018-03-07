@@ -15,6 +15,9 @@ $(document).ready(() => {
     $("#deploy-detail-content").click(() => {
         $(".myDropdown-traffic").hide();
     })
+    let selected = document.getElementsByClassName("selected-date")[0]
+
+
 })
 
 function clickmenu(a, b) {
@@ -34,7 +37,7 @@ function clickmenu(a, b) {
         showdate.innerHTML = datenow[1] + " " + datenow[2] + "," + datenow[3];
         selected.innerHTML = "ToDay";
         selected1.innerHTML = "ToDay";
-        b(0);
+        b(0, 0);
     })
     tagapageuser[1].addEventListener('click', () => {
         let datenow = new Date(now);
@@ -43,7 +46,7 @@ function clickmenu(a, b) {
         showdate.innerHTML = datenow[1] + " " + datenow[2] + "," + datenow[3];
         selected.innerHTML = "Yesterday";
         selected1.innerHTML = "Yesterday";
-        b(1);
+        b(1, 0);
     })
     tagapageuser[2].addEventListener('click', () => {
         let datenow = new Date(now);
@@ -55,7 +58,7 @@ function clickmenu(a, b) {
         showdate.innerHTML = datenow[1] + " " + datenow[2] + "," + datenow[3] + " - " + datenow1[1] + " " + datenow1[2] + "," + datenow1[3];;
         selected.innerHTML = "Last 7 days";
         selected1.innerHTML = "Last 7 days";
-        b(7);
+        b(7, 0);
     })
     tagapageuser[3].addEventListener('click', () => {
         let datenow = new Date(now);
@@ -67,7 +70,7 @@ function clickmenu(a, b) {
         showdate.innerHTML = datenow[1] + " " + datenow[2] + "," + datenow[3] + " - " + datenow1[1] + " " + datenow1[2] + "," + datenow1[3];;
         selected.innerHTML = "Last 30 days";
         selected1.innerHTML = "Last 30 days";
-        b(30);
+        b(30, 0);
     })
     tagapageuser[4].addEventListener('click', () => {
         let datenow = new Date(now);
@@ -76,12 +79,29 @@ function clickmenu(a, b) {
         let datenow1 = new Date(now);
         datenow1.setDate(numDay - 90);
         datenow1 = datenow1.toString().split(" ");
-        showdate.innerHTML = datenow[1] + " " + datenow[2] + "," + datenow[3] + " - " + datenow1[1] + " " + datenow1[2] + "," + datenow1[3];;
+        showdate.innerHTML = datenow[1] + " " + datenow[2] + "," + datenow[3] + " - " + datenow1[1] + " " + datenow1[2] + "," + datenow1[3];
         selected.innerHTML = "Last 90 days";
         selected1.innerHTML = "Last 90 days";
-        b(90);
+        b(90, 0);
     })
-    tagapageuser[5].addEventListener('click', () => {
-        b(1);
+    $("#selectime" + a).click((event) => {
+        event.stopPropagation();
     })
+    $("#selectime" + a).daterangepicker({
+            maxDate: new Date(),
+            drops: "up",
+            opens: "left"
+        },
+        (start, end) => {
+            $(".myDropdown-traffic").hide();
+            let number = ((end._d - start._d) / 86400000).toFixed(0);
+            let startx = start._d;
+            startx = startx.toString().split(" ");
+            let endx = end._d;
+            endx = endx.toString().split(" ");
+            showdate.innerHTML = startx[1] + " " + startx[2] + "," + startx[3] + " - " + endx[1] + " " + endx[2] + "," + endx[3];;
+            selected.innerHTML = "Custom";
+            selected1.innerHTML = "Custom";
+            b(number, end)
+        })
 }

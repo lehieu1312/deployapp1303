@@ -18,9 +18,14 @@ function order(a) {
     return dem;
 }
 
-function ajaxproduct(numberdate) {
-    let linkstatistic = "/productstatistic/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
-    $.post(linkstatistic, {},
+function ajaxproduct(numberdate, numberend) {
+    let linkproduct;
+    if (numberend == 0) {
+        linkproduct = "/productstatistic/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
+    } else {
+        linkproduct = "/productstatistic/" + $("#idapp-using").val() + "?numberdate=" + numberdate + "&numberend=" + numberend;
+    }
+    $.post(linkproduct, {},
         (data) => {
             // console.log(data.order[0][0].product[0].quantity)
             $("#content-productstatictis").html("");
@@ -72,6 +77,6 @@ function ajaxproduct(numberdate) {
 }
 
 $(document).ready(() => {
-    ajaxproduct(7);
+    ajaxproduct(7, 0);
     clickmenu(2, ajaxproduct);
 })

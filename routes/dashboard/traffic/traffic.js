@@ -169,6 +169,13 @@ router.post("/pageuser/:idApp", (req, res) => {
         var setdatenow = datenow.setHours(0, 0, 0, 0);
         datenow = datenow.setHours(0, 0, 0, 0)
         var getdata;
+
+        let timepont = 0;
+        if (!req.query.numberend) {
+            timepont = datenow;
+        } else {
+            timepont = req.query.numberend;
+        }
         if (req.query.numberdate == 0) {
             getdata = arraytraffic.filter(function (el) {
                 return el.dateAccess < datenow &&
@@ -176,8 +183,8 @@ router.post("/pageuser/:idApp", (req, res) => {
             });
         } else {
             getdata = arraytraffic.filter(function (el) {
-                return el.dateAccess < datenow &&
-                    el.dateAccess > datenow - 86400000 * req.query.numberdate;
+                return el.dateAccess < timepont &&
+                    el.dateAccess > timepont - 86400000 * req.query.numberdate;
             });
         }
         let arraypagex = [];
@@ -232,76 +239,88 @@ function filterproduc(a) {
 }
 
 router.post("/productstatistic/:idApp", (req, res) => {
-    var datenow = new Date();
-    var timeend;
-    var timestart;
-    if (req.query.numberdate == 0) {
-        timeend = datenow;
-        timestart = datenow.setHours(0, 0, 0, 0);
-    } else {
-        timeend = datenow.setHours(0, 0, 0, 0);
-        timestart = datenow - 86400000 * req.query.numberdate;
+    try {
+        var datenow = new Date();
+        var timeend;
+        var timestart;
+        let timepont = new Date();
+        if (!req.query.numberend) {
+            timepont = datenow.setHours(0, 0, 0, 0);
+        } else {
+            // console.log(moment(req.query.numberend))
+            timepont = req.query.numberend;
+        }
+        if (req.query.numberdate == 0) {
+            timeend = datenow;
+            timestart = datenow.setHours(0, 0, 0, 0);
+        } else {
+            timeend = timepont;
+            timestart = timepont - 86400000 * req.query.numberdate;
+        }
+        producstatictis.find({
+            idApp: req.params.idApp,
+            dateCreate: {
+                $gte: timestart,
+                $lt: timeend
+            },
+        }).sort({
+            idProduct: 1
+        }).then((product) => {
+            var getproduct = new Array();
+            var getproductall = new Array();
+            let setdata = filterproduc(product);
+            (async function () {
+                for (let i = 0; i < setdata.length; i++) {
+                    let datahihi = await orderofapp.find({
+                        idApp: req.params.idApp,
+                        dateCreate: {
+                            $gte: timestart,
+                            $lt: timeend
+                        },
+                        product: {
+                            $elemMatch: {
+                                idProduct: setdata[i][0].idProduct
+                            }
+                        },
+                    }, {
+                        product: {
+                            $elemMatch: {
+                                idProduct: setdata[i][0].idProduct
+                            }
+                        },
+
+                    }).exec()
+                    getproduct[i] = datahihi;
+                }
+                for (let i = 0; i < setdata.length; i++) {
+                    let datahihi = await orderofapp.find({
+                        idApp: req.params.idApp,
+                        product: {
+                            $elemMatch: {
+                                idProduct: setdata[i][0].idProduct
+                            }
+                        },
+                    }, {
+                        product: {
+                            $elemMatch: {
+                                idProduct: setdata[i][0].idProduct
+                            }
+                        },
+
+                    }).exec()
+                    getproductall[i] = datahihi;
+                }
+                res.json({
+                    setdata,
+                    order: getproduct,
+                    orderall: getproductall
+                });
+            })()
+        })
+    } catch (error) {
+        console.log(error + "")
     }
-    producstatictis.find({
-        idApp: req.params.idApp,
-        dateCreate: {
-            $gte: timestart,
-            $lt: timeend
-        },
-    }).sort({
-        idProduct: 1
-    }).then((product) => {
-        var getproduct = new Array();
-        var getproductall = new Array();
-        let setdata = filterproduc(product);
-        (async function () {
-            for (let i = 0; i < setdata.length; i++) {
-                let datahihi = await orderofapp.find({
-                    idApp: req.params.idApp,
-                    dateCreate: {
-                        $gte: timestart,
-                        $lt: timeend
-                    },
-                    product: {
-                        $elemMatch: {
-                            idProduct: setdata[i][0].idProduct
-                        }
-                    },
-                }, {
-                    product: {
-                        $elemMatch: {
-                            idProduct: setdata[i][0].idProduct
-                        }
-                    },
 
-                }).exec()
-                getproduct[i] = datahihi;
-            }
-            for (let i = 0; i < setdata.length; i++) {
-                let datahihi = await orderofapp.find({
-                    idApp: req.params.idApp,
-                    product: {
-                        $elemMatch: {
-                            idProduct: setdata[i][0].idProduct
-                        }
-                    },
-                }, {
-                    product: {
-                        $elemMatch: {
-                            idProduct: setdata[i][0].idProduct
-                        }
-                    },
-
-                }).exec()
-                getproductall[i] = datahihi;
-            }
-            res.json({
-                setdata,
-                order: getproduct,
-                orderall: getproductall
-            });
-        })()
-    })
 })
 
 router.post("/useractive/:idApp", (req, res) => {
@@ -309,9 +328,15 @@ router.post("/useractive/:idApp", (req, res) => {
     var dataweek = [];
     var datamonth = [];
     var datenow = new Date();
+    let timepont = new Date();
+    if (!req.query.numberend) {
+        timepont = datenow.setHours(0, 0, 0, 0);
+    } else {
+        timepont = req.query.numberend;
+    }
     (async function () {
         for (let i = 0; i < req.query.numberdate; i++) {
-            var timestart1 = datenow.setHours(0, 0, 0, 0);
+            var timestart1 = timepont;
             timestart1 = timestart1 - i * 86400000;
             let timeend = timestart1 - 86400000;
             let user1 = await userofapp.find({
@@ -328,7 +353,7 @@ router.post("/useractive/:idApp", (req, res) => {
             }
         }
         for (let i = 0; i < req.query.numberdate; i++) {
-            var timestart2 = datenow.setHours(0, 0, 0, 0);
+            var timestart2 = timepont;
             timestart2 = timestart2 - i * 86400000;
             let timeend = timestart2 - 86400000 * 7;
             let user2 = await userofapp.find({
@@ -345,7 +370,7 @@ router.post("/useractive/:idApp", (req, res) => {
             }
         }
         for (let i = 0; i < req.query.numberdate; i++) {
-            var timestart3 = datenow.setHours(0, 0, 0, 0);
+            var timestart3 = timepont;
             timestart3 = timestart3 - i * 86400000;
             let timeend = timestart3 - 86400000 * 30;
             let user3 = await userofapp.find({
@@ -393,7 +418,7 @@ router.post("/userbytime/:idApp", (req, res) => {
             let datestart = dateend - 86400000 * i;
             let setdate = moment(datestart);
             // let getdate = setdate;
-            console.log(setdate.format());
+            // console.log(setdate.format());
             getdata.push([]);
             for (let j = 24; j > 0; j--) {
                 // console.log("------------------------")
@@ -409,7 +434,7 @@ router.post("/userbytime/:idApp", (req, res) => {
                 }).exec()
                 if (userbytime.length > 0) {
                     getdata[i].push(userbytime.length);
-                    console.log(moment(userbytime[0].dateAccess))
+                    // console.log(moment(userbytime[0].dateAccess))
                 } else {
                     getdata[i].push(0)
                 }
@@ -457,14 +482,28 @@ router.post("/statisticstracking/:idApp", (req, res) => {
         let usersall = [];
         let users = [];
         var datestart = infor.dateCreate;
+
         datestart = datestart.setHours(0, 0, 0, 0);
         // console.log(datestart)
         var dateend = new Date();
         dateend = dateend.setHours(0, 0, 0, 0);
         let length = (dateend - datestart) / 86400000;
+        // if (req.query.numberend) {
+        //     console.log(moment(req.query.numberdate));
+        //     console.log(moment(req.query.numberend))
+        // }
         if (req.query.numberdate > length) {
             req.query.numberdate = length
         }
+
+        let timepont = 0;
+
+        if (!req.query.numberend) {
+            timepont = length;
+        } else {
+            timepont = (req.query.numberend - datestart) / 86400000;
+        }
+
         let dem = 0;
         let getuserall = 0;
         let getuser = 0;
@@ -496,8 +535,8 @@ router.post("/statisticstracking/:idApp", (req, res) => {
                     pageAccess: 1,
                     dateOutSession: 1
                 }).exec()
-                if (length - i <= req.query.numberdate) {
-                    console.log(moment(datestart))
+                if (timepont - i <= req.query.numberdate) {
+                    // console.log(moment(datestart))
                     users[dem] = getdata;
                     dem++;
                     if (getdata.length > 0) {

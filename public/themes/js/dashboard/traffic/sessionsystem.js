@@ -1,8 +1,13 @@
-function ajaxsss(numberdate) {
+function ajaxsss(numberdate, numberend) {
     if (numberdate == 0) {
         numberdate = 1;
     }
-    let linkstatistic = "/statisticstracking/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
+    let linkstatistic;
+    if (numberend == 0) {
+        linkstatistic = "/statisticstracking/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
+    } else {
+        linkstatistic = "/statisticstracking/" + $("#idapp-using").val() + "?numberdate=" + numberdate + "&numberend=" + numberend;
+    }
     $.post(linkstatistic, {},
         (data) => {
             console.log(data)
@@ -75,6 +80,6 @@ function ajaxsss(numberdate) {
 }
 
 $(document).ready(() => {
-    ajaxsss(7);
+    ajaxsss(7, 0);
     clickmenu(5, ajaxsss);
 })

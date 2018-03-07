@@ -325,9 +325,11 @@ $(document).ready(() => {
 
     $("#select-date-5").click((event) => {
         $("#span-selcect-date").text("Custom");
+        event.stopPropagation();
     })
     $("#select-date-5").daterangepicker({
-
+        drops: "up",
+        opens: "left"
     }, function (start, end) {
         var lenthmanguse = manguse.length;
         manguse.splice(0, lenthmanguse);

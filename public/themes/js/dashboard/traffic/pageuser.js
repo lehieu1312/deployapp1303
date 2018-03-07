@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    ajaxpageuser(7);
+    ajaxpageuser(7, 0);
     clickmenu(1, ajaxpageuser);
 })
 
@@ -7,8 +7,13 @@ function settime(a) {
     return Math.floor(a / 60000) + "m" + (a % 60000 / 1000).toFixed(0) + "s";
 }
 
-function ajaxpageuser(numberdate) {
-    var linkpageuer = "/pageuser/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
+function ajaxpageuser(numberdate, numberend) {
+    let linkpageuer;
+    if (numberend == 0) {
+        linkpageuer = "/pageuser/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
+    } else {
+        linkpageuer = "/pageuser/" + $("#idapp-using").val() + "?numberdate=" + numberdate + "&numberend=" + numberend;
+    }
     $.post(
         linkpageuer, {},
         function (data) {

@@ -293,11 +293,11 @@ input:focus {
     outline: none;
 }
 
-.daterangepicker {
+/* .daterangepicker {
     top: 240px !important;
     left: 386.375px !important;
     right: auto !important;
-}
+} */
 
 #select-date-5 {
     position: initial;
