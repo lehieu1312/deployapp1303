@@ -24,6 +24,13 @@ function ajaxuseractive(numberdate, numberend) {
             function getWeekDates() {
                 // if (numberdate == 7) {
                 let now = new Date();
+                if (!numberend) {
+                    now = new Date();
+                } else {
+                    // console.log(numberend)
+                    now = numberend._d;
+                }
+
                 let dayOfWeek = now.getDay(); //0-6
                 let numDay = now.getDate();
                 let setdate = [];
@@ -200,7 +207,3 @@ function ajaxuseractive(numberdate, numberend) {
         }
     )
 }
-$(document).ready(() => {
-    ajaxuseractive(7, 0);
-    clickmenu(3, ajaxuseractive)
-})

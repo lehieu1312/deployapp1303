@@ -14,7 +14,7 @@ function setstatus(a) {
     return coloruser;
 }
 
-function ajaxsatistic(numberdate, numberend) {
+function ajaxstatistic(numberdate, numberend) {
     if (numberdate == 0) {
         numberdate = 1;
     }
@@ -24,7 +24,7 @@ function ajaxsatistic(numberdate, numberend) {
     } else {
         linkstatistic = "/statisticstracking/" + $("#idapp-using").val() + "?numberdate=" + numberdate + "&numberend=" + numberend;
     }
-    console.log(linkstatistic);
+    // console.log(linkstatistic);
     $.post(linkstatistic, {},
         (data) => {
             if (numberdate > data.date) {
@@ -64,7 +64,7 @@ function ajaxsatistic(numberdate, numberend) {
             <span class="light-large-gray">${data.user.getuser}</span>
             <br>
             <span class="${coloruser.color}">
-                <img class="settihg-arrow" src="/themes/img/traffic/${coloruser.arrow}">${Math.abs(centuser*100) + "%"}
+                <img class="settihg-arrow" src="/themes/img/traffic/${coloruser.arrow}">${(Math.abs(centuser*100)).toFixed(0) + "%"}
             </span>
         </div>
         <div class="footer-content-statistics">
@@ -73,7 +73,7 @@ function ajaxsatistic(numberdate, numberend) {
             <span class="light-large-gray">${data.session.getsession}</span>
             <br>
             <span class="${colorsession.color}">
-                <img class="settihg-arrow" src="/themes/img/traffic/${colorsession.arrow}">${Math.abs(centsession*100) + "%"}</span>
+                <img class="settihg-arrow" src="/themes/img/traffic/${colorsession.arrow}">${(Math.abs(centsession*100)).toFixed(0) + "%"}</span>
         </div>
         <div class="footer-content-statistics">
             <span class="regular-medium-gray">Bounce Rate</span>
@@ -94,8 +94,3 @@ function ajaxsatistic(numberdate, numberend) {
         }
     )
 }
-
-$(document).ready(() => {
-    ajaxsatistic(7, 0);
-    clickmenu(0, ajaxsatistic);
-})

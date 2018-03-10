@@ -73,7 +73,7 @@ function ajaxorderstatistic(numberdate) {
                 }
                 // Set Text
                 if (tooltip.body) {
-                    console.log(tooltip.body)
+                    // console.log(tooltip.body)
                     var titleLines = tooltip.title || [];
                     var bodyLines = tooltip.body.map(getBody);
                     var innerHtml = '<thead>';
@@ -166,7 +166,3 @@ function ajaxorderstatistic(numberdate) {
 
     )
 }
-$(document).ready(() => {
-    let numberdate = 7;
-    ajaxorderstatistic(numberdate);
-})

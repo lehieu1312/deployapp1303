@@ -10,7 +10,7 @@ function ajaxsss(numberdate, numberend) {
     }
     $.post(linkstatistic, {},
         (data) => {
-            console.log(data)
+            // console.log(data)
             $(".system-session").html("");
             let centandroid = (data.platform.android.android * 100 / (data.platform.android.android + data.platform.ios.ios) - data.platform.android.androidall * 100 / (data.platform.android.androidall + data.platform.ios.iosall)).toFixed(1);
             let colorandroid = setstatus(centandroid);
@@ -78,8 +78,3 @@ function ajaxsss(numberdate, numberend) {
         }
     )
 }
-
-$(document).ready(() => {
-    ajaxsss(7, 0);
-    clickmenu(5, ajaxsss);
-})

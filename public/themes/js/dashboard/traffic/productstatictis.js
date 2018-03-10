@@ -73,10 +73,7 @@ function ajaxproduct(numberdate, numberend) {
                 }
             }
         }
-    )
+    ).always(() => {
+        pagination('#content-productstatictis > tr', '.jquery-pagination1', 1);
+    })
 }
-
-$(document).ready(() => {
-    ajaxproduct(7, 0);
-    clickmenu(2, ajaxproduct);
-})

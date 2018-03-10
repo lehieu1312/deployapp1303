@@ -1,8 +1,3 @@
-$(document).ready(() => {
-    ajaxpageuser(7, 0);
-    clickmenu(1, ajaxpageuser);
-})
-
 function settime(a) {
     return Math.floor(a / 60000) + "m" + (a % 60000 / 1000).toFixed(0) + "s";
 }
@@ -19,7 +14,7 @@ function ajaxpageuser(numberdate, numberend) {
         function (data) {
             $("#body-table-pageuser").html("");
             for (let i = 0; i < data.pageuser.length; i++) {
-                console.log(data.pageuser[i].quantily)
+                // console.log(data.pageuser[i].quantily)
                 if (i == data.pageuser.length - 1) {
                     $("#body-table-pageuser").append(
                         `<tr class="border-botton-none ">
@@ -40,5 +35,7 @@ function ajaxpageuser(numberdate, numberend) {
 
             }
         }
-    )
+    ).always(() => {
+        pagination('#body-table-pageuser > tr', '.jquery-pagination', 0);
+    })
 }

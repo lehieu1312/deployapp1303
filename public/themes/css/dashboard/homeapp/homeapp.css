@@ -575,13 +575,18 @@ canvas {
     border-bottom: solid 1px #f1f1f1;
 }
 
+.limit-pagination {
+    cursor: no-drop !important;
+    color: #cdcdcd;
+}
+
 .footer-dropdaw {
     padding: 7px 0px 10px 0px;
     height: 54px;
     border-top: solid 1px #f1f1f1;
 }
 
-#border-legend-user {
+.border-legend-user {
     padding-left: 36%;
     margin-top: 30px;
     width: 100%;
@@ -689,10 +694,16 @@ canvas {
     float: left;
 }
 
-.setpagination2 {
+.set-left-pagination {
     width: 50%;
+    float: left;
+    position: relative;
+}
+
+.setpagination2 {
+    right: 10px;
+    position: absolute;
     height: 60px;
     padding-left: 19.5%;
     margin-top: 15px;
-    float: left;
 }

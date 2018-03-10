@@ -2,7 +2,9 @@ function drawuserbytime(contentuserbytime, dateuser) {
     var timeuser = ["12am", "2am", "4am", "6am", "8am", "10am", "12am", "2pm", "4pm", "6pm", "8pm", "10pm"]
     var timeuserusing = ["12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12am", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"]
     var setdateuser = 0;
+
     for (let j = 0; j < 7; j++) {
+
         var valuehmt;
         var setcolor;
         var sumuser = contentuserbytime[j].reduce((a, b) => a + b, 0);
@@ -66,7 +68,7 @@ function drawuserbytime(contentuserbytime, dateuser) {
         setdateuser++;
         sumuser = null;
     }
-    var legendhtml = `<div id="border-legend-user">
+    var legendhtml = `<div class="border-legend-user">
     <div class="float-left setspanlegend"><span>4</span></div>
     <div class="colorlevel1 level-user float-left"></div>
     <div class="colorlevel2 level-user float-left"></div>
@@ -93,6 +95,7 @@ function drawuserbytime(contentuserbytime, dateuser) {
 
     var setuser = document.getElementsByClassName('level-userbytime');
     var setcontentuser = document.getElementsByClassName("content-userbytime");
+
     // console.log(setuser.length)
     var variabledate;
     var variabletime;
@@ -113,21 +116,40 @@ function drawuserbytime(contentuserbytime, dateuser) {
     }
 }
 
-function ajaxuserbytime(numberdate) {
-    let linkstatistic = "/userbytime/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
+function ajaxuserbytime(numberdate, numberend) {
+    $('#border-userbytime').html("");
+    $('.border-level-title-userbytime').html("");
+    $('.border-legend-user').html("");
+    $('div').removeClass("border-level-title-userbytime");
+    $('div').removeClass("border-legend-user")
+    let linkstatistic;
+    if (numberend == 0) {
+        linkstatistic = "/userbytime/" + $("#idapp-using").val() + "?numberdate=" + numberdate;
+    } else {
+        linkstatistic = "/userbytime/" + $("#idapp-using").val() + "?numberdate=" + numberdate + "&numberend=" + numberend;
+    }
 
     function getWeekDates() {
+        if (numberdate <= 7) {
+            numberdate = 0;
+        }
         let now = new Date();
+        if (!numberend) {
+            now = new Date();
+        } else {
+            console.log(numberend)
+            now = numberend._d;
+        }
         let dayOfWeek = now.getDay(); //0-6
         let numDay = now.getDate();
         let setdate = [];
         let setarraydate = [];
-        for (var i = 0; i < numberdate; i++) {
+        for (var i = 0; i < 7; i++) {
             setarraydate.push(i)
         }
-        for (let i = 0; i < numberdate; i++) {
+        for (let i = 0; i < 7; i++) {
             setdate[i] = new Date(now); //copy
-            setdate[i].setDate(numDay - setarraydate[i] - 1);
+            setdate[i].setDate(numDay - numberdate - setarraydate[i] - 1);
             setdate[i].setHours(0, 0, 0, 0);
             setdate[i] = setdate[i].toDateString().split(" ");
             setdate[i] = setdate[i][0];
@@ -141,6 +163,3 @@ function ajaxuserbytime(numberdate) {
         }
     )
 }
-$(document).ready(() => {
-    ajaxuserbytime(7);
-})
