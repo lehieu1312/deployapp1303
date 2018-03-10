@@ -512,7 +512,7 @@ canvas {
 .border-level-title-userbytime {
     float: left;
     margin-top: 5px;
-    margin-left: 26px;
+    margin-left: 10px;
 }
 
 .border-level {
@@ -695,8 +695,8 @@ canvas {
 }
 
 .set-left-pagination {
-    width: 50%;
-    float: left;
+    width: 400px;
+    float: right;
     position: relative;
 }
 
