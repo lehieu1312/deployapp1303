@@ -1,0 +1,1 @@
+{"_id":{"$oid":"5a93cb97bee6c167f6ba3f43"},"idApp":"app1","firstName":"Hoàng","lastName":"Văn Thám","email":"abc@gmail.com","phoneNumber":"123465","userName":"username1","adress":"Mỗ Lao, Hà Đông","city":"Hà Nội","zipCode":"123","company":"Tây Đô Tech","dateAccess":{"$date":"2018-02-27T03:33:10.407Z"},"status":true}
