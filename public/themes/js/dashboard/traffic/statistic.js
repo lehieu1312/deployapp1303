@@ -89,7 +89,7 @@ function ajaxstatistic(numberdate, numberend) {
             <span class="light-large-gray">${settime(data.sessiontime.sessiontime)}</span>
             <br>
             <span class="${colorsessiontime.color}">
-                <img class="settihg-arrow" src="/themes/img/traffic/${colorsessiontime.arrow}">${Math.abs(centsessiontime) + "%"}</span>
+                <img class="settihg-arrow" src="/themes/img/traffic/${colorsessiontime.arrow}">${(Math.abs(centsessiontime*100)).toFixed(0) + "%"}</span>
         </div>`)
         }
     )
