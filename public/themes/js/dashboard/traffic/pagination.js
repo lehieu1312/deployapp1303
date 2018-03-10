@@ -1,8 +1,9 @@
 function pagination(a, b, c) {
     let text = document.getElementsByClassName("setpagination1")[c];
+
     let lengtr = $(a).length;
     let numberpage = Math.ceil(lengtr / 6);
-    text.innerHTML = "Showing 1-6 of " + lengtr + "item(s)"
+    text.innerHTML = "Showing 1-6 of " + lengtr + " item(s)"
     let next = $(b + " > .next");
     let doublenext = $(b + "> .double-next");
     let back = $(b + "> .back");
