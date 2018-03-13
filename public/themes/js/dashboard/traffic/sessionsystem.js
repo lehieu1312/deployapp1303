@@ -12,9 +12,15 @@ function ajaxsss(numberdate, numberend) {
         (data) => {
             // console.log(data)
             $(".system-session").html("");
-            let centandroid = (data.platform.android.android * 100 / (data.platform.android.android + data.platform.ios.ios) - data.platform.android.androidall * 100 / (data.platform.android.androidall + data.platform.ios.iosall)).toFixed(1);
+            let numberandroi = 0;
+            let numberios = 0;
+            if (data.platform.android.android > 0 || data.platform.ios.ios > 0) {
+                numberandroi = (data.platform.android.android * 100 / (data.platform.android.android + data.platform.ios.ios));
+                numberios = (data.platform.ios.ios * 100 / (data.platform.android.android + data.platform.ios.ios));
+            }
+            let centandroid = (numberandroi - data.platform.android.androidall * 100 / (data.platform.android.androidall + data.platform.ios.iosall)).toFixed(1);
             let colorandroid = setstatus(centandroid);
-            let centios = (data.platform.ios.ios * 100 / (data.platform.android.android + data.platform.ios.ios) - data.platform.ios.iosall * 100 / (data.platform.android.androidall + data.platform.ios.iosall)).toFixed(1);
+            let centios = (numberios - data.platform.ios.iosall * 100 / (data.platform.android.androidall + data.platform.ios.iosall)).toFixed(1);
             let colorios = setstatus(centandroid);
 
             $(".system-session").append(` <div class="sub-session-system">
@@ -23,7 +29,7 @@ function ajaxsss(numberdate, numberend) {
                 <span>Ios</span>
             </span>
             <br>
-            <span class="light-large-gray">${(data.platform.android.android * 100 / (data.platform.android.android + data.platform.ios.ios)).toFixed(1) + "%"}</span>
+            <span class="light-large-gray">${numberandroi.toFixed(1) + "%"}</span>
             <br>
             <span class="${colorandroid.color}">
                 <img class="settihg-arrow" src="/themes/img/traffic/${colorandroid.arrow}">${Math.abs(centandroid)+"%"}
@@ -35,7 +41,7 @@ function ajaxsss(numberdate, numberend) {
                 <span>Android</span>
             </span>
             <br>
-            <span class="light-large-gray">${(data.platform.ios.ios * 100 / (data.platform.android.android + data.platform.ios.ios)).toFixed(1) + "%"}</span>
+            <span class="light-large-gray">${numberios.toFixed(1) + "%"}</span>
             <br>
             <span class="${colorios.color}">
                 <img class="settihg-arrow" src="/themes/img/traffic/${colorios.arrow}">${Math.abs(centios) + "%"}
@@ -44,6 +50,14 @@ function ajaxsss(numberdate, numberend) {
 
             let sss = document.getElementById("chart-session").getContext("2d")
 
+            let platformAdnroid = 0;
+            let platformIos = 0;
+            if (data.platform.android.android > 0) {
+                platformAdnroid = data.platform.android.android;
+            }
+            if (data.platform.ios.ios > 0) {
+                platformIos = data.platform.ios.ios;
+            }
             let sessionsystem = new Chart(sss, {
                 type: 'doughnut', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                 data: {
@@ -51,8 +65,8 @@ function ajaxsss(numberdate, numberend) {
                     datasets: [{
                         label: 'Population',
                         data: [
-                            data.platform.android.android,
-                            data.platform.ios.ios
+                            platformAdnroid,
+                            platformIos
                         ],
                         //backgroundColor:'green',
                         backgroundColor: [

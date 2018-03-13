@@ -118,9 +118,20 @@ $(document).ready(function () {
         <span id="text-href">My Team</span>`)
 
     }
-    if (pathArray[1] == "myorder") {
+    if (pathArray[1] == "appsetting") {
         hoverarrow[3].style.color = "#00afee"
         hovertext[3].style.color = "#00afee"
+        $('#navigate-text').append(
+            `<a class="colora" href="/dashboard"><span>Home</span><a>
+        <span class="setarrownavigate">
+            <img src="/themes/img/dashboard/iconarrowbreadcrumb.png">
+        </span>
+        <span id="text-href">Traffic</span>`)
+
+    }
+    if (pathArray[1] == "myorder") {
+        hoverarrow[4].style.color = "#00afee"
+        hovertext[4].style.color = "#00afee"
         if (pathArray[2] != "detail") {
             $('#navigate-text').append(
                 `<a class="colora" href="/dashboard"><span>Home</span><a>
@@ -155,9 +166,10 @@ $(document).ready(function () {
         }
 
     }
+
     if (pathArray[1] == "traffic") {
-        hoverarrow[4].style.color = "#00afee"
-        hovertext[4].style.color = "#00afee"
+        hoverarrow[5].style.color = "#00afee"
+        hovertext[5].style.color = "#00afee"
         $('#navigate-text').append(
             `<a class="colora" href="/dashboard"><span>Home</span><a>
         <span class="setarrownavigate">

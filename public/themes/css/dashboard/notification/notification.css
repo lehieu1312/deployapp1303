@@ -1,0 +1,10 @@
+#content-notification {
+    background: white;
+    min-height: 700px;
+    margin: 0 20px 0 20px;
+    border-radius: 2px;
+}
+
+#content-notification>div {
+    padding: 12px 20px;
+}

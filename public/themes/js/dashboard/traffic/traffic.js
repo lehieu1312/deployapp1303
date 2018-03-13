@@ -39,8 +39,8 @@ $(document).ready(() => {
 
     clickmenu(5, ajaxsss);
 
-    pagination('#body-table-pageuser > tr', '.jquery-pagination', 0);
-    pagination('#content-productstatictis > tr', '.jquery-pagination1', 1);
+    // pagination('#body-table-pageuser > tr', '.jquery-pagination', 0);
+    // pagination('#content-productstatictis > tr', '.jquery-pagination1', 1);
 
 })
 

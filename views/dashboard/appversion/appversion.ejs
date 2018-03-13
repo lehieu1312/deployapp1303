@@ -21,16 +21,16 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li id="show9">
-                        <a href="#">9 Per page</a>
+                        <a>9 Per page</a>
                     </li>
                     <li id="show18">
-                        <a href="#">18 Per page</a>
+                        <a>18 Per page</a>
                     </li>
                     <li id="show27">
-                        <a href="#">27 Per page</a>
+                        <a>27 Per page</a>
                     </li>
                     <li id="show36">
-                        <a href="#">36 Per page</a>
+                        <a>36 Per page</a>
                     </li>
 
                 </ul>
@@ -42,21 +42,21 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li id="select-date-1">
-                        <a href="#">Hours Ago</a>
+                        <a>Hours Ago</a>
                     </li>
                     <li id="select-date-2">
-                        <a href="#">Yesterday</a>
+                        <a>Yesterday</a>
                     </li>
                     <li id="select-date-3">
-                        <a href="#">Last Weed</a>
+                        <a>Last Weed</a>
                     </li>
                     <li id="select-date-4">
-                        <a href="#">All Dates</a>
+                        <a>All Dates</a>
                     </li>
                     <li role="separator" class="divider"></li>
                     <li id="select-date-5">
                         <input hidden id="fillter-date-custom" value="">
-                        <a href="#">Custom...</a>
+                        <a>Custom...</a>
                     </li>
                 </ul>
             </div>
@@ -67,67 +67,67 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li id="slect-status-1">
-                        <a href="#">New</a>
+                        <a>New</a>
                     </li>
                     <li id="slect-status-2">
-                        <a href="#">Feature</a>
+                        <a>Feature</a>
                     </li>
                     <li id="slect-status-3">
-                        <a href="#">All</a>
+                        <a>All</a>
                     </li>
                 </ul>
             </div>
             <div class="pagination-table-appversion1 row">
                 <ul class="pagination">
                     <li class="edit-li-pagination">
-                        <a class="number-items" href="#"></a>
+                        <a class="number-items"></a>
                     </li>
                     <li class="limitsuperback">
-                        <a class="limitpagination" href="#">
+                        <a class="limitpagination">
                             <i class="fa fa-angle-double-left" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li class="superback">
-                        <a href="#">
+                        <a>
                             <i class="fa fa-angle-double-left" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li class="backpage">
-                        <a href="#">
+                        <a>
                             <i class="fa fa-angle-left" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li class="limitback">
-                        <a class="limitpagination" href="#">
+                        <a class="limitpagination">
                             <i class="fa fa-angle-left" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="thispage" href="#">
+                        <a class="thispage">
 
                         </a>
                     </li>
                     <li class="edit-li-pagination">
-                        <a class="numberpage" href="#">
+                        <a class="numberpage">
                         </a>
                     </li>
                     <li class="limitnext">
-                        <a class="limitpagination" href="#">
+                        <a class="limitpagination">
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li class="nextpage">
-                        <a href="#">
+                        <a>
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li class="supernext">
-                        <a href="#">
+                        <a>
                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                         </a>
                     </li>
                     <li class="limitsupernext">
-                        <a class="limitpagination" href="#">
+                        <a class="limitpagination">
                             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                         </a>
                     </li>
@@ -169,11 +169,11 @@
                                     <%=appversions.nameApp%>
                                         <%
                                         var numberappversion = appversions.inforAppversion[number].version.split(".");
-                                        if(i == 0){%>
-                                            <img src="/themes/img/appversion/iconnew.png">
+                                        if(appversions.inforAppversion[number].isDeployed==false){%>
+                                            <img class="new-appversion" src="/themes/img/appversion/iconnew.png">
                                             <%}%>
-                                                <%  if(i == 1){%>
-                                                    <img src="/themes/img/appversion/iconfeature.png">
+                                                <%  if(appversions.inforAppversion[number].status==true){%>
+                                                    <img class="feature-appversion" src="/themes/img/appversion/iconfeature.png">
                                                     <%}%>
                                 </td>
                                 <input hidden id="nameapp-appversion" value="<%=appversions.nameApp%>">
@@ -194,7 +194,7 @@
                                         <%=appversions.inforAppversion[number].changeLog%>
                                             <%}else{%>
                                                 <%=appversions.inforAppversion[number].changeLog.slice(0,100)%>
-                                                    <a href="#" id="more-changelog<%=i%>" data-toggle="modal" data-target="#myModal-appversion">[...more]</a>
+                                                    <a id="more-changelog<%=i%>" data-toggle="modal" data-target="#myModal-appversion">[...more]</a>
                                                     <%}%>
                                                         <input hidden id="content-changelog-hiden<%=i%>" value="<%=appversions.inforAppversion[number].changeLog%>">
                                 </td>
@@ -223,61 +223,61 @@
                 </table>
                 <span class="showing-footer1">Showing 1-
                     <span id="number-show-footer"></span> of
-                    <span class="number-items" href="#"></span>
+                    <span class="number-items"></span>
                 </span>
                 <div class="example">
                     <div class="container">
                         <div class="pagination-table-appversion row">
                             <ul class="pagination">
                                 <li class="edit-li-pagination">
-                                    <a class="number-items" href="#"></a>
+                                    <a class="number-items"></a>
                                 </li>
                                 <li class="limitsuperback">
-                                    <a class="limitpagination" href="#">
+                                    <a class="limitpagination">
                                         <i class="fa fa-angle-double-left" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li class="superback">
-                                    <a href="#">
+                                    <a>
                                         <i class="fa fa-angle-double-left" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li class="backpage">
-                                    <a href="#">
+                                    <a>
                                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li class="limitback">
-                                    <a class="limitpagination" href="#">
+                                    <a class="limitpagination">
                                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="thispage" href="#">
+                                    <a class="thispage">
 
                                     </a>
                                 </li>
                                 <li class="edit-li-pagination">
-                                    <a class="numberpage" href="#">
+                                    <a class="numberpage">
                                     </a>
                                 </li>
                                 <li class="limitnext">
-                                    <a class="limitpagination" href="#">
+                                    <a class="limitpagination">
                                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li class="nextpage">
-                                    <a href="#">
+                                    <a>
                                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li class="supernext">
-                                    <a href="#">
+                                    <a>
                                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                                     </a>
                                 </li>
                                 <li class="limitsupernext">
-                                    <a class="limitpagination" href="#">
+                                    <a class="limitpagination">
                                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                                     </a>
                                 </li>

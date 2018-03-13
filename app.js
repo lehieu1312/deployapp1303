@@ -617,8 +617,10 @@ var errdashboard404 = require("./routes/dashboard/error/404");
 var appversion = require("./routes/dashboard/appversion/appversion");
 var history = require("./routes/dashboard/history/history");
 var myteam = require("./routes/dashboard/myteam/myteam");
+var appsetting = require("./routes/dashboard/appsetting/appsetting");
 var myorder = require("./routes/dashboard/myorder/myorder");
 var traffic = require("./routes/dashboard/traffic/traffic");
+var notification = require("./routes/dashboard/notification/notification");
 // Rest API
 var API = require("./routes/restapi/app");
 
@@ -649,8 +651,10 @@ app.use('/', forgot);
 app.use('/', detail);
 app.use('/', myteam);
 app.use('/', errdashboard404);
+app.use('/', appsetting);
 app.use('/', myorder);
 app.use('/', traffic);
+app.use('/', notification);
 
 /////////////////////
 app.use('/deploy-api/', API);

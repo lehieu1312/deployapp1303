@@ -160,12 +160,13 @@ $(document).ready(() => {
     })
     //filter status
     $("#slect-status-1").click(() => {
-        $("#span-selcect-status").text("New")
+        $("#span-selcect-status").text("New");
+        // console.log($('.tr-content-appversion>').find(".new-appversion").length)
         var dem = 0;
         var lenthmanguse = manguse.length;
         manguse.splice(0, lenthmanguse);
         for (let i = 0; i < $('.tr-content-appversion').length; i++) {
-            if (i == 0) {
+            if (i < $('.tr-content-appversion>').find(".new-appversion").length) {
                 dem++;
                 manguse.push(i)
                 $('#version' + manguse[i]).show();
@@ -182,7 +183,7 @@ $(document).ready(() => {
         var lenthmanguse = manguse.length;
         manguse.splice(0, lenthmanguse);
         for (let i = 0; i < $('.tr-content-appversion').length; i++) {
-            if (i == 1) {
+            if (i == $('.tr-content-appversion>').find(".new-appversion").length) {
                 dem++;
                 manguse.push(i)
                 $('#version' + i).show();

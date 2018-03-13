@@ -6,10 +6,10 @@ let appversionschema = mongoose.Schema({
     inforAppversion: [{
         version: String,
         changeLog: String,
-        isDeployed: Boolean,
         createDate: Date,
         updatedDate: Date,
         nameFile: String,
+        isDeployed: Boolean,
         status: Boolean
     }],
     image: String,
